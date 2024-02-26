@@ -7,17 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F5A254A22B8B88790076F694 /* ToDoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A254A12B8B88790076F694 /* ToDoApp.swift */; };
-		F5A254A42B8B88790076F694 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A254A32B8B88790076F694 /* ContentView.swift */; };
+		F5A254A22B8B88790076F694 /* ToDoPlannerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A254A12B8B88790076F694 /* ToDoPlannerApp.swift */; };
+		F5A254A42B8B88790076F694 /* TasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A254A32B8B88790076F694 /* TasksView.swift */; };
 		F5A254A62B8B887A0076F694 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5A254A52B8B887A0076F694 /* Assets.xcassets */; };
 		F5A254A92B8B887A0076F694 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5A254A82B8B887A0076F694 /* Preview Assets.xcassets */; };
 		F5A254B12B8B8BC90076F694 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = F5A254B02B8B8BC90076F694 /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		F5A2549E2B8B88790076F694 /* ToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		F5A254A12B8B88790076F694 /* ToDoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoApp.swift; sourceTree = "<group>"; };
-		F5A254A32B8B88790076F694 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		F5A2549E2B8B88790076F694 /* ToDoPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5A254A12B8B88790076F694 /* ToDoPlannerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoPlannerApp.swift; sourceTree = "<group>"; };
+		F5A254A32B8B88790076F694 /* TasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksView.swift; sourceTree = "<group>"; };
 		F5A254A52B8B887A0076F694 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F5A254A82B8B887A0076F694 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F5A254B02B8B8BC90076F694 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
@@ -38,7 +38,7 @@
 			isa = PBXGroup;
 			children = (
 				F5A254B02B8B8BC90076F694 /* .gitignore */,
-				F5A254A02B8B88790076F694 /* ToDo */,
+				F5A254A02B8B88790076F694 /* ToDoPlanner */,
 				F5A2549F2B8B88790076F694 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -46,20 +46,20 @@
 		F5A2549F2B8B88790076F694 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F5A2549E2B8B88790076F694 /* ToDo.app */,
+				F5A2549E2B8B88790076F694 /* ToDoPlanner.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		F5A254A02B8B88790076F694 /* ToDo */ = {
+		F5A254A02B8B88790076F694 /* ToDoPlanner */ = {
 			isa = PBXGroup;
 			children = (
-				F5A254A12B8B88790076F694 /* ToDoApp.swift */,
-				F5A254AF2B8B8A320076F694 /* Views */,
+				F5A254A12B8B88790076F694 /* ToDoPlannerApp.swift */,
+				F5A254B22B8B8D470076F694 /* Views */,
 				F5A254A52B8B887A0076F694 /* Assets.xcassets */,
 				F5A254A72B8B887A0076F694 /* Preview Content */,
 			);
-			path = ToDo;
+			path = ToDoPlanner;
 			sourceTree = "<group>";
 		};
 		F5A254A72B8B887A0076F694 /* Preview Content */ = {
@@ -70,20 +70,20 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		F5A254AF2B8B8A320076F694 /* Views */ = {
+		F5A254B22B8B8D470076F694 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F5A254A32B8B88790076F694 /* ContentView.swift */,
+				F5A254A32B8B88790076F694 /* TasksView.swift */,
 			);
-			name = Views;
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F5A2549D2B8B88790076F694 /* ToDo */ = {
+		F5A2549D2B8B88790076F694 /* ToDoPlanner */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F5A254AC2B8B887A0076F694 /* Build configuration list for PBXNativeTarget "ToDo" */;
+			buildConfigurationList = F5A254AC2B8B887A0076F694 /* Build configuration list for PBXNativeTarget "ToDoPlanner" */;
 			buildPhases = (
 				F5A2549A2B8B88790076F694 /* Sources */,
 				F5A2549B2B8B88790076F694 /* Frameworks */,
@@ -93,9 +93,9 @@
 			);
 			dependencies = (
 			);
-			name = ToDo;
+			name = ToDoPlanner;
 			productName = ToDo;
-			productReference = F5A2549E2B8B88790076F694 /* ToDo.app */;
+			productReference = F5A2549E2B8B88790076F694 /* ToDoPlanner.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -113,7 +113,7 @@
 					};
 				};
 			};
-			buildConfigurationList = F5A254992B8B88790076F694 /* Build configuration list for PBXProject "ToDo" */;
+			buildConfigurationList = F5A254992B8B88790076F694 /* Build configuration list for PBXProject "ToDoPlanner" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -126,7 +126,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F5A2549D2B8B88790076F694 /* ToDo */,
+				F5A2549D2B8B88790076F694 /* ToDoPlanner */,
 			);
 		};
 /* End PBXProject section */
@@ -149,8 +149,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F5A254A42B8B88790076F694 /* ContentView.swift in Sources */,
-				F5A254A22B8B88790076F694 /* ToDoApp.swift in Sources */,
+				F5A254A42B8B88790076F694 /* TasksView.swift in Sources */,
+				F5A254A22B8B88790076F694 /* ToDoPlannerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,7 +209,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -266,7 +266,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -283,15 +283,17 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"ToDo/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"ToDoPlanner/Preview Content\"";
 				DEVELOPMENT_TEAM = VQ3NGD79KV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "To Do Planner";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -299,9 +301,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vladyslavpetrenko.ToDo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -312,15 +318,17 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"ToDo/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"ToDoPlanner/Preview Content\"";
 				DEVELOPMENT_TEAM = VQ3NGD79KV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "To Do Planner";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -328,16 +336,20 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vladyslavpetrenko.ToDo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F5A254992B8B88790076F694 /* Build configuration list for PBXProject "ToDo" */ = {
+		F5A254992B8B88790076F694 /* Build configuration list for PBXProject "ToDoPlanner" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F5A254AA2B8B887A0076F694 /* Debug */,
@@ -346,7 +358,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F5A254AC2B8B887A0076F694 /* Build configuration list for PBXNativeTarget "ToDo" */ = {
+		F5A254AC2B8B887A0076F694 /* Build configuration list for PBXNativeTarget "ToDoPlanner" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F5A254AD2B8B887A0076F694 /* Debug */,

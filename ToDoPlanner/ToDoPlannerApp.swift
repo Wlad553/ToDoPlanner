@@ -1,5 +1,5 @@
 //
-//  ToDoApp.swift
+//  ToDoPlannerApp.swift
 //  ToDo
 //
 //  Created by Vladyslav Petrenko on 25/02/2024.
@@ -8,10 +8,10 @@
 import SwiftUI
 
 @main
-struct ToDoApp: App {
+struct ToDoPlannerApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TasksView()
         }
     }
 }

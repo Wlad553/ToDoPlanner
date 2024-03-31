@@ -11,7 +11,7 @@ import SwiftUI
 struct ToDoPlannerApp: App {
     var body: some Scene {
         WindowGroup {
-            TasksView()
+            TasksView(viewModel: TasksViewModel())
         }
     }
 }

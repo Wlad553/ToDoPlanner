@@ -8,11 +8,15 @@
 import SwiftUI
 
 struct TasksView: View {
+    var viewModel: TasksViewModel
+    
     var body: some View {
-        EmptyView()
+        List(viewModel.tasks) { task in
+            EmptyView()
+        }
     }
 }
 
 #Preview {
-    TasksView()
+    TasksView(viewModel: TasksViewModel())
 }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F512E7CE2BB95EBE00C9FBAA /* CheckMarkImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F512E7CD2BB95EBE00C9FBAA /* CheckMarkImage.swift */; };
+		F512E7D02BB98C5000C9FBAA /* TasksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F512E7CF2BB98C5000C9FBAA /* TasksViewModel.swift */; };
 		F5A254A22B8B88790076F694 /* ToDoPlannerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A254A12B8B88790076F694 /* ToDoPlannerApp.swift */; };
 		F5A254A42B8B88790076F694 /* TasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A254A32B8B88790076F694 /* TasksView.swift */; };
 		F5A254A62B8B887A0076F694 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5A254A52B8B887A0076F694 /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 
 /* Begin PBXFileReference section */
 		F512E7CD2BB95EBE00C9FBAA /* CheckMarkImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckMarkImage.swift; sourceTree = "<group>"; };
+		F512E7CF2BB98C5000C9FBAA /* TasksViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksViewModel.swift; sourceTree = "<group>"; };
 		F5A2549E2B8B88790076F694 /* ToDoPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5A254A12B8B88790076F694 /* ToDoPlannerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoPlannerApp.swift; sourceTree = "<group>"; };
 		F5A254A32B8B88790076F694 /* TasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksView.swift; sourceTree = "<group>"; };
@@ -75,8 +77,8 @@
 			isa = PBXGroup;
 			children = (
 				F5A254A12B8B88790076F694 /* ToDoPlannerApp.swift */,
-				F5A254B22B8B8D470076F694 /* Views */,
 				F5DF923A2B8D026F00137855 /* Models */,
+				F5A254B22B8B8D470076F694 /* TaskScreen */,
 				F512E7CB2BB95DD500C9FBAA /* Helpers */,
 				F5A254A52B8B887A0076F694 /* Assets.xcassets */,
 				F5A254A72B8B887A0076F694 /* Preview Content */,
@@ -92,12 +94,15 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		F5A254B22B8B8D470076F694 /* Views */ = {
+		F5A254B22B8B8D470076F694 /* TaskScreen */ = {
 			isa = PBXGroup;
 			children = (
 				F5A254A32B8B88790076F694 /* TasksView.swift */,
+				F512E7CF2BB98C5000C9FBAA /* TasksViewModel.swift */,
 			);
-			path = Views;
+			path = TaskScreen;
+			sourceTree = "<group>";
+		};
 		F5DF923A2B8D026F00137855 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -178,6 +183,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5DF923C2B8D027B00137855 /* DoTask.swift in Sources */,
+				F512E7D02BB98C5000C9FBAA /* TasksViewModel.swift in Sources */,
 				F512E7CE2BB95EBE00C9FBAA /* CheckMarkImage.swift in Sources */,
 				F5A254A42B8B88790076F694 /* TasksView.swift in Sources */,
 				F5A254A22B8B88790076F694 /* ToDoPlannerApp.swift in Sources */,

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F512E7CE2BB95EBE00C9FBAA /* CheckMarkImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F512E7CD2BB95EBE00C9FBAA /* CheckMarkImage.swift */; };
 		F5A254A22B8B88790076F694 /* ToDoPlannerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A254A12B8B88790076F694 /* ToDoPlannerApp.swift */; };
 		F5A254A42B8B88790076F694 /* TasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A254A32B8B88790076F694 /* TasksView.swift */; };
 		F5A254A62B8B887A0076F694 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5A254A52B8B887A0076F694 /* Assets.xcassets */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F512E7CD2BB95EBE00C9FBAA /* CheckMarkImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckMarkImage.swift; sourceTree = "<group>"; };
 		F5A2549E2B8B88790076F694 /* ToDoPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5A254A12B8B88790076F694 /* ToDoPlannerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoPlannerApp.swift; sourceTree = "<group>"; };
 		F5A254A32B8B88790076F694 /* TasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksView.swift; sourceTree = "<group>"; };
@@ -34,6 +36,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F512E7CB2BB95DD500C9FBAA /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				F512E7CC2BB95E9400C9FBAA /* Views */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		F512E7CC2BB95E9400C9FBAA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F512E7CD2BB95EBE00C9FBAA /* CheckMarkImage.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		F5A254952B8B88790076F694 = {
 			isa = PBXGroup;
 			children = (
@@ -56,6 +74,7 @@
 			children = (
 				F5A254A12B8B88790076F694 /* ToDoPlannerApp.swift */,
 				F5A254B22B8B8D470076F694 /* Views */,
+				F512E7CB2BB95DD500C9FBAA /* Helpers */,
 				F5A254A52B8B887A0076F694 /* Assets.xcassets */,
 				F5A254A72B8B887A0076F694 /* Preview Content */,
 			);
@@ -149,6 +168,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F512E7CE2BB95EBE00C9FBAA /* CheckMarkImage.swift in Sources */,
 				F5A254A42B8B88790076F694 /* TasksView.swift in Sources */,
 				F5A254A22B8B88790076F694 /* ToDoPlannerApp.swift in Sources */,
 			);

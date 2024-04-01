@@ -8,11 +8,21 @@
 import SwiftUI
 
 struct TasksView: View {
-    var viewModel: TasksViewModel
+    @Bindable var viewModel: TasksViewModel
     
     var body: some View {
-        List(viewModel.tasks) { task in
-            EmptyView()
+        ZStack {
+            Color.blackBackground
+                .ignoresSafeArea()
+            
+            List($viewModel.tasks) { task in
+                TaskCell(doTask: task)
+                    .listRowSeparator(.hidden)
+                    .listRowBackground(Color.clear)
+            }
+            .listStyle(.plain)
+            .listRowSpacing(4)
+            .padding([.leading, .trailing], -8)
         }
     }
 }

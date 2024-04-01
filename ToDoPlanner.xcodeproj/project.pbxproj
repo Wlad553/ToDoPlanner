@@ -14,6 +14,7 @@
 		F5A254A62B8B887A0076F694 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5A254A52B8B887A0076F694 /* Assets.xcassets */; };
 		F5A254A92B8B887A0076F694 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5A254A82B8B887A0076F694 /* Preview Assets.xcassets */; };
 		F5A254B12B8B8BC90076F694 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = F5A254B02B8B8BC90076F694 /* .gitignore */; };
+		F5D54EF42BAB379000D49CF1 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D54EF32BAB379000D49CF1 /* TaskCell.swift */; };
 		F5DF923C2B8D027B00137855 /* DoTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DF923B2B8D027B00137855 /* DoTask.swift */; };
 /* End PBXBuildFile section */
 
@@ -26,6 +27,7 @@
 		F5A254A52B8B887A0076F694 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F5A254A82B8B887A0076F694 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F5A254B02B8B8BC90076F694 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		F5D54EF32BAB379000D49CF1 /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		F5DF923B2B8D027B00137855 /* DoTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoTask.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -99,6 +101,7 @@
 			children = (
 				F5A254A32B8B88790076F694 /* TasksView.swift */,
 				F512E7CF2BB98C5000C9FBAA /* TasksViewModel.swift */,
+				F5D54EF32BAB379000D49CF1 /* TaskCell.swift */,
 			);
 			path = TaskScreen;
 			sourceTree = "<group>";
@@ -187,6 +190,7 @@
 				F512E7CE2BB95EBE00C9FBAA /* CheckMarkImage.swift in Sources */,
 				F5A254A42B8B88790076F694 /* TasksView.swift in Sources */,
 				F5A254A22B8B88790076F694 /* ToDoPlannerApp.swift in Sources */,
+				F5D54EF42BAB379000D49CF1 /* TaskCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

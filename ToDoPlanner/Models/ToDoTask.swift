@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DoTask: Hashable, Identifiable {
+struct ToDoTask: Hashable, Identifiable {
     enum Priority: String {
         var imageName: String {
             rawValue

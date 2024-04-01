@@ -15,8 +15,9 @@
 		F5A254A92B8B887A0076F694 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5A254A82B8B887A0076F694 /* Preview Assets.xcassets */; };
 		F5A254B12B8B8BC90076F694 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = F5A254B02B8B8BC90076F694 /* .gitignore */; };
 		F5D54EF42BAB379000D49CF1 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D54EF32BAB379000D49CF1 /* TaskCell.swift */; };
-		F5DF923C2B8D027B00137855 /* DoTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DF923B2B8D027B00137855 /* DoTask.swift */; };
+		F5DF923C2B8D027B00137855 /* ToDoTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DF923B2B8D027B00137855 /* ToDoTask.swift */; };
 		F5FE5A9B2BBAAE41002EEF59 /* Animation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FE5A9A2BBAAE41002EEF59 /* Animation+Extension.swift */; };
+		F5FE5A9F2BBB0724002EEF59 /* NumericDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FE5A9E2BBB0724002EEF59 /* NumericDateFormatter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,8 +30,9 @@
 		F5A254A82B8B887A0076F694 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F5A254B02B8B8BC90076F694 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		F5D54EF32BAB379000D49CF1 /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
-		F5DF923B2B8D027B00137855 /* DoTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoTask.swift; sourceTree = "<group>"; };
+		F5DF923B2B8D027B00137855 /* ToDoTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoTask.swift; sourceTree = "<group>"; };
 		F5FE5A9A2BBAAE41002EEF59 /* Animation+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Animation+Extension.swift"; sourceTree = "<group>"; };
+		F5FE5A9E2BBB0724002EEF59 /* NumericDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumericDateFormatter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 				F5DF923A2B8D026F00137855 /* Models */,
 				F5A254B22B8B8D470076F694 /* TaskScreen */,
 				F512E7CB2BB95DD500C9FBAA /* Helpers */,
+				F5FE5A9D2BBB06AF002EEF59 /* Utility */,
 				F5A254A52B8B887A0076F694 /* Assets.xcassets */,
 				F5A254A72B8B887A0076F694 /* Preview Content */,
 			);
@@ -112,7 +115,7 @@
 		F5DF923A2B8D026F00137855 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				F5DF923B2B8D027B00137855 /* DoTask.swift */,
+				F5DF923B2B8D027B00137855 /* ToDoTask.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -123,6 +126,14 @@
 				F5FE5A9A2BBAAE41002EEF59 /* Animation+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F5FE5A9D2BBB06AF002EEF59 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				F5FE5A9E2BBB0724002EEF59 /* NumericDateFormatter.swift */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,8 +207,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F5DF923C2B8D027B00137855 /* DoTask.swift in Sources */,
+				F5DF923C2B8D027B00137855 /* ToDoTask.swift in Sources */,
 				F512E7D02BB98C5000C9FBAA /* TasksViewModel.swift in Sources */,
+				F5FE5A9F2BBB0724002EEF59 /* NumericDateFormatter.swift in Sources */,
 				F512E7CE2BB95EBE00C9FBAA /* CheckMarkImage.swift in Sources */,
 				F5A254A42B8B88790076F694 /* TasksView.swift in Sources */,
 				F5A254A22B8B88790076F694 /* ToDoPlannerApp.swift in Sources */,

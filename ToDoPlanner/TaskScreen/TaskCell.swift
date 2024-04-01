@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TaskCell: View {
-    @Binding var doTask: DoTask
+    @Binding var doTask: ToDoTask
     
     var body: some View {
         ZStack {
@@ -21,8 +21,10 @@ struct TaskCell: View {
                 VStack(alignment: .leading, spacing: 8) {
                     Text(doTask.name)
                         .foregroundStyle(.white)
-                    Text(doTask.desctiption)
+                        .font(.system(size: 17, weight: .semibold))
+                    Text(doTask.dueDate.formatted(date: .omitted, time: .shortened))
                         .foregroundStyle(.gray)
+                        .font(.system(size: 13))
                 }
                 .lineLimit(1)
                 
@@ -39,7 +41,7 @@ struct TaskCell: View {
 }
 
 #Preview {
-    TaskCell(doTask: .constant(DoTask(name: "Task name",
+    TaskCell(doTask: .constant(ToDoTask(name: "Task name",
                             desctiption: "It's task description",
                             dueDate: Date(),
                             priority: .high,

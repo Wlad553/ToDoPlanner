@@ -27,7 +27,7 @@ struct CheckMarkImage: View {
             }
             .contentShape(Circle())
             .onTapGesture {
-                withAnimation {
+                withAnimation(Animation.checkMarkToggle()) {
                     isCheckMarkFilled.toggle()
                 }
             }

@@ -8,14 +8,21 @@
 import Foundation
 
 struct DoTask: Hashable, Identifiable {
-    enum Priority {
-        case low, middle, high
+    enum Priority: String {
+        var imageName: String {
+            rawValue
+        }
+        
+        case low = "lowPriority"
+        case middle = "mediumPriority"
+        case high = "highPriority"
     }
     
-    var id = UUID()
+    let id = UUID()
     
     var name: String
     var desctiption: String
+    var dueDate: Date
     var priority: Priority
     var isCompleted: Bool
 }

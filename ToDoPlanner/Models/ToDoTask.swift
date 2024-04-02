@@ -14,7 +14,7 @@ struct ToDoTask: Hashable, Identifiable {
         }
         
         case low = "lowPriority"
-        case middle = "mediumPriority"
+        case medium = "mediumPriority"
         case high = "highPriority"
     }
     

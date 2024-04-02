@@ -11,12 +11,14 @@ import Foundation
 final class TasksViewModel {
     var toDoTasks: [ToDoTask] = [
         ToDoTask(name: "Task1", desctiption: "This is task1 description", dueDate: Date() + 86401, priority: .high, isCompleted: false),
-        ToDoTask(name: "Task2", desctiption: "This is task2 description", dueDate: Date(), priority: .middle, isCompleted: false),
+        ToDoTask(name: "Task2", desctiption: "This is task2 description", dueDate: Date(), priority: .medium, isCompleted: false),
         ToDoTask(name: "Task3", desctiption: "This is task3 description", dueDate: Date() - 60, priority: .low, isCompleted: false),
         ToDoTask(name: "Task4", desctiption: "This is task4 description", dueDate: Date() - 86401, priority: .high, isCompleted: true),
+        ToDoTask(name: "Task5", desctiption: "This is task5 description", dueDate: Date() - (86401 * 31), priority: .low, isCompleted: true),
+        ToDoTask(name: "Task6", desctiption: "This is task6 description", dueDate: Date() + (86401 * 31), priority: .medium, isCompleted: true)
     ]
     
-    var toDoTasksSorted: [Dictionary<String, [ToDoTask]>.Element] {
+    func toDoTasksSorted() -> [Dictionary<String, [ToDoTask]>.Element] {
         let dateFormatter = NumericDateFormatter()
         var groupedTasksDictionary = Dictionary(grouping: toDoTasks, by: { dateFormatter.string(from: $0.dueDate) })
         groupedTasksDictionary.keys.forEach { key in
@@ -31,5 +33,19 @@ final class TasksViewModel {
         }
         
         return sortedTasksDictionary
+    }
+    
+    func sectionTitle(stringDate: String) -> String {
+        let dateFormatter = NumericDateFormatter()
+        let sectionTitle: String
+        
+        switch stringDate {
+        case dateFormatter.string(from: Date()): sectionTitle = "Today, \(stringDate)"
+        case dateFormatter.string(from: Date() - 86400): sectionTitle = "Yesterday, \(stringDate)"
+        case dateFormatter.string(from: Date() + 86400): sectionTitle = "Tomorrow, \(stringDate)"
+        default: sectionTitle = stringDate
+        }
+        
+        return sectionTitle
     }
 }

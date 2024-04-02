@@ -11,7 +11,7 @@ final class NumericDateFormatter: DateFormatter {
     override init() {
         super.init()
         self.timeZone = .current
-        self.dateFormat = "d/M/yyyy"
+        self.dateStyle = .medium
     }
     
     required init?(coder: NSCoder) {

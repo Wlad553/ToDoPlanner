@@ -12,7 +12,7 @@ struct TasksView: View {
     
     var body: some View {
         List {
-            ForEach(viewModel.toDoTasksSorted, id: \.key) { section, toDoTasks in
+            ForEach(viewModel.toDoTasksSorted(), id: \.key) { section, toDoTasks in
                 Section {
                     ForEach(toDoTasks) { toDoTask in
                         if let taskIndex = viewModel.toDoTasks.firstIndex(of: toDoTask) {
@@ -22,7 +22,8 @@ struct TasksView: View {
                         }
                     }
                 } header: {
-                    Text(section)
+                    Text(viewModel.sectionTitle(stringDate: section))
+                        .textCase(.none)
                         .font(.system(size: 20, weight: .semibold))
                         .foregroundStyle(.white)
                         .padding(EdgeInsets(top: -4, leading: 0, bottom: 8, trailing: 0))

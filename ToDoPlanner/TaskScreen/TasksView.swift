@@ -33,8 +33,9 @@ struct TasksView: View {
         .listStyle(.grouped)
         .listRowSpacing(4)
         .listSectionSpacing(0)
+        .scrollIndicators(.hidden)
         .scrollContentBackground(.hidden)
-        .background(.blackBackground)
+        .background(.charcoal)
         .padding([.leading, .trailing], -8)
     }
 }

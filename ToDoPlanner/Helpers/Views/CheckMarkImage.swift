@@ -14,8 +14,8 @@ struct CheckMarkImage: View {
         GeometryReader { geometry in
             ZStack {
                 Circle()
-                    .stroke(isCheckMarkFilled ? .purple : .gray, lineWidth: 2)
-                    .fill(isCheckMarkFilled ? .purple : .clear)
+                    .stroke(isCheckMarkFilled ? .lavenderBliss : .gray, lineWidth: 2)
+                    .fill(isCheckMarkFilled ? .lavenderBliss : .clear)
                     .frame(width: geometry.size.width,
                            height: geometry.size.width)
                 

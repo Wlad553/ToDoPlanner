@@ -13,7 +13,7 @@ struct TaskCell: View {
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 20)
-                .foregroundStyle(.grayRow)
+                .foregroundStyle(.midnightCharcoal)
             HStack(alignment: .top, spacing: 16) {
                 CheckMarkImage(isCheckMarkFilled: $doTask.isCompleted)
                     .frame(width: 30, height: 30)

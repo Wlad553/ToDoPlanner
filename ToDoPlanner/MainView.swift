@@ -42,12 +42,15 @@ struct MainView: View {
                     UITabBar.appearance().scrollEdgeAppearance = appearance
                 }
                 
-                AddTaskButton {
-                    
+                
+                NavigationLink {
+                    EmptyView()
+                } label: {
+                    AddTaskImage()
+                        .scaledToFit()
+                        .frame(width: 60)
+                        .offset(y: -11.5)
                 }
-                .scaledToFit()
-                .frame(width: 60)
-                .offset(y: -11.5)
             }
         }
     }

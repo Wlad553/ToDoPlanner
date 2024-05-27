@@ -16,9 +16,16 @@ struct TasksView: View {
                 Section {
                     ForEach(toDoTasks) { toDoTask in
                         if let taskIndex = viewModel.toDoTasks.firstIndex(of: toDoTask) {
-                            TaskCell(doTask: $viewModel.toDoTasks[taskIndex])
-                                .listRowSeparator(.hidden)
-                                .listRowBackground(Color.clear)
+                            ZStack {
+                                NavigationLink {
+                                    TaskDetailsView()
+                                } label: {
+                                    EmptyView().opacity(0)
+                                }
+                                TaskCell(doTask: $viewModel.toDoTasks[taskIndex])
+                            }
+                            .listRowBackground(Color.clear)
+                            .listRowSeparator(.hidden)
                         }
                     }
                 } header: {

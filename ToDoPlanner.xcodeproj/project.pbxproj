@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		F512E7CE2BB95EBE00C9FBAA /* CheckMarkImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F512E7CD2BB95EBE00C9FBAA /* CheckMarkImage.swift */; };
 		F512E7D02BB98C5000C9FBAA /* TasksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F512E7CF2BB98C5000C9FBAA /* TasksViewModel.swift */; };
+		F52A0BE52C038CB5005C2DBB /* EnvironmentValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52A0BE42C038CB5005C2DBB /* EnvironmentValues.swift */; };
 		F5A254A22B8B88790076F694 /* ToDoPlannerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A254A12B8B88790076F694 /* ToDoPlannerApp.swift */; };
 		F5A254A42B8B88790076F694 /* TasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A254A32B8B88790076F694 /* TasksView.swift */; };
 		F5A254A62B8B887A0076F694 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5A254A52B8B887A0076F694 /* Assets.xcassets */; };
@@ -28,6 +29,7 @@
 /* Begin PBXFileReference section */
 		F512E7CD2BB95EBE00C9FBAA /* CheckMarkImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckMarkImage.swift; sourceTree = "<group>"; };
 		F512E7CF2BB98C5000C9FBAA /* TasksViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksViewModel.swift; sourceTree = "<group>"; };
+		F52A0BE42C038CB5005C2DBB /* EnvironmentValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentValues.swift; sourceTree = "<group>"; };
 		F5A2549E2B8B88790076F694 /* ToDoPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5A254A12B8B88790076F694 /* ToDoPlannerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoPlannerApp.swift; sourceTree = "<group>"; };
 		F5A254A32B8B88790076F694 /* TasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksView.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				F5FE5A9A2BBAAE41002EEF59 /* Animation+Extension.swift */,
+				F52A0BE42C038CB5005C2DBB /* EnvironmentValues.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 				F5E92F9A2BBC7F0400803BFB /* AddTaskImage.swift in Sources */,
 				F5C02B162BFB6A2900C85C20 /* TaskDetailsCell.swift in Sources */,
 				F512E7CE2BB95EBE00C9FBAA /* CheckMarkImage.swift in Sources */,
+				F52A0BE52C038CB5005C2DBB /* EnvironmentValues.swift in Sources */,
 				F5A254A42B8B88790076F694 /* TasksView.swift in Sources */,
 				F5E92F9C2BBF1E8200803BFB /* MainView.swift in Sources */,
 				F5C02B122BFB45D900C85C20 /* PlaceholderTextEditor.swift in Sources */,

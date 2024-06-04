@@ -16,19 +16,22 @@ struct TaskDetailsCell<LeftView: View, RightView: View>: View {
         ZStack {
             RoundedRectangle(cornerRadius: 15)
                 .foregroundStyle(.midnightCharcoal)
-                .padding(-20)
+                .padding(.horizontal, -20)
+                .padding(.vertical, -19)
             HStack(alignment: .center, spacing: 12) {
                 leftView
                 Text(text)
-                    .font(.system(size: 15))
+                    .font(.system(size: 16))
+                
                 Spacer()
                 
                 rightView
+                    .padding(.trailing, 12)
             }
             .foregroundStyle(.white)
             .lineLimit(1)
         }
-        .padding([.all], 20)
+        .padding([.all], 19)
     }
 }
 

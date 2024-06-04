@@ -12,9 +12,24 @@ struct TaskDetailsView: View {
         case titleTextField
         case descriptionTextEditor
     }
+    
+    enum TaskCategory: String, Hashable, CaseIterable, Identifiable, Comparable {
+        static func < (lhs: TaskDetailsView.TaskCategory, rhs: TaskDetailsView.TaskCategory) -> Bool {
+            lhs.rawValue > rhs.rawValue
+        }
+        
+        var id: String {
+            rawValue
+        }
+        
+        case home = "Home"
+        case work = "Work"
+    }
         
     @State private var titleText: String = String()
     @State private var descriptionText: String = String()
+    
+    @State private var taskCategory: TaskCategory = .home
     
     @State private var keyboardHeight: CGFloat = 0
     @State private var textEditorHeight: CGFloat = 0
@@ -54,7 +69,16 @@ struct TaskDetailsView: View {
                 TaskDetailsCell(text: "Category") {
                     Image(systemName: "list.bullet")
                 } rightView: {
-                    EmptyView()
+                    Menu {
+                        Picker(String(), selection: $taskCategory) {
+                            ForEach(TaskCategory.allCases.sorted()) { category in
+                                Text(category.rawValue)
+                                    .tag(category)
+                            }
+                        }
+                    } label: {
+                        RoundedContextView(text: taskCategory.rawValue)
+                    }
                 }
                 
                 TaskDetailsCell(text: "Due Date") {

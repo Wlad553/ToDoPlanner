@@ -19,6 +19,8 @@ struct RoundedContextView: View {
                     .padding(.horizontal, -16)
                     .padding(.vertical, -10)
             }
+            .padding(.vertical, 10)
+            .padding(.horizontal, 16)
     }
 }
 

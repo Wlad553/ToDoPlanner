@@ -17,7 +17,7 @@ struct TaskDetailsCell<LeftView: View, RightView: View>: View {
             RoundedRectangle(cornerRadius: 15)
                 .foregroundStyle(.midnightCharcoal)
                 .padding(.horizontal, -20)
-                .padding(.vertical, -19)
+                .padding(.vertical, -9)
             HStack(alignment: .center, spacing: 12) {
                 leftView
                 Text(text)
@@ -26,12 +26,13 @@ struct TaskDetailsCell<LeftView: View, RightView: View>: View {
                 Spacer()
                 
                 rightView
-                    .padding(.trailing, 12)
+                    .padding(.trailing, 4)
             }
             .foregroundStyle(.white)
             .lineLimit(1)
         }
-        .padding([.all], 19)
+        .padding(.horizontal, 19)
+        .padding(.vertical, 9)
     }
 }
 

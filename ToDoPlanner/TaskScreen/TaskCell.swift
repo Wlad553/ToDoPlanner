@@ -19,7 +19,7 @@ struct TaskCell: View {
                     .frame(width: 30, height: 30)
                 
                 VStack(alignment: .leading, spacing: 8) {
-                    Text(doTask.name)
+                    Text(doTask.title)
                         .foregroundStyle(.white)
                         .font(.system(size: 17, weight: .semibold))
                     Text(doTask.dueDate.formatted(date: .omitted, time: .shortened))
@@ -42,8 +42,9 @@ struct TaskCell: View {
 
 #Preview {
     TaskCell(doTask: .constant(ToDoTask(name: "Task name",
-                            desctiption: "It's task description",
-                            dueDate: Date(),
-                            priority: .high,
-                            isCompleted: false)))
+                                        desctiption: "It's task description",
+                                        category: .home,
+                                        dueDate: Date(),
+                                        priority: .high,
+                                        isCompleted: false)))
 }

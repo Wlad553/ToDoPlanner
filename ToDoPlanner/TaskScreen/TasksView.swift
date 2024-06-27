@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct TasksView: View {
-    @Bindable var viewModel: TasksViewModel
+    @Environment(MainViewModel.self) private var parentViewModel
     
     var body: some View {
+        @Bindable var viewModel = parentViewModel
         List {
             ForEach(viewModel.toDoTasksSorted(), id: \.key) { section, toDoTasks in
                 Section {
@@ -18,7 +19,8 @@ struct TasksView: View {
                         if let taskIndex = viewModel.toDoTasks.firstIndex(of: toDoTask) {
                             ZStack {
                                 NavigationLink {
-                                    TaskDetailsView()
+                                    TaskDetailsView(toDoTasks: $viewModel.toDoTasks,
+                                                    toDoTask: $viewModel.toDoTasks[taskIndex])
                                 } label: {
                                     EmptyView().opacity(0)
                                 }
@@ -48,5 +50,6 @@ struct TasksView: View {
 }
 
 #Preview {
-    TasksView(viewModel: TasksViewModel())
+    TasksView()
+        .environment(MainViewModel())
 }

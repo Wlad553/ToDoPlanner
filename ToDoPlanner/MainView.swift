@@ -13,17 +13,19 @@ struct MainView: View {
             case categories
         }
     
-    @State var selectedTab = Tab.tasks
-    @Environment(\.orientation) var interfaceOrientation
+    @State private var viewModel: MainViewModel = MainViewModel()
     
-    var hasBottomSafeAreaInset: Bool {
+    @State var selectedTab = Tab.tasks
+    @Environment(\.orientation) private var interfaceOrientation
+    
+    private var hasBottomSafeAreaInset: Bool {
         let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
         let mainWindow = windowScene?.windows.first
         let bottomSafeAreaInset = mainWindow?.safeAreaInsets.bottom ?? 0.0
         return bottomSafeAreaInset != 0
     }
     
-    var topSafeAreaInset: CGFloat {
+    private var topSafeAreaInset: CGFloat {
         let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
         let mainWindow = windowScene?.windows.first
         return mainWindow?.safeAreaInsets.top ?? 0.0
@@ -34,32 +36,32 @@ struct MainView: View {
             ZStack(alignment: .top) {
                 ZStack(alignment: .bottom) {
                     TabView(selection: $selectedTab) {
-                        TasksView(viewModel: TasksViewModel())
+                        TasksView()
                             .tabItem {
                                 Image(systemName: "list.bullet.clipboard")
                                 Text("Tasks")
                             }
                             .tag(Tab.tasks)
-                        TasksView(viewModel: TasksViewModel())
+                        TasksView()
                             .tabItem {
                                 Image(systemName: "list.bullet")
                                 Text("Categories")
                             }
                             .tag(Tab.categories)
-                    }
+                    } // -- TabView
                     .tint(.white)
                     .padding(.bottom, hasBottomSafeAreaInset ? -8 : 0)
                     .ignoresSafeArea()
                     
                     NavigationLink {
-                        TaskDetailsView()
+                        TaskDetailsView(toDoTasks: $viewModel.toDoTasks)
                     } label: {
                         AddTaskImage()
                             .scaledToFit()
                             .frame(width: 60)
                             .offset(y: hasBottomSafeAreaInset ? -8 : -16)
                     }
-                }
+                } // -- ZStack bottom
                 
                 if !topSafeAreaInset.isZero && interfaceOrientation == .portrait {
                     Color.charcoal.opacity(0.97)
@@ -73,8 +75,9 @@ struct MainView: View {
                         .ignoresSafeArea(edges: .vertical)
                         .blur(radius: 0)
                 }
-            }
-        }
+            } // -- ZStack top
+        } // -- NavigationStack
+        .environment(viewModel)
         .onAppear {
             let tabBarAppearance = UITabBarAppearance()
             tabBarAppearance.backgroundEffect = UIBlurEffect(style: .systemChromeMaterial)

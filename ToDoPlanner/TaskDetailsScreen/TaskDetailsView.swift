@@ -12,8 +12,8 @@ struct TaskDetailsView: View {
         case titleTextField
         case descriptionTextEditor
     }
-    
-    @State private var toDoTask: ToDoTask = ToDoTask()
+        
+    @ObservedObject private var viewModel: TaskDetalisViewModel
     
     @State private var keyboardHeight: CGFloat = 0
     @State private var textEditorHeight: CGFloat = 0
@@ -22,11 +22,13 @@ struct TaskDetailsView: View {
     @State private var timeOpacity: CGFloat = 1
     
     @FocusState private var focusField: FocusField?
+    
+    @Environment(\.dismiss) private var dismiss
 
     var body: some View {
         VStack {
             Group {
-                TextField("Title", text: $toDoTask.title)
+                TextField("Title", text: $viewModel.draftToDoTask.title)
                     .focused($focusField, equals: .titleTextField)
                     .font(.system(.headline))
                     .padding(.top, 12)
@@ -35,7 +37,7 @@ struct TaskDetailsView: View {
                 
                 GeometryReader { geometry in
                     PlaceholderTextEditor(placeholder: "Description",
-                                          text: $toDoTask.desctiption)
+                                          text: $viewModel.draftToDoTask.desctiption)
                     .onChange(of: geometry.frame(in: .local)) { oldFrame, newFrame in
                         guard oldFrame.height != newFrame.height && isTextEditorFrameOnceChanged else {
                             isTextEditorFrameOnceChanged = true
@@ -58,25 +60,25 @@ struct TaskDetailsView: View {
                     Image(systemName: "list.bullet")
                 } rightView: {
                     Menu {
-                        Picker(String(), selection: $toDoTask.category) {
+                        Picker(String(), selection: $viewModel.draftToDoTask.category) {
                             ForEach(ToDoTask.Category.allCases.sorted()) { category in
                                 Text(category.name)
                                     .tag(category)
                             }
                         }
                     } label: {
-                        RoundedContextView(text: toDoTask.category.rawValue)
+                        RoundedContextView(text: viewModel.draftToDoTask.category.rawValue)
                     }
                 }
                 
                 TaskDetailsCell(text: "Due Date") {
                     Image(systemName: "calendar")
                 } rightView: {
-                    RoundedContextView(text: toDoTask.dueDate.formatted(date: .abbreviated, time: .omitted))
+                    RoundedContextView(text: viewModel.draftToDoTask.dueDate.formatted(date: .abbreviated, time: .omitted))
                         .opacity(dueDateOpacity)
                         .overlay {
                             DatePicker(String(),
-                                       selection: $toDoTask.dueDate,
+                                       selection: $viewModel.draftToDoTask.dueDate,
                                        displayedComponents: .date)
                             .datePickerStyle(.compact)
                             .colorMultiply(.clear)
@@ -93,11 +95,11 @@ struct TaskDetailsView: View {
                 TaskDetailsCell(text: "Time") {
                     Image(systemName: "clock")
                 } rightView: {
-                    RoundedContextView(text: toDoTask.dueDate.formatted(date: .omitted, time: .shortened))
+                    RoundedContextView(text: viewModel.draftToDoTask.dueDate.formatted(date: .omitted, time: .shortened))
                         .opacity(timeOpacity)
                         .overlay {
                             DatePicker(String(),
-                                       selection: $toDoTask.dueDate,
+                                       selection: $viewModel.draftToDoTask.dueDate,
                                        displayedComponents: .hourAndMinute)
                             .datePickerStyle(.compact)
                             .colorMultiply(.clear)
@@ -112,13 +114,13 @@ struct TaskDetailsView: View {
                 }
                 
                 TaskDetailsCell(text: "Priority") {
-                    Image(toDoTask.priority.imageName)
+                    Image(viewModel.draftToDoTask.priority.imageName)
                         .resizable()
                         .scaledToFit()
                         .frame(height: 25)
                 } rightView: {
                     Menu {
-                        Picker(String(), selection: $toDoTask.priority) {
+                        Picker(String(), selection: $viewModel.draftToDoTask.priority) {
                             ForEach(ToDoTask.Priority.allCases.sorted()) { priority in
                                 HStack {
                                     Image(priority.imageName)
@@ -128,7 +130,7 @@ struct TaskDetailsView: View {
                             }
                         }
                     } label: {
-                        RoundedContextView(text: toDoTask.priority.name)
+                        RoundedContextView(text: viewModel.draftToDoTask.priority.name)
                     }
                 }
             } // -- LazyVStack
@@ -163,9 +165,44 @@ struct TaskDetailsView: View {
             }
         }
         .padding(.horizontal, 8)
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                HStack {
+                    if viewModel.isEditingExistingToDoTask {
+                        Button {
+                            viewModel.deleteToDoTask()
+                            dismiss()
+                        } label: {
+                            Image(systemName: "trash")
+                                .tint(.red)
+                        }
+                    }
+                    Button("Save") {
+                        viewModel.saveToDoTask()
+                        if !viewModel.isEditingExistingToDoTask {
+                            viewModel.addToDoTask()
+                        }
+                        dismiss()
+                    }
+                }
+            }
+        }
+        .onAppear {
+            viewModel.revertChanges()
+        }
     } // -- body
+    
+    init(toDoTasks: Binding<[ToDoTask]>, toDoTask: Binding<ToDoTask>) {
+        self._viewModel = ObservedObject(initialValue: TaskDetalisViewModel(toDoTasksList: toDoTasks,
+                                                                            editedToDoTask: toDoTask))
+    }
+    
+    init(toDoTasks: Binding<[ToDoTask]>) {
+        self._viewModel = ObservedObject(initialValue: TaskDetalisViewModel(toDoTasksList: toDoTasks))
+    }
 }
 
 #Preview {
-    TaskDetailsView()
+    TaskDetailsView(toDoTasks: .constant(MainViewModel().toDoTasks))
+        .environment(MainViewModel())
 }

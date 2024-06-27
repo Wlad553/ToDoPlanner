@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		F512E7CE2BB95EBE00C9FBAA /* CheckMarkImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F512E7CD2BB95EBE00C9FBAA /* CheckMarkImage.swift */; };
 		F512E7D02BB98C5000C9FBAA /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F512E7CF2BB98C5000C9FBAA /* MainViewModel.swift */; };
+		F5286CCA2C2DC44D00541793 /* TasksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5286CC92C2DC44D00541793 /* TasksViewModel.swift */; };
+		F5286CCC2C2DD97900541793 /* TaskCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5286CCB2C2DD97900541793 /* TaskCellViewModel.swift */; };
 		F52A0BE52C038CB5005C2DBB /* EnvironmentValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52A0BE42C038CB5005C2DBB /* EnvironmentValues.swift */; };
 		F554A1DD2C0F744E00AE506A /* RoundedContextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F554A1DC2C0F744E00AE506A /* RoundedContextView.swift */; };
 		F55B645E2C2C6CF900C6336E /* TaskDetalisViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55B645D2C2C6CF900C6336E /* TaskDetalisViewModel.swift */; };
@@ -31,6 +33,8 @@
 /* Begin PBXFileReference section */
 		F512E7CD2BB95EBE00C9FBAA /* CheckMarkImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckMarkImage.swift; sourceTree = "<group>"; };
 		F512E7CF2BB98C5000C9FBAA /* MainViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		F5286CC92C2DC44D00541793 /* TasksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewModel.swift; sourceTree = "<group>"; };
+		F5286CCB2C2DD97900541793 /* TaskCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCellViewModel.swift; sourceTree = "<group>"; };
 		F52A0BE42C038CB5005C2DBB /* EnvironmentValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentValues.swift; sourceTree = "<group>"; };
 		F554A1DC2C0F744E00AE506A /* RoundedContextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedContextView.swift; sourceTree = "<group>"; };
 		F55B645D2C2C6CF900C6336E /* TaskDetalisViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetalisViewModel.swift; sourceTree = "<group>"; };
@@ -128,7 +132,9 @@
 			isa = PBXGroup;
 			children = (
 				F5A254A32B8B88790076F694 /* TasksView.swift */,
+				F5286CC92C2DC44D00541793 /* TasksViewModel.swift */,
 				F5D54EF32BAB379000D49CF1 /* TaskCell.swift */,
+				F5286CCB2C2DD97900541793 /* TaskCellViewModel.swift */,
 			);
 			path = TaskScreen;
 			sourceTree = "<group>";
@@ -247,8 +253,10 @@
 				F512E7CE2BB95EBE00C9FBAA /* CheckMarkImage.swift in Sources */,
 				F52A0BE52C038CB5005C2DBB /* EnvironmentValues.swift in Sources */,
 				F554A1DD2C0F744E00AE506A /* RoundedContextView.swift in Sources */,
+				F5286CCC2C2DD97900541793 /* TaskCellViewModel.swift in Sources */,
 				F5A254A42B8B88790076F694 /* TasksView.swift in Sources */,
 				F55B645E2C2C6CF900C6336E /* TaskDetalisViewModel.swift in Sources */,
+				F5286CCA2C2DC44D00541793 /* TasksViewModel.swift in Sources */,
 				F5E92F9C2BBF1E8200803BFB /* MainView.swift in Sources */,
 				F5C02B122BFB45D900C85C20 /* PlaceholderTextEditor.swift in Sources */,
 				F5E92FA12BBF217300803BFB /* TaskDetailsView.swift in Sources */,

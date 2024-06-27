@@ -16,20 +16,20 @@ final class TaskDetalisViewModel: ObservableObject {
     
     // MARK: - Inits
     init(toDoTasksList: Binding<[ToDoTask]>, editedToDoTask: Binding<ToDoTask>) {
-        self._editedToDoTask = editedToDoTask
         self._toDoTasksList = toDoTasksList
+        self._editedToDoTask = editedToDoTask
         self.draftToDoTask = editedToDoTask.wrappedValue
         self.isEditingExistingToDoTask = true
     }
     
     init(toDoTasksList: Binding<[ToDoTask]>) {
-        self._editedToDoTask = .constant(ToDoTask())
         self._toDoTasksList = toDoTasksList
+        self._editedToDoTask = .constant(ToDoTask())
         self.draftToDoTask = ToDoTask()
         self.isEditingExistingToDoTask = false
     }
     
-    // MARK: - Utility funcs
+    // MARK: - Data manipulation funcs
     func saveToDoTask() {
         editedToDoTask = draftToDoTask
     }

@@ -192,17 +192,17 @@ struct TaskDetailsView: View {
         }
     } // -- body
     
-    init(toDoTasks: Binding<[ToDoTask]>, toDoTask: Binding<ToDoTask>) {
-        self._viewModel = ObservedObject(initialValue: TaskDetalisViewModel(toDoTasksList: toDoTasks,
+    init(toDoTasksList: Binding<[ToDoTask]>, toDoTask: Binding<ToDoTask>) {
+        self._viewModel = ObservedObject(initialValue: TaskDetalisViewModel(toDoTasksList: toDoTasksList,
                                                                             editedToDoTask: toDoTask))
     }
     
-    init(toDoTasks: Binding<[ToDoTask]>) {
-        self._viewModel = ObservedObject(initialValue: TaskDetalisViewModel(toDoTasksList: toDoTasks))
+    init(toDoTasksList: Binding<[ToDoTask]>) {
+        self._viewModel = ObservedObject(initialValue: TaskDetalisViewModel(toDoTasksList: toDoTasksList))
     }
 }
 
 #Preview {
-    TaskDetailsView(toDoTasks: .constant(MainViewModel().toDoTasks))
+    TaskDetailsView(toDoTasksList: .constant(MainViewModel().toDoTasks))
         .environment(MainViewModel())
 }

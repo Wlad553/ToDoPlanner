@@ -8,37 +8,44 @@
 import SwiftUI
 
 struct TasksView: View {
-    @Environment(MainViewModel.self) private var parentViewModel
+    @ObservedObject private var viewModel: TasksViewModel
     
     var body: some View {
-        @Bindable var viewModel = parentViewModel
         List {
             ForEach(viewModel.toDoTasksSorted(), id: \.key) { section, toDoTasks in
                 Section {
                     ForEach(toDoTasks) { toDoTask in
-                        if let taskIndex = viewModel.toDoTasks.firstIndex(of: toDoTask) {
+                        if let taskIndex = viewModel.toDoTasksList.firstIndex(of: toDoTask) {
                             ZStack {
                                 NavigationLink {
-                                    TaskDetailsView(toDoTasks: $viewModel.toDoTasks,
-                                                    toDoTask: $viewModel.toDoTasks[taskIndex])
+                                    TaskDetailsView(toDoTasksList: $viewModel.toDoTasksList,
+                                                    toDoTask: $viewModel.toDoTasksList[taskIndex])
                                 } label: {
                                     EmptyView().opacity(0)
                                 }
-                                TaskCell(doTask: $viewModel.toDoTasks[taskIndex])
+                                TaskCell(toDoTask: $viewModel.toDoTasksList[taskIndex])
+                            }
+                            .swipeActions {
+                                Button(role: .destructive) {
+                                    viewModel.delete(toDoTask: toDoTask)
+                                } label: {
+                                    Label("Delete", systemImage: "trash")
+                                        .tint(.red)
+                                }
                             }
                             .listRowBackground(Color.clear)
                             .listRowSeparator(.hidden)
                         }
-                    }
+                    } // -- ForEach Row
                 } header: {
                     Text(viewModel.sectionTitle(stringDate: section))
                         .textCase(.none)
                         .font(.system(size: 20, weight: .semibold))
                         .foregroundStyle(.white)
                         .padding(EdgeInsets(top: -4, leading: 0, bottom: 8, trailing: 0))
-                }
-            }
-        }
+                } // -- Section
+            } // -- ForEach Section
+        } // -- List
         .listStyle(.grouped)
         .listRowSpacing(4)
         .listSectionSpacing(0)
@@ -47,9 +54,13 @@ struct TasksView: View {
         .background(.charcoal)
         .padding([.leading, .trailing], -8)
     }
+    
+    init(toDoTasksList: Binding<[ToDoTask]>) {
+        self.viewModel = TasksViewModel(toDoTasksList: toDoTasksList)
+    }
 }
 
 #Preview {
-    TasksView()
+    TasksView(toDoTasksList: .constant(MainViewModel().toDoTasks))
         .environment(MainViewModel())
 }

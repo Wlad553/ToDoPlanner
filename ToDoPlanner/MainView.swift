@@ -36,13 +36,13 @@ struct MainView: View {
             ZStack(alignment: .top) {
                 ZStack(alignment: .bottom) {
                     TabView(selection: $selectedTab) {
-                        TasksView()
+                        TasksView(toDoTasksList: $viewModel.toDoTasks)
                             .tabItem {
                                 Image(systemName: "list.bullet.clipboard")
                                 Text("Tasks")
                             }
                             .tag(Tab.tasks)
-                        TasksView()
+                        TasksView(toDoTasksList: $viewModel.toDoTasks)
                             .tabItem {
                                 Image(systemName: "list.bullet")
                                 Text("Categories")
@@ -54,7 +54,7 @@ struct MainView: View {
                     .ignoresSafeArea()
                     
                     NavigationLink {
-                        TaskDetailsView(toDoTasks: $viewModel.toDoTasks)
+                        TaskDetailsView(toDoTasksList: $viewModel.toDoTasks)
                     } label: {
                         AddTaskImage()
                             .scaledToFit()

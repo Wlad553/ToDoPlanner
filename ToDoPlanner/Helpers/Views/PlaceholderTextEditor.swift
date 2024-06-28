@@ -18,6 +18,7 @@ struct PlaceholderTextEditor: View {
         ZStack(alignment: .topLeading) {
             TextEditor(text: $text)
                 .focused($isTextEditorFocused)
+                .scrollContentBackground(.hidden)
             if text.isEmpty && !isTextEditorFocused {
                 Text(placeholder)
                     .foregroundStyle(placeholderColor)

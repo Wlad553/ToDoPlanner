@@ -165,6 +165,7 @@ struct TaskDetailsView: View {
             }
         }
         .padding(.horizontal, 8)
+        .background(.charcoal)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 HStack {

@@ -22,6 +22,11 @@ final class TasksViewModel: ObservableObject {
         }
     }
     
+    func toggleIsCompleted(for toDoTask: ToDoTask) {
+        guard let index = toDoTasksList.firstIndex(of: toDoTask) else { return }
+        toDoTasksList[index].isCompleted.toggle()
+    }
+    
     // MARK: Array sorting funcs
     func toDoTasksSorted() -> [Dictionary<String, [ToDoTask]>.Element] {
         let dateFormatter = NumericDateFormatter()

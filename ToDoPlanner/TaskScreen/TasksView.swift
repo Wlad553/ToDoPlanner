@@ -32,6 +32,13 @@ struct TasksView: View {
                                     Label("Delete", systemImage: "trash")
                                         .tint(.red)
                                 }
+                                Button {
+                                    viewModel.toggleIsCompleted(for: toDoTask)
+                                } label: {
+                                    Label(toDoTask.isCompleted ? "Unmark\nas Done" : "Mark\nas Done",
+                                          systemImage: toDoTask.isCompleted ? "xmark.circle" : "checkmark.circle")
+                                    .tint(.purple)
+                                }
                             }
                             .listRowBackground(Color.clear)
                             .listRowSeparator(.hidden)

@@ -20,6 +20,7 @@
 		F5A254A62B8B887A0076F694 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5A254A52B8B887A0076F694 /* Assets.xcassets */; };
 		F5A254A92B8B887A0076F694 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5A254A82B8B887A0076F694 /* Preview Assets.xcassets */; };
 		F5A254B12B8B8BC90076F694 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = F5A254B02B8B8BC90076F694 /* .gitignore */; };
+		F5A6FD482C2F15D1009E6DBC /* CalendarTasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A6FD472C2F15D1009E6DBC /* CalendarTasksView.swift */; };
 		F5C02B122BFB45D900C85C20 /* PlaceholderTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C02B112BFB45D900C85C20 /* PlaceholderTextEditor.swift */; };
 		F5C02B162BFB6A2900C85C20 /* TaskDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C02B152BFB6A2900C85C20 /* TaskDetailsCell.swift */; };
 		F5D54EF42BAB379000D49CF1 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D54EF32BAB379000D49CF1 /* TaskCell.swift */; };
@@ -46,6 +47,7 @@
 		F5A254A52B8B887A0076F694 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F5A254A82B8B887A0076F694 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F5A254B02B8B8BC90076F694 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		F5A6FD472C2F15D1009E6DBC /* CalendarTasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTasksView.swift; sourceTree = "<group>"; };
 		F5C02B112BFB45D900C85C20 /* PlaceholderTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTextEditor.swift; sourceTree = "<group>"; };
 		F5C02B152BFB6A2900C85C20 /* TaskDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailsCell.swift; sourceTree = "<group>"; };
 		F5D54EF32BAB379000D49CF1 /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				F5E92F9B2BBF1E8200803BFB /* MainView.swift */,
 				F512E7CF2BB98C5000C9FBAA /* MainViewModel.swift */,
 				F5DF923A2B8D026F00137855 /* Models */,
+				F5A6FD462C2F15B1009E6DBC /* CalendarTasksScreen */,
 				F5A254B22B8B8D470076F694 /* TaskScreen */,
 				F5E92F9E2BBF211A00803BFB /* TaskDetailsScreen */,
 				F512E7CB2BB95DD500C9FBAA /* Helpers */,
@@ -140,6 +143,14 @@
 				F5286CCB2C2DD97900541793 /* TaskCellViewModel.swift */,
 			);
 			path = TaskScreen;
+			sourceTree = "<group>";
+		};
+		F5A6FD462C2F15B1009E6DBC /* CalendarTasksScreen */ = {
+			isa = PBXGroup;
+			children = (
+				F5A6FD472C2F15D1009E6DBC /* CalendarTasksView.swift */,
+			);
+			path = CalendarTasksScreen;
 			sourceTree = "<group>";
 		};
 		F5DF923A2B8D026F00137855 /* Models */ = {
@@ -256,6 +267,7 @@
 				F542A7532C36F55F00A38A32 /* CalendarView.swift in Sources */,
 				F512E7CE2BB95EBE00C9FBAA /* CheckMarkImage.swift in Sources */,
 				F52A0BE52C038CB5005C2DBB /* EnvironmentValues.swift in Sources */,
+				F5A6FD482C2F15D1009E6DBC /* CalendarTasksView.swift in Sources */,
 				F554A1DD2C0F744E00AE506A /* RoundedContextView.swift in Sources */,
 				F5286CCC2C2DD97900541793 /* TaskCellViewModel.swift in Sources */,
 				F5A254A42B8B88790076F694 /* TasksView.swift in Sources */,

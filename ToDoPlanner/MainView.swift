@@ -10,7 +10,7 @@ import SwiftUI
 struct MainView: View {
     enum Tab {
             case tasks
-            case categories
+            case calendar
         }
     
     @State private var viewModel: MainViewModel = MainViewModel()
@@ -42,12 +42,12 @@ struct MainView: View {
                                 Text("Tasks")
                             }
                             .tag(Tab.tasks)
-                        TasksView(toDoTasksList: $viewModel.toDoTasks)
+                        CalendarTasksView()
                             .tabItem {
-                                Image(systemName: "list.bullet")
-                                Text("Categories")
+                                Image(systemName: "calendar")
+                                Text("Calendar")
                             }
-                            .tag(Tab.categories)
+                            .tag(Tab.calendar)
                     } // -- TabView
                     .tint(.white)
                     .padding(.bottom, hasBottomSafeAreaInset ? -8 : 0)
@@ -88,5 +88,5 @@ struct MainView: View {
 }
 
 #Preview {
-    MainView()
+    MainView(selectedTab: .calendar)
 }

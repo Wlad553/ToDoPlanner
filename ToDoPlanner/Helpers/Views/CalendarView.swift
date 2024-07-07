@@ -10,29 +10,28 @@ import UIKit
 
 struct CalendarView: UIViewRepresentable {
     class Coordinator: NSObject {
-        var selectedDate: Binding<Date>
+        var selectedDateComponents: Binding<DateComponents>
         var toDoTasksList: Binding<[ToDoTask]>
         var displayedAllowedDatesComponents: [DateComponents] = []
         var displayedSelectedDateComponents = DateComponents()
         
-        init(selectedDate: Binding<Date>, toDoTasksList: Binding<[ToDoTask]>) {
-            self.selectedDate = selectedDate
+        init(selectedDateComponents: Binding<DateComponents>, toDoTasksList: Binding<[ToDoTask]>) {
+            self.selectedDateComponents = selectedDateComponents
             self.toDoTasksList = toDoTasksList
         }
     }
     
-    @Binding var selectedDate: Date
+    @Binding var selectedDateComponents: DateComponents
     @Binding var toDoTasksList: [ToDoTask]
     
     // MARK: - UIViewRepresentable funcs
     func makeCoordinator() -> Coordinator {
-        return Coordinator(selectedDate: $selectedDate, toDoTasksList: $toDoTasksList)
+        return Coordinator(selectedDateComponents: $selectedDateComponents, toDoTasksList: $toDoTasksList)
     }
     
     func makeUIView(context: Context) -> UICalendarView {
         let calendarView = UICalendarView()
         let calendarSelection = UICalendarSelectionSingleDate(delegate: context.coordinator)
-        let dateComponents = Calendar.current.dateComponents([.year, .month, .day], from: selectedDate)
         
         calendarView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -44,13 +43,12 @@ struct CalendarView: UIViewRepresentable {
         calendarView.fontDesign = .rounded
         calendarView.selectionBehavior = calendarSelection
         
-        calendarSelection.setSelected(dateComponents, animated: false)
+        calendarSelection.setSelected(selectedDateComponents, animated: false)
         return calendarView
     }
     
     func updateUIView(_ uiView: UICalendarView, context: Context) {
         let calendarSelection = uiView.selectionBehavior as? UICalendarSelectionSingleDate
-        let selectedDateComponents = Calendar.current.dateComponents([.year, .month, .day], from: selectedDate)
         let toDoTasksListDatesComponents = toDoTasksList
             .map({ $0.dueDate })
             .map({ Calendar.current.dateComponents([.year, .month, .day], from: $0) })
@@ -81,7 +79,7 @@ extension CalendarView.Coordinator: UICalendarSelectionSingleDateDelegate {
     
     func dateSelection(_ selection: UICalendarSelectionSingleDate, didSelectDate dateComponents: DateComponents?) {
         if let selectedDate = dateComponents?.date {
-            self.selectedDate.wrappedValue = selectedDate
+            self.selectedDateComponents.wrappedValue = Calendar.current.dateComponents([.year, .month, .day], from: selectedDate)
         } else {
             selection.setSelected(displayedSelectedDateComponents, animated: false)
         }

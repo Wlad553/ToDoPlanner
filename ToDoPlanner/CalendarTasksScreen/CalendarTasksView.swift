@@ -9,11 +9,11 @@ import SwiftUI
 
 struct CalendarTasksView: View {
     @ObservedObject private var viewModel: CalendarTasksViewModel
-    @State private var selectedDate = Date()
+    @State private var selectedDateComponents = Calendar.current.dateComponents([.year, .month, .day], from: Date())
     
     var body: some View {
         VStack {
-            CalendarView(selectedDate: $selectedDate, toDoTasksList: $viewModel.toDoTasksList)
+            CalendarView(selectedDateComponents: $selectedDateComponents, toDoTasksList: $viewModel.toDoTasksList)
                 .padding(.top, -24)
                 .padding(.bottom, 22)
                 .padding(.horizontal, 4)

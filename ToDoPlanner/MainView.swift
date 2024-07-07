@@ -42,7 +42,7 @@ struct MainView: View {
                                 Text("Tasks")
                             }
                             .tag(Tab.tasks)
-                        CalendarTasksView()
+                        CalendarTasksView(toDoTasksList: $viewModel.toDoTasks)
                             .tabItem {
                                 Image(systemName: "calendar")
                                 Text("Calendar")

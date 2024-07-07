@@ -9,21 +9,25 @@ import SwiftUI
 import UIKit
 
 struct CalendarView: UIViewRepresentable {
-    class Coordinator: NSObject, UICalendarSelectionSingleDateDelegate {
+    class Coordinator: NSObject {
         var selectedDate: Binding<Date>
+        var toDoTasksList: Binding<[ToDoTask]>
+        var displayedAllowedDatesComponents: [DateComponents] = []
+        var displayedSelectedDateComponents = DateComponents()
         
-        init(selectedDate: Binding<Date>) {
+        init(selectedDate: Binding<Date>, toDoTasksList: Binding<[ToDoTask]>) {
             self.selectedDate = selectedDate
-        }
-        
-        func dateSelection(_ selection: UICalendarSelectionSingleDate, didSelectDate dateComponents: DateComponents?) {
-            if let selectedDate = dateComponents?.date {
-                self.selectedDate.wrappedValue = selectedDate
-            }
+            self.toDoTasksList = toDoTasksList
         }
     }
     
     @Binding var selectedDate: Date
+    @Binding var toDoTasksList: [ToDoTask]
+    
+    // MARK: - UIViewRepresentable funcs
+    func makeCoordinator() -> Coordinator {
+        return Coordinator(selectedDate: $selectedDate, toDoTasksList: $toDoTasksList)
+    }
     
     func makeUIView(context: Context) -> UICalendarView {
         let calendarView = UICalendarView()
@@ -46,11 +50,40 @@ struct CalendarView: UIViewRepresentable {
     
     func updateUIView(_ uiView: UICalendarView, context: Context) {
         let calendarSelection = uiView.selectionBehavior as? UICalendarSelectionSingleDate
-        let dateComponents = Calendar.current.dateComponents([.year, .month, .day], from: selectedDate)
-        calendarSelection?.setSelected(dateComponents, animated: true)
+        let selectedDateComponents = Calendar.current.dateComponents([.year, .month, .day], from: selectedDate)
+        let toDoTasksListDatesComponents = toDoTasksList
+            .map({ $0.dueDate })
+            .map({ Calendar.current.dateComponents([.year, .month, .day], from: $0) })
+        
+        if toDoTasksListDatesComponents != context.coordinator.displayedAllowedDatesComponents {
+            let currentVisibleDateComponents = uiView.visibleDateComponents
+            uiView.setVisibleDateComponents(DateComponents(day: 1), animated: false)
+            uiView.setVisibleDateComponents(currentVisibleDateComponents, animated: false)
+            context.coordinator.displayedAllowedDatesComponents = toDoTasksListDatesComponents
+        } else if selectedDateComponents != context.coordinator.displayedSelectedDateComponents {
+            calendarSelection?.setSelected(selectedDateComponents, animated: true)
+        }
+        
+        context.coordinator.displayedSelectedDateComponents = selectedDateComponents
+    }
+}
+
+// MARK: - UICalendarSelectionSingleDateDelegate
+extension CalendarView.Coordinator: UICalendarSelectionSingleDateDelegate {
+    func dateSelection(_ selection: UICalendarSelectionSingleDate, canSelectDate dateComponents: DateComponents?) -> Bool {
+        guard let dateComponents = dateComponents else { return true }
+        let selectDateComponents = DateComponents(year: dateComponents.year,
+                                                  month: dateComponents.month,
+                                                  day: dateComponents.day)
+        
+        return displayedAllowedDatesComponents.contains(selectDateComponents)
     }
     
-    func makeCoordinator() -> Coordinator {
-        Coordinator(selectedDate: $selectedDate)
+    func dateSelection(_ selection: UICalendarSelectionSingleDate, didSelectDate dateComponents: DateComponents?) {
+        if let selectedDate = dateComponents?.date {
+            self.selectedDate.wrappedValue = selectedDate
+        } else {
+            selection.setSelected(displayedSelectedDateComponents, animated: false)
+        }
     }
 }

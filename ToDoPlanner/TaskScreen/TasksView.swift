@@ -70,8 +70,8 @@ struct TasksView: View {
         } // -- ZStack
     }
     
-    init(toDoTasksList: Binding<[ToDoTask]>) {
-        self.viewModel = TasksViewModel(toDoTasksList: toDoTasksList)
+    init(toDoTasksList: Binding<[ToDoTask]>, selectedDateComponents: Binding<DateComponents> = .constant(DateComponents())) {
+        self.viewModel = TasksViewModel(toDoTasksList: toDoTasksList, selectedDateComponents: selectedDateComponents)
     }
 }
 

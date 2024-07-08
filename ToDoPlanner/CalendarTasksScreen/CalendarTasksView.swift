@@ -26,7 +26,7 @@ struct CalendarTasksView: View {
                 .frame(height: 0.4)
                 .blur(radius: 0)
             
-            TasksView(toDoTasksList: $viewModel.toDoTasksList)
+            TasksView(toDoTasksList: $viewModel.toDoTasksList, selectedDateComponents: $selectedDateComponents)
                 .padding(.top, -68)
         } // -- VStack
         .background(.charcoal)

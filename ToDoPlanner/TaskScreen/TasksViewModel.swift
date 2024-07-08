@@ -9,10 +9,12 @@ import SwiftUI
 
 final class TasksViewModel: ObservableObject {
     @Binding var toDoTasksList: [ToDoTask]
+    @Binding var selectedDateComponents: DateComponents
     
     // MARK: - Init
-    init(toDoTasksList: Binding<[ToDoTask]>) {
+    init(toDoTasksList: Binding<[ToDoTask]>, selectedDateComponents: Binding<DateComponents>) {
         self._toDoTasksList = toDoTasksList
+        self._selectedDateComponents = selectedDateComponents
     }
     
     // MARK: - Data manipulation funcs
@@ -29,8 +31,9 @@ final class TasksViewModel: ObservableObject {
     
     // MARK: Array sorting funcs
     func toDoTasksSorted() -> [Dictionary<String, [ToDoTask]>.Element] {
+        let filteredToDoTasksList = filteredToDoTasksList()
         let dateFormatter = NumericDateFormatter()
-        var groupedTasksDictionary = Dictionary(grouping: toDoTasksList, by: { dateFormatter.string(from: $0.dueDate) })
+        var groupedTasksDictionary = Dictionary(grouping: filteredToDoTasksList, by: { dateFormatter.string(from: $0.dueDate) })
         groupedTasksDictionary.keys.forEach { key in
             groupedTasksDictionary[key]?.sort(by: { $0.dueDate < $1.dueDate })
         }
@@ -57,5 +60,13 @@ final class TasksViewModel: ObservableObject {
         }
         
         return sectionTitle
+    }
+    
+    private func filteredToDoTasksList() -> [ToDoTask] {
+        guard selectedDateComponents != DateComponents() else { return toDoTasksList }
+        return toDoTasksList.filter { toDoTask in
+            let toDoTaskDateComponents = Calendar.current.dateComponents([.year, .month, .day], from: toDoTask.dueDate)
+            return toDoTaskDateComponents == selectedDateComponents
+        }
     }
 }

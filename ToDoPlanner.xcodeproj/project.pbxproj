@@ -16,6 +16,7 @@
 		F5467DF72C3ABBA700537E08 /* CalendarTasksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5467DF62C3ABBA700537E08 /* CalendarTasksViewModel.swift */; };
 		F554A1DD2C0F744E00AE506A /* RoundedContextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F554A1DC2C0F744E00AE506A /* RoundedContextView.swift */; };
 		F55B645E2C2C6CF900C6336E /* TaskDetalisViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55B645D2C2C6CF900C6336E /* TaskDetalisViewModel.swift */; };
+		F588C18C2C3C4ACA006B5FB8 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F588C18B2C3C4ACA006B5FB8 /* CategoryView.swift */; };
 		F5A254A22B8B88790076F694 /* ToDoPlannerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A254A12B8B88790076F694 /* ToDoPlannerApp.swift */; };
 		F5A254A42B8B88790076F694 /* TasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A254A32B8B88790076F694 /* TasksView.swift */; };
 		F5A254A62B8B887A0076F694 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5A254A52B8B887A0076F694 /* Assets.xcassets */; };
@@ -43,6 +44,7 @@
 		F5467DF62C3ABBA700537E08 /* CalendarTasksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTasksViewModel.swift; sourceTree = "<group>"; };
 		F554A1DC2C0F744E00AE506A /* RoundedContextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedContextView.swift; sourceTree = "<group>"; };
 		F55B645D2C2C6CF900C6336E /* TaskDetalisViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetalisViewModel.swift; sourceTree = "<group>"; };
+		F588C18B2C3C4ACA006B5FB8 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		F5A2549E2B8B88790076F694 /* ToDoPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5A254A12B8B88790076F694 /* ToDoPlannerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoPlannerApp.swift; sourceTree = "<group>"; };
 		F5A254A32B8B88790076F694 /* TasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksView.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				F5C02B112BFB45D900C85C20 /* PlaceholderTextEditor.swift */,
 				F554A1DC2C0F744E00AE506A /* RoundedContextView.swift */,
 				F542A7522C36F55F00A38A32 /* CalendarView.swift */,
+				F588C18B2C3C4ACA006B5FB8 /* CategoryView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -275,6 +278,7 @@
 				F5286CCC2C2DD97900541793 /* TaskCellViewModel.swift in Sources */,
 				F5467DF72C3ABBA700537E08 /* CalendarTasksViewModel.swift in Sources */,
 				F5A254A42B8B88790076F694 /* TasksView.swift in Sources */,
+				F588C18C2C3C4ACA006B5FB8 /* CategoryView.swift in Sources */,
 				F55B645E2C2C6CF900C6336E /* TaskDetalisViewModel.swift in Sources */,
 				F5286CCA2C2DC44D00541793 /* TasksViewModel.swift in Sources */,
 				F5E92F9C2BBF1E8200803BFB /* MainView.swift in Sources */,

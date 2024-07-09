@@ -13,7 +13,7 @@ struct CalendarTasksView: View {
     
     var body: some View {
         VStack {
-            CalendarView(selectedDateComponents: $viewModel.selectedDateComponents, toDoTasksList: $toDoTasksList)
+            CalendarView(toDoTasksList: $toDoTasksList, selectedDateComponents: $viewModel.selectedDateComponents)
                 .padding(.top, -24)
                 .padding(.bottom, 22)
                 .padding(.horizontal, 4)

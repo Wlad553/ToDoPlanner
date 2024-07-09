@@ -7,44 +7,38 @@
 
 import SwiftUI
 
-final class TaskDetalisViewModel: ObservableObject {
-    @Binding var toDoTasksList: [ToDoTask]
-    @Binding var editedToDoTask: ToDoTask
-    @Published var draftToDoTask: ToDoTask
-    
+@Observable
+final class TaskDetalisViewModel {
     let isEditingExistingToDoTask: Bool
-    
+    var draftToDoTask: ToDoTask
+        
     // MARK: - Inits
-    init(toDoTasksList: Binding<[ToDoTask]>, editedToDoTask: Binding<ToDoTask>) {
-        self._toDoTasksList = toDoTasksList
-        self._editedToDoTask = editedToDoTask
-        self.draftToDoTask = editedToDoTask.wrappedValue
+    init(editedToDoTask: ToDoTask) {
+        self.draftToDoTask = editedToDoTask
         self.isEditingExistingToDoTask = true
     }
     
-    init(toDoTasksList: Binding<[ToDoTask]>) {
-        self._toDoTasksList = toDoTasksList
-        self._editedToDoTask = .constant(ToDoTask())
+    init() {
         self.draftToDoTask = ToDoTask()
         self.isEditingExistingToDoTask = false
     }
     
     // MARK: - Data manipulation funcs
-    func saveToDoTask() {
-        editedToDoTask = draftToDoTask
+    func applyChangesFor(editedToDoTask: Binding<ToDoTask>) {
+        editedToDoTask.wrappedValue = draftToDoTask
     }
     
-    func addToDoTask() {
-        toDoTasksList.append(draftToDoTask)
+    func saveToDoTask(in toDoTasksList: Binding<[ToDoTask]>) {
+        toDoTasksList.wrappedValue.append(draftToDoTask)
     }
     
-    func deleteToDoTask() {
-        toDoTasksList.removeAll { toDoTask in
-            toDoTask == self.editedToDoTask
+    func delete(_ editedToDoTask: Binding<ToDoTask>, in toDoTasksList: Binding<[ToDoTask]>) {
+        toDoTasksList.wrappedValue.removeAll { toDoTask in
+            toDoTask == editedToDoTask.wrappedValue
         }
     }
     
-    func revertChanges() {
-        draftToDoTask = editedToDoTask
+    func revert(editedToDoTask: Binding<ToDoTask>) {
+        draftToDoTask = editedToDoTask.wrappedValue
     }
 }

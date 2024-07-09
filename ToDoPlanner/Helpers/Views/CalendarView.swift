@@ -21,8 +21,8 @@ struct CalendarView: UIViewRepresentable {
         }
     }
     
-    @Binding var selectedDateComponents: DateComponents
     @Binding var toDoTasksList: [ToDoTask]
+    @Binding var selectedDateComponents: DateComponents
     
     // MARK: - UIViewRepresentable funcs
     func makeCoordinator() -> Coordinator {

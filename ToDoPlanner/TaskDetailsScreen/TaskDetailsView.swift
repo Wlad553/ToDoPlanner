@@ -13,7 +13,9 @@ struct TaskDetailsView: View {
         case descriptionTextEditor
     }
         
-    @ObservedObject private var viewModel: TaskDetalisViewModel
+    @State private var viewModel: TaskDetalisViewModel
+    @Binding var toDoTasksList: [ToDoTask]
+    @Binding var editedToDoTask: ToDoTask
     
     @State private var keyboardHeight: CGFloat = 0
     @State private var textEditorHeight: CGFloat = 0
@@ -171,7 +173,7 @@ struct TaskDetailsView: View {
                 HStack {
                     if viewModel.isEditingExistingToDoTask {
                         Button {
-                            viewModel.deleteToDoTask()
+                            viewModel.delete($editedToDoTask, in: $toDoTasksList)
                             dismiss()
                         } label: {
                             Image(systemName: "trash")
@@ -179,9 +181,9 @@ struct TaskDetailsView: View {
                         }
                     }
                     Button("Save") {
-                        viewModel.saveToDoTask()
+                        viewModel.applyChangesFor(editedToDoTask: $editedToDoTask)
                         if !viewModel.isEditingExistingToDoTask {
-                            viewModel.addToDoTask()
+                            viewModel.saveToDoTask(in: $toDoTasksList)
                         }
                         dismiss()
                     }
@@ -189,16 +191,19 @@ struct TaskDetailsView: View {
             }
         }
         .onAppear {
-            viewModel.revertChanges()
+            viewModel.revert(editedToDoTask: $editedToDoTask)
         }
     } // -- body
     
     init(toDoTasksList: Binding<[ToDoTask]>, toDoTask: Binding<ToDoTask>) {
-        self._viewModel = ObservedObject(initialValue: TaskDetalisViewModel(toDoTasksList: toDoTasksList,
-                                                                            editedToDoTask: toDoTask))
+        self._toDoTasksList = toDoTasksList
+        self._editedToDoTask = toDoTask
+        self.viewModel = TaskDetalisViewModel(editedToDoTask: toDoTask.wrappedValue)
     }
     
     init(toDoTasksList: Binding<[ToDoTask]>) {
-        self._viewModel = ObservedObject(initialValue: TaskDetalisViewModel(toDoTasksList: toDoTasksList))
+        self._toDoTasksList = toDoTasksList
+        self._editedToDoTask = .constant(ToDoTask())
+        self.viewModel = TaskDetalisViewModel()
     }
 }

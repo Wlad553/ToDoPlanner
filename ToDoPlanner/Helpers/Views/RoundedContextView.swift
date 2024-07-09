@@ -13,14 +13,12 @@ struct RoundedContextView: View {
     var body: some View {
         Text(text)
             .font(.system(size: 15))
+            .padding(.vertical, 10)
+            .padding(.horizontal, 16)
             .background {
                 RoundedRectangle(cornerRadius: 15)
                     .foregroundStyle(.charcoal)
-                    .padding(.horizontal, -16)
-                    .padding(.vertical, -10)
             }
-            .padding(.vertical, 10)
-            .padding(.horizontal, 16)
     }
 }
 

@@ -79,7 +79,9 @@ extension CalendarView.Coordinator: UICalendarSelectionSingleDateDelegate {
     
     func dateSelection(_ selection: UICalendarSelectionSingleDate, didSelectDate dateComponents: DateComponents?) {
         if let selectedDate = dateComponents?.date {
-            self.selectedDateComponents.wrappedValue = Calendar.current.dateComponents([.year, .month, .day], from: selectedDate)
+            withAnimation {
+                self.selectedDateComponents.wrappedValue = Calendar.current.dateComponents([.year, .month, .day], from: selectedDate)
+            }
         } else {
             selection.setSelected(displayedSelectedDateComponents, animated: false)
         }

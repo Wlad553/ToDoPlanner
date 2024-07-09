@@ -7,11 +7,7 @@
 
 import SwiftUI
 
-final class CalendarTasksViewModel: ObservableObject {
-    @Binding var toDoTasksList: [ToDoTask]
-    
-    // MARK: - Init
-    init(toDoTasksList: Binding<[ToDoTask]>) {
-        self._toDoTasksList = toDoTasksList
-    }
+@Observable
+final class CalendarTasksViewModel {
+    var selectedDateComponents = Calendar.current.dateComponents([.year, .month, .day], from: Date())
 }

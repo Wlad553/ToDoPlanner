@@ -8,21 +8,21 @@
 import SwiftUI
 
 struct TaskCell: View {
-    @ObservedObject private var viewModel: TaskCellViewModel
+    @Binding var toDoTask: ToDoTask
     
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 20)
                 .foregroundStyle(.midnightCharcoal)
             HStack(alignment: .top, spacing: 16) {
-                CheckMarkImage(isCheckMarkFilled: $viewModel.toDoTask.isCompleted)
+                CheckMarkImage(isCheckMarkFilled: $toDoTask.isCompleted)
                     .frame(width: 30, height: 30)
                 
                 VStack(alignment: .leading, spacing: 8) {
-                    Text(viewModel.toDoTask.title)
+                    Text(toDoTask.title)
                         .foregroundStyle(.white)
                         .font(.system(size: 17, weight: .semibold))
-                    Text(viewModel.toDoTask.dueDate.formatted(date: .omitted, time: .shortened))
+                    Text(toDoTask.dueDate.formatted(date: .omitted, time: .shortened))
                         .foregroundStyle(.gray)
                         .font(.system(size: 13))
                 }
@@ -30,17 +30,13 @@ struct TaskCell: View {
                 
                 Spacer()
                 
-                Image(viewModel.toDoTask.priority.imageName)
+                Image(toDoTask.priority.imageName)
                     .resizable()
                     .scaledToFit()
                     .frame(height: 25)
             }
             .padding([.all], 16)
         }
-    }
-    
-    init(toDoTask: Binding<ToDoTask>) {
-        self.viewModel = TaskCellViewModel(toDoTask: toDoTask)
     }
 }
 

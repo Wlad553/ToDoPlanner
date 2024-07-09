@@ -202,8 +202,3 @@ struct TaskDetailsView: View {
         self._viewModel = ObservedObject(initialValue: TaskDetalisViewModel(toDoTasksList: toDoTasksList))
     }
 }
-
-#Preview {
-    TaskDetailsView(toDoTasksList: .constant(MainViewModel().toDoTasks))
-        .environment(MainViewModel())
-}

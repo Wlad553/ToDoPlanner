@@ -10,7 +10,6 @@
 		F512E7CE2BB95EBE00C9FBAA /* CheckMarkImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F512E7CD2BB95EBE00C9FBAA /* CheckMarkImage.swift */; };
 		F512E7D02BB98C5000C9FBAA /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F512E7CF2BB98C5000C9FBAA /* MainViewModel.swift */; };
 		F5286CCA2C2DC44D00541793 /* TasksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5286CC92C2DC44D00541793 /* TasksViewModel.swift */; };
-		F5286CCC2C2DD97900541793 /* TaskCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5286CCB2C2DD97900541793 /* TaskCellViewModel.swift */; };
 		F52A0BE52C038CB5005C2DBB /* EnvironmentValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52A0BE42C038CB5005C2DBB /* EnvironmentValues.swift */; };
 		F542A7532C36F55F00A38A32 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F542A7522C36F55F00A38A32 /* CalendarView.swift */; };
 		F5467DF72C3ABBA700537E08 /* CalendarTasksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5467DF62C3ABBA700537E08 /* CalendarTasksViewModel.swift */; };
@@ -38,7 +37,6 @@
 		F512E7CD2BB95EBE00C9FBAA /* CheckMarkImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckMarkImage.swift; sourceTree = "<group>"; };
 		F512E7CF2BB98C5000C9FBAA /* MainViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		F5286CC92C2DC44D00541793 /* TasksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewModel.swift; sourceTree = "<group>"; };
-		F5286CCB2C2DD97900541793 /* TaskCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCellViewModel.swift; sourceTree = "<group>"; };
 		F52A0BE42C038CB5005C2DBB /* EnvironmentValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentValues.swift; sourceTree = "<group>"; };
 		F542A7522C36F55F00A38A32 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		F5467DF62C3ABBA700537E08 /* CalendarTasksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTasksViewModel.swift; sourceTree = "<group>"; };
@@ -145,7 +143,6 @@
 				F5A254A32B8B88790076F694 /* TasksView.swift */,
 				F5286CC92C2DC44D00541793 /* TasksViewModel.swift */,
 				F5D54EF32BAB379000D49CF1 /* TaskCell.swift */,
-				F5286CCB2C2DD97900541793 /* TaskCellViewModel.swift */,
 			);
 			path = TaskScreen;
 			sourceTree = "<group>";
@@ -275,7 +272,6 @@
 				F52A0BE52C038CB5005C2DBB /* EnvironmentValues.swift in Sources */,
 				F5A6FD482C2F15D1009E6DBC /* CalendarTasksView.swift in Sources */,
 				F554A1DD2C0F744E00AE506A /* RoundedContextView.swift in Sources */,
-				F5286CCC2C2DD97900541793 /* TaskCellViewModel.swift in Sources */,
 				F5467DF72C3ABBA700537E08 /* CalendarTasksViewModel.swift in Sources */,
 				F5A254A42B8B88790076F694 /* TasksView.swift in Sources */,
 				F588C18C2C3C4ACA006B5FB8 /* CategoryView.swift in Sources */,

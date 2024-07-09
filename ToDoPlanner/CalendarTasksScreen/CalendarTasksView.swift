@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct CalendarTasksView: View {
-    @ObservedObject private var viewModel: CalendarTasksViewModel
-    @State private var selectedDateComponents = Calendar.current.dateComponents([.year, .month, .day], from: Date())
+    @State private var viewModel = CalendarTasksViewModel()
+    @Binding var toDoTasksList: [ToDoTask]
     
     var body: some View {
         VStack {
-            CalendarView(selectedDateComponents: $selectedDateComponents, toDoTasksList: $viewModel.toDoTasksList)
+            CalendarView(selectedDateComponents: $viewModel.selectedDateComponents, toDoTasksList: $toDoTasksList)
                 .padding(.top, -24)
                 .padding(.bottom, 22)
                 .padding(.horizontal, 4)
@@ -26,13 +26,9 @@ struct CalendarTasksView: View {
                 .frame(height: 0.4)
                 .blur(radius: 0)
             
-            TasksView(toDoTasksList: $viewModel.toDoTasksList, selectedDateComponents: $selectedDateComponents)
+            TasksView(toDoTasksList: $toDoTasksList, selectedDateComponents: $viewModel.selectedDateComponents)
                 .padding(.top, -68)
         } // -- VStack
         .background(.charcoal)
-    }
-    
-    init(toDoTasksList: Binding<[ToDoTask]>) {
-        self.viewModel = CalendarTasksViewModel(toDoTasksList: toDoTasksList)
     }
 }

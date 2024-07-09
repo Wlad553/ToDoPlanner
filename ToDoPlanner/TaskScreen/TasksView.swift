@@ -8,33 +8,54 @@
 import SwiftUI
 
 struct TasksView: View {
-    @ObservedObject private var viewModel: TasksViewModel
+    @State private var viewModel = TasksViewModel()
+    
+    @Binding var toDoTasksList: [ToDoTask]
+    @Binding var selectedDateComponents: DateComponents
     
     var body: some View {
         ZStack {
             List {
-                ForEach(viewModel.toDoTasksSorted(), id: \.key) { section, toDoTasks in
+                Section {
+                    EmptyView()
+                } header: {
+                    ScrollView(.horizontal) {
+                        LazyHStack {
+                            CategoryView(selectedCategory: $viewModel.selectedCategory, category: nil)
+                            ForEach(ToDoTask.Category.allCases, id: \.self) { category in
+                                CategoryView(selectedCategory: $viewModel.selectedCategory, category: category)
+                            }
+                        }
+                        .padding(.horizontal, 10)
+                    }
+                }
+                .frame(height: 40)
+                .padding(.horizontal, -20)
+                .padding(.top, -6)
+                .padding(.bottom, -8)
+                
+                ForEach(viewModel.sorted(toDoTasksList: toDoTasksList, selectedDateComponents: selectedDateComponents), id: \.key) { section, toDoTasks in
                     Section {
                         ForEach(toDoTasks) { toDoTask in
-                            if let taskIndex = viewModel.toDoTasksList.firstIndex(of: toDoTask) {
+                            if let taskIndex = toDoTasksList.firstIndex(of: toDoTask) {
                                 ZStack {
                                     NavigationLink {
-                                        TaskDetailsView(toDoTasksList: $viewModel.toDoTasksList,
-                                                        toDoTask: $viewModel.toDoTasksList[taskIndex])
+                                        TaskDetailsView(toDoTasksList: $toDoTasksList,
+                                                        toDoTask: $toDoTasksList[taskIndex])
                                     } label: {
                                         EmptyView().opacity(0)
                                     }
-                                    TaskCell(toDoTask: $viewModel.toDoTasksList[taskIndex])
+                                    TaskCell(toDoTask: $toDoTasksList[taskIndex])
                                 }
                                 .swipeActions {
                                     Button(role: .destructive) {
-                                        viewModel.delete(toDoTask: toDoTask)
+                                        viewModel.delete(toDoTask: toDoTask, in: $toDoTasksList)
                                     } label: {
                                         Label("Delete", systemImage: "trash")
                                             .tint(.red)
                                     }
                                     Button {
-                                        viewModel.toggleIsCompleted(for: toDoTask)
+                                        viewModel.toggleIsCompleted(for: toDoTask, in: $toDoTasksList)
                                     } label: {
                                         Label(toDoTask.isCompleted ? "Unmark\nas Done" : "Mark\nas Done",
                                               systemImage: toDoTask.isCompleted ? "xmark.circle" : "checkmark.circle")
@@ -53,29 +74,30 @@ struct TasksView: View {
                             .padding(EdgeInsets(top: -4, leading: 0, bottom: 8, trailing: 0))
                     } // -- Section
                 } // -- ForEach Section
+                .padding(.horizontal, -8)
             } // -- List
             .listStyle(.grouped)
             .listRowSpacing(4)
             .listSectionSpacing(0)
-            .scrollIndicators(.hidden)
             .scrollContentBackground(.hidden)
-            .background(.charcoal)
-            .padding([.leading, .trailing], -8)
             
-            Text(viewModel.toDoTasksSorted().isEmpty ? "All done!" : String())
+            Text(viewModel.sorted(toDoTasksList: toDoTasksList, selectedDateComponents: selectedDateComponents).isEmpty ? "All done!" : String())
                 .font(.system(size: 35,
                               weight: .bold,
                               design: .rounded))
                 .foregroundStyle(.darkGrayish)
         } // -- ZStack
-    }
+        .scrollIndicators(.hidden)
+        .background(.charcoal)
+    } // -- body
     
     init(toDoTasksList: Binding<[ToDoTask]>, selectedDateComponents: Binding<DateComponents> = .constant(DateComponents())) {
-        self.viewModel = TasksViewModel(toDoTasksList: toDoTasksList, selectedDateComponents: selectedDateComponents)
+        self._toDoTasksList = toDoTasksList
+        self._selectedDateComponents = selectedDateComponents
     }
 }
 
 #Preview {
-    TasksView(toDoTasksList: .constant(MainViewModel().toDoTasks))
+    TasksView(toDoTasksList: .constant(MainViewModel().toDoTasks), selectedDateComponents: .constant(DateComponents()))
         .environment(MainViewModel())
 }

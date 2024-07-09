@@ -7,32 +7,27 @@
 
 import SwiftUI
 
-final class TasksViewModel: ObservableObject {
-    @Binding var toDoTasksList: [ToDoTask]
-    @Binding var selectedDateComponents: DateComponents
-    
-    // MARK: - Init
-    init(toDoTasksList: Binding<[ToDoTask]>, selectedDateComponents: Binding<DateComponents>) {
-        self._toDoTasksList = toDoTasksList
-        self._selectedDateComponents = selectedDateComponents
-    }
+@Observable
+final class TasksViewModel {
+    var selectedCategory: ToDoTask.Category?
     
     // MARK: - Data manipulation funcs
-    func delete(toDoTask toDoTaskToDelete: ToDoTask) {
-        toDoTasksList.removeAll { toDoTask in
+    func delete(toDoTask toDoTaskToDelete: ToDoTask, in toDoTasksList: Binding<[ToDoTask]>) {
+        toDoTasksList.wrappedValue.removeAll { toDoTask in
             toDoTaskToDelete.id == toDoTask.id
         }
     }
     
-    func toggleIsCompleted(for toDoTask: ToDoTask) {
-        guard let index = toDoTasksList.firstIndex(of: toDoTask) else { return }
-        toDoTasksList[index].isCompleted.toggle()
+    func toggleIsCompleted(for toDoTask: ToDoTask, in toDoTasksList: Binding<[ToDoTask]>) {
+        guard let index = toDoTasksList.wrappedValue.firstIndex(of: toDoTask) else { return }
+        toDoTasksList.wrappedValue[index].isCompleted.toggle()
     }
     
     // MARK: Array sorting funcs
-    func toDoTasksSorted() -> [Dictionary<String, [ToDoTask]>.Element] {
-        let filteredToDoTasksList = filteredToDoTasksList()
+    func sorted(toDoTasksList: [ToDoTask], selectedDateComponents: DateComponents) -> [Dictionary<String, [ToDoTask]>.Element] {
         let dateFormatter = NumericDateFormatter()
+        let filteredToDoTasksList = filtered(toDoTasksList: toDoTasksList, selectedDateComponents: selectedDateComponents)
+        
         var groupedTasksDictionary = Dictionary(grouping: filteredToDoTasksList, by: { dateFormatter.string(from: $0.dueDate) })
         groupedTasksDictionary.keys.forEach { key in
             groupedTasksDictionary[key]?.sort(by: { $0.dueDate < $1.dueDate })
@@ -62,11 +57,21 @@ final class TasksViewModel: ObservableObject {
         return sectionTitle
     }
     
-    private func filteredToDoTasksList() -> [ToDoTask] {
-        guard selectedDateComponents != DateComponents() else { return toDoTasksList }
-        return toDoTasksList.filter { toDoTask in
-            let toDoTaskDateComponents = Calendar.current.dateComponents([.year, .month, .day], from: toDoTask.dueDate)
-            return toDoTaskDateComponents == selectedDateComponents
+    private func filtered(toDoTasksList: [ToDoTask], selectedDateComponents: DateComponents) -> [ToDoTask] {
+        var filteredToDoTasksList = toDoTasksList
+        
+        if let selectedCategory = selectedCategory {
+            filteredToDoTasksList = filteredToDoTasksList.filter { toDoTask in
+                selectedCategory == toDoTask.category
+            }
         }
+        
+        if selectedDateComponents != DateComponents() {
+            filteredToDoTasksList = filteredToDoTasksList.filter { toDoTask in
+                let toDoTaskDateComponents = Calendar.current.dateComponents([.year, .month, .day], from: toDoTask.dueDate)
+                return toDoTaskDateComponents == selectedDateComponents
+            }
+        }
+        return filteredToDoTasksList
     }
 }

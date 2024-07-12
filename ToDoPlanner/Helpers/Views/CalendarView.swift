@@ -9,15 +9,15 @@ import SwiftUI
 import UIKit
 
 struct CalendarView: UIViewRepresentable {
-    class Coordinator: NSObject {
-        var selectedDateComponents: Binding<DateComponents>
-        var toDoTasksList: Binding<[ToDoTask]>
+    final class Coordinator: NSObject {
+        @Binding var selectedDateComponents: DateComponents
+        @Binding var toDoTasksList: [ToDoTask]
         var displayedAllowedDatesComponents: [DateComponents] = []
         var displayedSelectedDateComponents = DateComponents()
         
         init(selectedDateComponents: Binding<DateComponents>, toDoTasksList: Binding<[ToDoTask]>) {
-            self.selectedDateComponents = selectedDateComponents
-            self.toDoTasksList = toDoTasksList
+            self._selectedDateComponents = selectedDateComponents
+            self._toDoTasksList = toDoTasksList
         }
     }
     
@@ -80,7 +80,7 @@ extension CalendarView.Coordinator: UICalendarSelectionSingleDateDelegate {
     func dateSelection(_ selection: UICalendarSelectionSingleDate, didSelectDate dateComponents: DateComponents?) {
         if let selectedDate = dateComponents?.date {
             withAnimation {
-                self.selectedDateComponents.wrappedValue = Calendar.current.dateComponents([.year, .month, .day], from: selectedDate)
+                self.selectedDateComponents = Calendar.current.dateComponents([.year, .month, .day], from: selectedDate)
             }
         } else {
             selection.setSelected(displayedSelectedDateComponents, animated: false)

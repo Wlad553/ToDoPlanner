@@ -38,7 +38,7 @@ final class TasksViewModel {
             guard let firstDate = dateFormatter.date(from: element1.key),
                   let secondDate = dateFormatter.date(from: element2.key)
             else { return false }
-            return firstDate > secondDate
+            return firstDate < secondDate
         }
         
         return sortedTasksDictionary

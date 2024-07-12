@@ -25,59 +25,38 @@ struct MainView: View {
         return bottomSafeAreaInset != 0
     }
     
-    private var topSafeAreaInset: CGFloat {
-        let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
-        let mainWindow = windowScene?.windows.first
-        return mainWindow?.safeAreaInsets.top ?? 0.0
-    }
-    
     var body: some View {
-        NavigationStack {
-            ZStack(alignment: .top) {
-                ZStack(alignment: .bottom) {
-                    TabView(selection: $selectedTab) {
-                        TasksView(toDoTasksList: $viewModel.toDoTasks)
-                            .tabItem {
-                                Image(systemName: "list.bullet.clipboard")
-                                Text("Tasks")
-                            }
-                            .tag(Tab.tasks)
-                        CalendarTasksView(toDoTasksList: $viewModel.toDoTasks)
-                            .tabItem {
-                                Image(systemName: "calendar")
-                                Text("Calendar")
-                            }
-                            .tag(Tab.calendar)
-                    } // -- TabView
-                    .tint(.white)
-                    .padding(.bottom, hasBottomSafeAreaInset ? -8 : 0)
-                    .ignoresSafeArea()
-                    
-                    NavigationLink {
-                        TaskDetailsView(toDoTasksList: $viewModel.toDoTasks)
-                    } label: {
-                        AddTaskImage()
-                            .scaledToFit()
-                            .frame(width: 60)
-                            .offset(y: hasBottomSafeAreaInset ? -8 : -16)
-                    }
-                } // -- ZStack bottom
+        NavigationView {
+            ZStack(alignment: .bottom) {
+                TabView(selection: $selectedTab) {
+                    TasksView(isSearchBarPresent: true, toDoTasksList: $viewModel.toDoTasks)
+                        .tabItem {
+                            Image(systemName: "list.bullet.clipboard")
+                            Text("Tasks")
+                        }
+                        .tag(Tab.tasks)
+                    CalendarTasksView(toDoTasksList: $viewModel.toDoTasks)
+                        .tabItem {
+                            Image(systemName: "calendar")
+                            Text("Calendar")
+                        }
+                        .tag(Tab.calendar)
+                } // -- TabView
+                .tint(.white)
+                .padding(.bottom, hasBottomSafeAreaInset ? -8 : 0)
+                .ignoresSafeArea()
                 
-                if !topSafeAreaInset.isZero && interfaceOrientation == .portrait {
-                    Color.charcoal.opacity(0.97)
-                        .frame(height: topSafeAreaInset)
-                        .edgesIgnoringSafeArea(.vertical)
-                        .blur(radius: 0)
-                    Rectangle()
-                        .foregroundStyle(.darkGrayish)
-                        .frame(height: 0.4)
-                        .padding(.top, topSafeAreaInset)
-                        .ignoresSafeArea(edges: .vertical)
-                        .blur(radius: 0)
+                NavigationLink {
+                    TaskDetailsView(toDoTasksList: $viewModel.toDoTasks)
+                } label: {
+                    AddTaskImage()
+                        .scaledToFit()
+                        .frame(width: 60)
+                        .offset(y: hasBottomSafeAreaInset ? -8 : -16)
                 }
-            } // -- ZStack top
+            } // -- ZStack bottom
+            .ignoresSafeArea(.keyboard, edges: .all)
         } // -- NavigationStack
-        .environment(viewModel)
         .onAppear {
             let tabBarAppearance = UITabBarAppearance()
             tabBarAppearance.backgroundEffect = UIBlurEffect(style: .systemChromeMaterial)

@@ -9,25 +9,21 @@ import Foundation
 
 struct ToDoTask: Hashable, Identifiable {
     
-    enum Priority: String, Identifiable, CaseIterable, Comparable {
+    enum Priority: Int, Identifiable, CaseIterable, Comparable {
         static func < (lhs: ToDoTask.Priority, rhs: ToDoTask.Priority) -> Bool {
-            func priority(_ priority: ToDoTask.Priority) -> Int {
-                switch priority {
-                case .high: return 2
-                case .medium: return 1
-                case .low: return 0
-                }
-            }
-            
-            return priority(lhs) < priority(rhs)
+            lhs.rawValue < lhs.rawValue
         }
         
-        var id: String {
+        var id: Int {
             rawValue
         }
         
         var imageName: String {
-            rawValue
+            switch self {
+            case .low: return "lowPriority"
+            case .medium: return "mediumPriority"
+            case .high: return "highPriority"
+            }
         }
         
         var name: String {
@@ -38,26 +34,19 @@ struct ToDoTask: Hashable, Identifiable {
             }
         }
         
-        case low = "lowPriority"
-        case medium = "mediumPriority"
-        case high = "highPriority"
+        case low, medium, high
     }
     
-    enum Category: String, Hashable, CaseIterable, Identifiable, Comparable {
-        static func < (lhs: ToDoTask.Category, rhs: ToDoTask.Category) -> Bool {
-            lhs.name > rhs.name
-        }
-        
+    enum Category: String, Hashable, CaseIterable, Identifiable {
         var id: String {
             rawValue
         }
         
         var name: String {
-            rawValue
+            rawValue.capitalized
         }
         
-        case home = "Home"
-        case work = "Work"
+        case home, work, university, entertainment
     }
     
     let id = UUID()

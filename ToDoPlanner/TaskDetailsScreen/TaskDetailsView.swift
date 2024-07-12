@@ -19,7 +19,6 @@ struct TaskDetailsView: View {
     
     @State private var keyboardHeight: CGFloat = 0
     @State private var textEditorHeight: CGFloat = 0
-    @State private var isTextEditorFrameOnceChanged = false
     @State private var dueDateOpacity: CGFloat = 1
     @State private var timeOpacity: CGFloat = 1
     
@@ -32,8 +31,9 @@ struct TaskDetailsView: View {
             Group {
                 TextField("Title", text: $viewModel.draftToDoTask.title)
                     .focused($focusField, equals: .titleTextField)
-                    .font(.system(.headline))
+                    .font(.system(.title3)).fontWeight(.medium)
                     .padding(.top, 12)
+                    .padding(.horizontal, 4)
                 
                 Divider()
                 
@@ -41,10 +41,6 @@ struct TaskDetailsView: View {
                     PlaceholderTextEditor(placeholder: "Description",
                                           text: $viewModel.draftToDoTask.desctiption)
                     .onChange(of: geometry.frame(in: .local)) { oldFrame, newFrame in
-                        guard oldFrame.height != newFrame.height && isTextEditorFrameOnceChanged else {
-                            isTextEditorFrameOnceChanged = true
-                            return
-                        }
                         textEditorHeight = newFrame.height
                     }
                     .focused($focusField, equals: .descriptionTextEditor)
@@ -63,13 +59,13 @@ struct TaskDetailsView: View {
                 } rightView: {
                     Menu {
                         Picker(String(), selection: $viewModel.draftToDoTask.category) {
-                            ForEach(ToDoTask.Category.allCases.sorted()) { category in
+                            ForEach(ToDoTask.Category.allCases.reversed()) { category in
                                 Text(category.name)
                                     .tag(category)
                             }
                         }
                     } label: {
-                        RoundedContextView(text: viewModel.draftToDoTask.category.rawValue)
+                        RoundedContextView(text: viewModel.draftToDoTask.category.name)
                     }
                 }
                 
@@ -187,6 +183,7 @@ struct TaskDetailsView: View {
                         }
                         dismiss()
                     }
+                    .disabled(viewModel.draftToDoTask.title.isEmpty)
                 }
             }
         }

@@ -9,6 +9,7 @@ import SwiftUI
 
 @Observable
 final class TasksViewModel {
+    var searchText = String()
     var selectedCategory: ToDoTask.Category?
     
     // MARK: - Data manipulation funcs
@@ -59,6 +60,12 @@ final class TasksViewModel {
     
     private func filtered(toDoTasksList: [ToDoTask], selectedDateComponents: DateComponents) -> [ToDoTask] {
         var filteredToDoTasksList = toDoTasksList
+        
+        if !searchText.isEmpty {
+            filteredToDoTasksList = filteredToDoTasksList.filter { toDoTask in
+                toDoTask.title.contains(searchText)
+            }
+        }
         
         if let selectedCategory = selectedCategory {
             filteredToDoTasksList = filteredToDoTasksList.filter { toDoTask in

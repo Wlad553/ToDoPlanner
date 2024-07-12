@@ -10,6 +10,7 @@
 		F512E7CE2BB95EBE00C9FBAA /* CheckMarkImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F512E7CD2BB95EBE00C9FBAA /* CheckMarkImage.swift */; };
 		F512E7D02BB98C5000C9FBAA /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F512E7CF2BB98C5000C9FBAA /* MainViewModel.swift */; };
 		F5286CCA2C2DC44D00541793 /* TasksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5286CC92C2DC44D00541793 /* TasksViewModel.swift */; };
+		F528BE2F2C404E9900765759 /* NoSearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F528BE2E2C404E9900765759 /* NoSearchResultsView.swift */; };
 		F52A0BE52C038CB5005C2DBB /* EnvironmentValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52A0BE42C038CB5005C2DBB /* EnvironmentValues.swift */; };
 		F542A7532C36F55F00A38A32 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F542A7522C36F55F00A38A32 /* CalendarView.swift */; };
 		F5467DF72C3ABBA700537E08 /* CalendarTasksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5467DF62C3ABBA700537E08 /* CalendarTasksViewModel.swift */; };
@@ -22,6 +23,7 @@
 		F5A254A92B8B887A0076F694 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5A254A82B8B887A0076F694 /* Preview Assets.xcassets */; };
 		F5A254B12B8B8BC90076F694 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = F5A254B02B8B8BC90076F694 /* .gitignore */; };
 		F5A6FD482C2F15D1009E6DBC /* CalendarTasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A6FD472C2F15D1009E6DBC /* CalendarTasksView.swift */; };
+		F5B10FC32C3EDE1800BEB7BC /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B10FC22C3EDE1800BEB7BC /* SearchBar.swift */; };
 		F5C02B122BFB45D900C85C20 /* PlaceholderTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C02B112BFB45D900C85C20 /* PlaceholderTextEditor.swift */; };
 		F5C02B162BFB6A2900C85C20 /* TaskDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C02B152BFB6A2900C85C20 /* TaskDetailsCell.swift */; };
 		F5D54EF42BAB379000D49CF1 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D54EF32BAB379000D49CF1 /* TaskCell.swift */; };
@@ -37,6 +39,7 @@
 		F512E7CD2BB95EBE00C9FBAA /* CheckMarkImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckMarkImage.swift; sourceTree = "<group>"; };
 		F512E7CF2BB98C5000C9FBAA /* MainViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		F5286CC92C2DC44D00541793 /* TasksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewModel.swift; sourceTree = "<group>"; };
+		F528BE2E2C404E9900765759 /* NoSearchResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoSearchResultsView.swift; sourceTree = "<group>"; };
 		F52A0BE42C038CB5005C2DBB /* EnvironmentValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentValues.swift; sourceTree = "<group>"; };
 		F542A7522C36F55F00A38A32 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		F5467DF62C3ABBA700537E08 /* CalendarTasksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTasksViewModel.swift; sourceTree = "<group>"; };
@@ -50,6 +53,7 @@
 		F5A254A82B8B887A0076F694 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F5A254B02B8B8BC90076F694 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		F5A6FD472C2F15D1009E6DBC /* CalendarTasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTasksView.swift; sourceTree = "<group>"; };
+		F5B10FC22C3EDE1800BEB7BC /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		F5C02B112BFB45D900C85C20 /* PlaceholderTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTextEditor.swift; sourceTree = "<group>"; };
 		F5C02B152BFB6A2900C85C20 /* TaskDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailsCell.swift; sourceTree = "<group>"; };
 		F5D54EF32BAB379000D49CF1 /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
@@ -90,6 +94,8 @@
 				F554A1DC2C0F744E00AE506A /* RoundedContextView.swift */,
 				F542A7522C36F55F00A38A32 /* CalendarView.swift */,
 				F588C18B2C3C4ACA006B5FB8 /* CategoryView.swift */,
+				F5B10FC22C3EDE1800BEB7BC /* SearchBar.swift */,
+				F528BE2E2C404E9900765759 /* NoSearchResultsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -266,7 +272,9 @@
 				F512E7D02BB98C5000C9FBAA /* MainViewModel.swift in Sources */,
 				F5FE5A9F2BBB0724002EEF59 /* NumericDateFormatter.swift in Sources */,
 				F5E92F9A2BBC7F0400803BFB /* AddTaskImage.swift in Sources */,
+				F5B10FC32C3EDE1800BEB7BC /* SearchBar.swift in Sources */,
 				F5C02B162BFB6A2900C85C20 /* TaskDetailsCell.swift in Sources */,
+				F528BE2F2C404E9900765759 /* NoSearchResultsView.swift in Sources */,
 				F542A7532C36F55F00A38A32 /* CalendarView.swift in Sources */,
 				F512E7CE2BB95EBE00C9FBAA /* CheckMarkImage.swift in Sources */,
 				F52A0BE52C038CB5005C2DBB /* EnvironmentValues.swift in Sources */,
@@ -423,8 +431,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -459,8 +467,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (

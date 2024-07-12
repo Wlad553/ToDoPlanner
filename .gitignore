@@ -135,6 +135,4 @@ iOSInjectionProject/
 
 Package.resolved
 contents.xcworkspacedata
-Array+safeSubscript.swift
 ToDoPlanner.xcscheme
-View+dismissKeyboard.swift

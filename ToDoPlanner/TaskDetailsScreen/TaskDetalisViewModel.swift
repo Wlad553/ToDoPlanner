@@ -9,36 +9,39 @@ import SwiftUI
 
 @Observable
 final class TaskDetalisViewModel {
-    let isEditingExistingToDoTask: Bool
+    let swiftDataManager = SwiftDataManager()
+    
     var draftToDoTask: ToDoTask
+    var editedToDoTask: ToDoTask
+    
+    let isEditingExistingToDoTask: Bool
         
     // MARK: - Inits
-    init(editedToDoTask: ToDoTask) {
-        self.draftToDoTask = editedToDoTask
-        self.isEditingExistingToDoTask = true
-    }
-    
-    init() {
-        self.draftToDoTask = ToDoTask()
-        self.isEditingExistingToDoTask = false
-    }
-    
-    // MARK: - Data manipulation funcs
-    func applyChangesFor(editedToDoTask: Binding<ToDoTask>) {
-        editedToDoTask.wrappedValue = draftToDoTask
-    }
-    
-    func saveToDoTask(in toDoTasksList: Binding<[ToDoTask]>) {
-        toDoTasksList.wrappedValue.append(draftToDoTask)
-    }
-    
-    func delete(_ editedToDoTask: Binding<ToDoTask>, in toDoTasksList: Binding<[ToDoTask]>) {
-        toDoTasksList.wrappedValue.removeAll { toDoTask in
-            toDoTask == editedToDoTask.wrappedValue
+    init(editedToDoTask: ToDoTask? = nil) {
+        if let editedToDoTask = editedToDoTask {
+            self.draftToDoTask = ToDoTask(title: editedToDoTask.title,
+                                          desctiption: editedToDoTask.desctiption,
+                                          category: editedToDoTask.category,
+                                          dueDate: editedToDoTask.dueDate,
+                                          priority: editedToDoTask.priority,
+                                          isCompleted: editedToDoTask.isCompleted)
+            self.editedToDoTask = editedToDoTask
+            self.isEditingExistingToDoTask = true
+            
+        } else {
+            self.draftToDoTask = ToDoTask()
+            self.editedToDoTask = ToDoTask()
+            self.isEditingExistingToDoTask = false
         }
     }
     
-    func revert(editedToDoTask: Binding<ToDoTask>) {
-        draftToDoTask = editedToDoTask.wrappedValue
+    // MARK: - Data manipulation funcs
+    func revertDraftToDoTask() {
+        draftToDoTask = ToDoTask(title: editedToDoTask.title,
+                                 desctiption: editedToDoTask.desctiption,
+                                 category: editedToDoTask.category,
+                                 dueDate: editedToDoTask.dueDate,
+                                 priority: editedToDoTask.priority,
+                                 isCompleted: editedToDoTask.isCompleted)
     }
 }

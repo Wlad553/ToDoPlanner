@@ -12,11 +12,8 @@ struct MainView: View {
             case tasks
             case calendar
         }
-    
-    @State private var viewModel: MainViewModel = MainViewModel()
-    
+        
     @State var selectedTab = Tab.tasks
-    @Environment(\.orientation) private var interfaceOrientation
     
     private var hasBottomSafeAreaInset: Bool {
         let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
@@ -29,13 +26,13 @@ struct MainView: View {
         NavigationView {
             ZStack(alignment: .bottom) {
                 TabView(selection: $selectedTab) {
-                    TasksView(isSearchBarPresent: true, toDoTasksList: $viewModel.toDoTasks)
+                    TasksView(isSearchBarPresent: true)
                         .tabItem {
                             Image(systemName: "list.bullet.clipboard")
                             Text("Tasks")
                         }
                         .tag(Tab.tasks)
-                    CalendarTasksView(toDoTasksList: $viewModel.toDoTasks)
+                    CalendarTasksView()
                         .tabItem {
                             Image(systemName: "calendar")
                             Text("Calendar")
@@ -47,7 +44,7 @@ struct MainView: View {
                 .ignoresSafeArea()
                 
                 NavigationLink {
-                    TaskDetailsView(toDoTasksList: $viewModel.toDoTasks)
+                    TaskDetailsView()
                 } label: {
                     AddTaskImage()
                         .scaledToFit()

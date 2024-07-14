@@ -9,19 +9,14 @@ import SwiftUI
 
 @Observable
 final class TasksViewModel {
+    let swiftDataManager = SwiftDataManager()
+    
     var searchText = String()
     var selectedCategory: ToDoTask.Category?
     
     // MARK: - Data manipulation funcs
-    func delete(toDoTask toDoTaskToDelete: ToDoTask, in toDoTasksList: Binding<[ToDoTask]>) {
-        toDoTasksList.wrappedValue.removeAll { toDoTask in
-            toDoTaskToDelete.id == toDoTask.id
-        }
-    }
-    
-    func toggleIsCompleted(for toDoTask: ToDoTask, in toDoTasksList: Binding<[ToDoTask]>) {
-        guard let index = toDoTasksList.wrappedValue.firstIndex(of: toDoTask) else { return }
-        toDoTasksList.wrappedValue[index].isCompleted.toggle()
+    func toggleIsCompleted(for toDoTask: ToDoTask) {
+        toDoTask.isCompleted.toggle()
     }
     
     // MARK: Array sorting funcs

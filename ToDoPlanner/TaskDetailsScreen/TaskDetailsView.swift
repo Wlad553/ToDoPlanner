@@ -6,16 +6,18 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct TaskDetailsView: View {
     enum FocusField: Hashable {
         case titleTextField
         case descriptionTextEditor
     }
-        
+    
+    @Environment(\.modelContext) var context
+    @Query private var storedToDoTasks: [ToDoTask]
+    
     @State private var viewModel: TaskDetalisViewModel
-    @Binding var toDoTasksList: [ToDoTask]
-    @Binding var editedToDoTask: ToDoTask
     
     @State private var keyboardHeight: CGFloat = 0
     @State private var textEditorHeight: CGFloat = 0
@@ -169,7 +171,7 @@ struct TaskDetailsView: View {
                 HStack {
                     if viewModel.isEditingExistingToDoTask {
                         Button {
-                            viewModel.delete($editedToDoTask, in: $toDoTasksList)
+                            viewModel.swiftDataManager.delete(toDoTask: viewModel.editedToDoTask)
                             dismiss()
                         } label: {
                             Image(systemName: "trash")
@@ -177,9 +179,10 @@ struct TaskDetailsView: View {
                         }
                     }
                     Button("Save") {
-                        viewModel.applyChangesFor(editedToDoTask: $editedToDoTask)
-                        if !viewModel.isEditingExistingToDoTask {
-                            viewModel.saveToDoTask(in: $toDoTasksList)
+                        if viewModel.isEditingExistingToDoTask {
+                            viewModel.swiftDataManager.applyChangesFor(toDoTask: viewModel.editedToDoTask, draftToDoTask: viewModel.draftToDoTask)
+                        } else {
+                            viewModel.swiftDataManager.save(toDoTask: viewModel.draftToDoTask)
                         }
                         dismiss()
                     }
@@ -188,19 +191,16 @@ struct TaskDetailsView: View {
             }
         }
         .onAppear {
-            viewModel.revert(editedToDoTask: $editedToDoTask)
+            viewModel.swiftDataManager.context = self.context
+            viewModel.revertDraftToDoTask()
         }
     } // -- body
     
-    init(toDoTasksList: Binding<[ToDoTask]>, toDoTask: Binding<ToDoTask>) {
-        self._toDoTasksList = toDoTasksList
-        self._editedToDoTask = toDoTask
-        self.viewModel = TaskDetalisViewModel(editedToDoTask: toDoTask.wrappedValue)
+    init(editedToDoTask: ToDoTask) {
+        self.viewModel = TaskDetalisViewModel(editedToDoTask: editedToDoTask)
     }
     
-    init(toDoTasksList: Binding<[ToDoTask]>) {
-        self._toDoTasksList = toDoTasksList
-        self._editedToDoTask = .constant(ToDoTask())
+    init() {
         self.viewModel = TaskDetalisViewModel()
     }
 }

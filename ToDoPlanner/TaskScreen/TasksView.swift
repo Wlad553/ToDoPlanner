@@ -6,19 +6,21 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct TasksView: View {
-    @State private var viewModel = TasksViewModel()
+    @Environment(\.modelContext) var context
+    @Query private var storedToDoTasks: [ToDoTask]
     
-    @Binding var toDoTasksList: [ToDoTask]
+    @State private var viewModel = TasksViewModel()
     @Binding var selectedDateComponents: DateComponents
     
     @FocusState var isSearchBarFocused: Bool
     
     let isSearchBarPresent: Bool
     
-    private var isTaskListEmpty: Bool {
-        viewModel.sorted(toDoTasksList: toDoTasksList, selectedDateComponents: selectedDateComponents).isEmpty
+    private var isSortedTasksListEmpty: Bool {
+        viewModel.sorted(toDoTasksList: storedToDoTasks, selectedDateComponents: selectedDateComponents).isEmpty
     }
     
     var body: some View {
@@ -33,6 +35,7 @@ struct TasksView: View {
                     .frame(height: 0.4)
                     .blur(radius: 0)
             }
+            
             ZStack {
                 List {
                     Section {
@@ -53,37 +56,34 @@ struct TasksView: View {
                     .padding(.top, -6)
                     .padding(.bottom, -8)
                     
-                    ForEach(viewModel.sorted(toDoTasksList: toDoTasksList, selectedDateComponents: selectedDateComponents), id: \.key) { section, toDoTasks in
+                    ForEach(viewModel.sorted(toDoTasksList: storedToDoTasks, selectedDateComponents: selectedDateComponents), id: \.key) { section, toDoTasks in
                         Section {
                             ForEach(toDoTasks) { toDoTask in
-                                if let taskIndex = toDoTasksList.firstIndex(of: toDoTask) {
-                                    ZStack {
-                                        NavigationLink {
-                                            TaskDetailsView(toDoTasksList: $toDoTasksList,
-                                                            toDoTask: $toDoTasksList[taskIndex])
-                                        } label: {
-                                            EmptyView().opacity(0)
-                                        }
-                                        TaskCell(toDoTask: $toDoTasksList[taskIndex])
+                                ZStack {
+                                    NavigationLink {
+                                        TaskDetailsView(editedToDoTask: toDoTask)
+                                    } label: {
+                                        EmptyView()
                                     }
-                                    .swipeActions {
-                                        Button(role: .destructive) {
-                                            viewModel.delete(toDoTask: toDoTask, in: $toDoTasksList)
-                                        } label: {
-                                            Label("Delete", systemImage: "trash")
-                                                .tint(.red)
-                                        }
-                                        Button {
-                                            viewModel.toggleIsCompleted(for: toDoTask, in: $toDoTasksList)
-                                        } label: {
-                                            Label(toDoTask.isCompleted ? "Unmark\nas Done" : "Mark\nas Done",
-                                                  systemImage: toDoTask.isCompleted ? "xmark.circle" : "checkmark.circle")
-                                            .tint(.purple)
-                                        }
+                                    TaskCell(toDoTask: toDoTask)
+                                } // -- ZStack
+                                .swipeActions {
+                                    Button(role: .destructive) {
+                                        viewModel.swiftDataManager.delete(toDoTask: toDoTask)
+                                    } label: {
+                                        Label("Delete", systemImage: "trash")
+                                            .tint(.red)
                                     }
-                                    .listRowBackground(Color.clear)
-                                    .listRowSeparator(.hidden)
+                                    Button {
+                                        viewModel.toggleIsCompleted(for: toDoTask)
+                                    } label: {
+                                        Label(toDoTask.isCompleted ? "Unmark\nas Done" : "Mark\nas Done",
+                                              systemImage: toDoTask.isCompleted ? "xmark.circle" : "checkmark.circle")
+                                        .tint(.purple)
+                                    }
                                 }
+                                .listRowBackground(Color.clear)
+                                .listRowSeparator(.hidden)
                             } // -- ForEach Row
                         } header: {
                             Text(viewModel.sectionTitle(stringDate: section))
@@ -109,22 +109,24 @@ struct TasksView: View {
                                   weight: .bold,
                                   design: .rounded))
                     .foregroundStyle(.darkGrayish)
-                    .opacity(isTaskListEmpty && viewModel.searchText.isEmpty ? 1 : 0)
+                    .opacity(isSortedTasksListEmpty && viewModel.searchText.isEmpty ? 1 : 0)
                 
                 NoSearchResultsView(searchText: viewModel.searchText)
-                    .opacity(isTaskListEmpty && !viewModel.searchText.isEmpty ? 1 : 0)
+                    .opacity(isSortedTasksListEmpty && !viewModel.searchText.isEmpty ? 1 : 0)
             } // -- ZStack
         } // -- VStack
         .background(.charcoal)
+        .onAppear {
+            viewModel.swiftDataManager.context = self.context
+        }
     } // -- body
     
-    init(isSearchBarPresent: Bool = false, toDoTasksList: Binding<[ToDoTask]>, selectedDateComponents: Binding<DateComponents> = .constant(DateComponents())) {
-        self._toDoTasksList = toDoTasksList
+    init(isSearchBarPresent: Bool = false, selectedDateComponents: Binding<DateComponents> = .constant(DateComponents())) {
         self._selectedDateComponents = selectedDateComponents
         self.isSearchBarPresent = isSearchBarPresent
     }
 }
 
 #Preview {
-    TasksView(isSearchBarPresent: true, toDoTasksList: .constant(MainViewModel().toDoTasks))
+    TasksView(isSearchBarPresent: true)
 }

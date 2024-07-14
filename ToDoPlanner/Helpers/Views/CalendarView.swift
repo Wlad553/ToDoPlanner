@@ -7,26 +7,26 @@
 
 import SwiftUI
 import UIKit
+import SwiftData
 
 struct CalendarView: UIViewRepresentable {
     final class Coordinator: NSObject {
         @Binding var selectedDateComponents: DateComponents
-        @Binding var toDoTasksList: [ToDoTask]
+        
         var displayedAllowedDatesComponents: [DateComponents] = []
         var displayedSelectedDateComponents = DateComponents()
         
-        init(selectedDateComponents: Binding<DateComponents>, toDoTasksList: Binding<[ToDoTask]>) {
+        init(selectedDateComponents: Binding<DateComponents>) {
             self._selectedDateComponents = selectedDateComponents
-            self._toDoTasksList = toDoTasksList
         }
     }
     
-    @Binding var toDoTasksList: [ToDoTask]
+    @Query private var storedToDoTasks: [ToDoTask]
     @Binding var selectedDateComponents: DateComponents
     
     // MARK: - UIViewRepresentable funcs
     func makeCoordinator() -> Coordinator {
-        return Coordinator(selectedDateComponents: $selectedDateComponents, toDoTasksList: $toDoTasksList)
+        return Coordinator(selectedDateComponents: $selectedDateComponents)
     }
     
     func makeUIView(context: Context) -> UICalendarView {
@@ -49,7 +49,7 @@ struct CalendarView: UIViewRepresentable {
     
     func updateUIView(_ uiView: UICalendarView, context: Context) {
         let calendarSelection = uiView.selectionBehavior as? UICalendarSelectionSingleDate
-        let toDoTasksListDatesComponents = toDoTasksList
+        let toDoTasksListDatesComponents = storedToDoTasks
             .map({ $0.dueDate })
             .map({ Calendar.current.dateComponents([.year, .month, .day], from: $0) })
         

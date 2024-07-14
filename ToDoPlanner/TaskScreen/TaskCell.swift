@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TaskCell: View {
-    @Binding var toDoTask: ToDoTask
+    @Bindable var toDoTask: ToDoTask
     
     var body: some View {
         ZStack {
@@ -41,10 +41,10 @@ struct TaskCell: View {
 }
 
 #Preview {
-    TaskCell(toDoTask: .constant(ToDoTask(name: "Task name",
+    TaskCell(toDoTask: ToDoTask(title: "Task name",
                                           desctiption: "It's task description",
                                           category: .home,
                                           dueDate: Date(),
                                           priority: .high,
-                                          isCompleted: false)))
+                                          isCompleted: false))
 }

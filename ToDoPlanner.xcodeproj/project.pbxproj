@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F512E7CE2BB95EBE00C9FBAA /* CheckMarkImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F512E7CD2BB95EBE00C9FBAA /* CheckMarkImage.swift */; };
-		F512E7D02BB98C5000C9FBAA /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F512E7CF2BB98C5000C9FBAA /* MainViewModel.swift */; };
+		F512E7D02BB98C5000C9FBAA /* SwiftDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F512E7CF2BB98C5000C9FBAA /* SwiftDataManager.swift */; };
 		F5286CCA2C2DC44D00541793 /* TasksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5286CC92C2DC44D00541793 /* TasksViewModel.swift */; };
 		F528BE2F2C404E9900765759 /* NoSearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F528BE2E2C404E9900765759 /* NoSearchResultsView.swift */; };
 		F52A0BE52C038CB5005C2DBB /* EnvironmentValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52A0BE42C038CB5005C2DBB /* EnvironmentValues.swift */; };
@@ -37,7 +37,7 @@
 
 /* Begin PBXFileReference section */
 		F512E7CD2BB95EBE00C9FBAA /* CheckMarkImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckMarkImage.swift; sourceTree = "<group>"; };
-		F512E7CF2BB98C5000C9FBAA /* MainViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		F512E7CF2BB98C5000C9FBAA /* SwiftDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftDataManager.swift; sourceTree = "<group>"; };
 		F5286CC92C2DC44D00541793 /* TasksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewModel.swift; sourceTree = "<group>"; };
 		F528BE2E2C404E9900765759 /* NoSearchResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoSearchResultsView.swift; sourceTree = "<group>"; };
 		F52A0BE42C038CB5005C2DBB /* EnvironmentValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentValues.swift; sourceTree = "<group>"; };
@@ -100,6 +100,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		F59E6FF62C43D38B003912C9 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				F512E7CF2BB98C5000C9FBAA /* SwiftDataManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		F5A254952B8B88790076F694 = {
 			isa = PBXGroup;
 			children = (
@@ -122,7 +130,7 @@
 			children = (
 				F5A254A12B8B88790076F694 /* ToDoPlannerApp.swift */,
 				F5E92F9B2BBF1E8200803BFB /* MainView.swift */,
-				F512E7CF2BB98C5000C9FBAA /* MainViewModel.swift */,
+				F59E6FF62C43D38B003912C9 /* Managers */,
 				F5DF923A2B8D026F00137855 /* Models */,
 				F5A6FD462C2F15B1009E6DBC /* CalendarTasksScreen */,
 				F5A254B22B8B8D470076F694 /* TaskScreen */,
@@ -269,7 +277,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5DF923C2B8D027B00137855 /* ToDoTask.swift in Sources */,
-				F512E7D02BB98C5000C9FBAA /* MainViewModel.swift in Sources */,
+				F512E7D02BB98C5000C9FBAA /* SwiftDataManager.swift in Sources */,
 				F5FE5A9F2BBB0724002EEF59 /* NumericDateFormatter.swift in Sources */,
 				F5E92F9A2BBC7F0400803BFB /* AddTaskImage.swift in Sources */,
 				F5B10FC32C3EDE1800BEB7BC /* SearchBar.swift in Sources */,

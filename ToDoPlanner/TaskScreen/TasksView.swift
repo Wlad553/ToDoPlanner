@@ -86,11 +86,19 @@ struct TasksView: View {
                                 .listRowSeparator(.hidden)
                             } // -- ForEach Row
                         } header: {
-                            Text(viewModel.sectionTitle(stringDate: section))
-                                .textCase(.none)
-                                .font(.system(size: 20, weight: .semibold))
-                                .foregroundStyle(.white)
-                                .padding(EdgeInsets(top: -4, leading: 0, bottom: 8, trailing: 0))
+                            ZStack(alignment: .leading) {
+                                Text(viewModel.sectionTitle(stringDate: section))
+                                    .textCase(.none)
+                                    .font(.system(size: 20, weight: .semibold))
+                                    .foregroundStyle(.white)
+                                    .padding(EdgeInsets(top: -4, leading: 0, bottom: 8, trailing: 0))
+                                
+                                Color.clear
+                                    .contentShape(Rectangle())
+                                    .onTapGesture {
+                                        isSearchBarFocused = false
+                                    }
+                            }
                         } // -- Section
                     } // -- ForEach Section
                     .padding(.horizontal, -8)
@@ -99,7 +107,8 @@ struct TasksView: View {
                 .listRowSpacing(4)
                 .listSectionSpacing(0)
                 .scrollContentBackground(.hidden)
-                .scrollBounceBehavior(isTaskListEmpty ? .basedOnSize : .always, axes: .vertical)
+                .scrollBounceBehavior(isSortedTasksListEmpty ? .basedOnSize : .always,
+                                      axes: .vertical)
                 .ignoresSafeArea(.keyboard, edges: .all)
                 .scrollDismissesKeyboard(.immediately)
                 .scrollIndicators(.hidden)
@@ -113,6 +122,16 @@ struct TasksView: View {
                 
                 NoSearchResultsView(searchText: viewModel.searchText)
                     .opacity(isSortedTasksListEmpty && !viewModel.searchText.isEmpty ? 1 : 0)
+                
+                Color.clear
+                    .contentShape(Rectangle())
+                    .padding(.top, 60)
+                    .ignoresSafeArea()
+                    .gesture(
+                        TapGesture().onEnded {
+                            isSearchBarFocused = false
+                        }, including: isSortedTasksListEmpty ? .gesture : .subviews
+                    )
             } // -- ZStack
         } // -- VStack
         .background(.charcoal)

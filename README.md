@@ -14,6 +14,7 @@ ToDoPlanner is an application designed to help users manage their daily activiti
 # Stack
 * Swift
 * SwiftUI
+* UIKit (UIViewRepresentable)
 * MVVM
 * SwiftData
 * DI

@@ -47,7 +47,7 @@ final class ToDoTask: Identifiable {
             rawValue.capitalized
         }
         
-        case home, work, university, entertainment
+        case home, work, education, productivity, entertainment, other
     }
     
     let id = UUID()

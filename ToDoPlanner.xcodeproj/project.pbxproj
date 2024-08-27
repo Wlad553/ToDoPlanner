@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F50D11722C7CD69200156420 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50D11712C7CD69200156420 /* SignInView.swift */; };
 		F512E7CE2BB95EBE00C9FBAA /* CheckMarkImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F512E7CD2BB95EBE00C9FBAA /* CheckMarkImage.swift */; };
 		F512E7D02BB98C5000C9FBAA /* SwiftDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F512E7CF2BB98C5000C9FBAA /* SwiftDataManager.swift */; };
 		F5286CCA2C2DC44D00541793 /* TasksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5286CC92C2DC44D00541793 /* TasksViewModel.swift */; };
@@ -14,8 +15,10 @@
 		F52A0BE52C038CB5005C2DBB /* EnvironmentValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52A0BE42C038CB5005C2DBB /* EnvironmentValues.swift */; };
 		F542A7532C36F55F00A38A32 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F542A7522C36F55F00A38A32 /* CalendarView.swift */; };
 		F5467DF72C3ABBA700537E08 /* CalendarTasksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5467DF62C3ABBA700537E08 /* CalendarTasksViewModel.swift */; };
+		F54C9B312C7E267300A0D5C5 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54C9B302C7E267300A0D5C5 /* SignInViewModel.swift */; };
 		F554A1DD2C0F744E00AE506A /* RoundedContextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F554A1DC2C0F744E00AE506A /* RoundedContextView.swift */; };
 		F55B645E2C2C6CF900C6336E /* TaskDetalisViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55B645D2C2C6CF900C6336E /* TaskDetalisViewModel.swift */; };
+		F5867C7E2C7E17B100F87677 /* UnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5867C7D2C7E17B100F87677 /* UnderlinedTextField.swift */; };
 		F588C18C2C3C4ACA006B5FB8 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F588C18B2C3C4ACA006B5FB8 /* CategoryView.swift */; };
 		F5A254A22B8B88790076F694 /* ToDoPlannerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A254A12B8B88790076F694 /* ToDoPlannerApp.swift */; };
 		F5A254A42B8B88790076F694 /* TasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A254A32B8B88790076F694 /* TasksView.swift */; };
@@ -36,6 +39,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F50D11712C7CD69200156420 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		F512E7CD2BB95EBE00C9FBAA /* CheckMarkImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckMarkImage.swift; sourceTree = "<group>"; };
 		F512E7CF2BB98C5000C9FBAA /* SwiftDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftDataManager.swift; sourceTree = "<group>"; };
 		F5286CC92C2DC44D00541793 /* TasksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewModel.swift; sourceTree = "<group>"; };
@@ -43,8 +47,10 @@
 		F52A0BE42C038CB5005C2DBB /* EnvironmentValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentValues.swift; sourceTree = "<group>"; };
 		F542A7522C36F55F00A38A32 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		F5467DF62C3ABBA700537E08 /* CalendarTasksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTasksViewModel.swift; sourceTree = "<group>"; };
+		F54C9B302C7E267300A0D5C5 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		F554A1DC2C0F744E00AE506A /* RoundedContextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedContextView.swift; sourceTree = "<group>"; };
 		F55B645D2C2C6CF900C6336E /* TaskDetalisViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetalisViewModel.swift; sourceTree = "<group>"; };
+		F5867C7D2C7E17B100F87677 /* UnderlinedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedTextField.swift; sourceTree = "<group>"; };
 		F588C18B2C3C4ACA006B5FB8 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		F5A2549E2B8B88790076F694 /* ToDoPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5A254A12B8B88790076F694 /* ToDoPlannerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoPlannerApp.swift; sourceTree = "<group>"; };
@@ -87,6 +93,15 @@
 			path = MainScreen;
 			sourceTree = "<group>";
 		};
+		F50D11702C7CD66300156420 /* WelcomeScreen */ = {
+			isa = PBXGroup;
+			children = (
+				F50D11712C7CD69200156420 /* SignInView.swift */,
+				F54C9B302C7E267300A0D5C5 /* SignInViewModel.swift */,
+			);
+			path = WelcomeScreen;
+			sourceTree = "<group>";
+		};
 		F512E7CB2BB95DD500C9FBAA /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +122,7 @@
 				F588C18B2C3C4ACA006B5FB8 /* CategoryView.swift */,
 				F5B10FC22C3EDE1800BEB7BC /* SearchBar.swift */,
 				F528BE2E2C404E9900765759 /* NoSearchResultsView.swift */,
+				F5867C7D2C7E17B100F87677 /* UnderlinedTextField.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -142,6 +158,7 @@
 				F5A254A12B8B88790076F694 /* ToDoPlannerApp.swift */,
 				F59E6FF62C43D38B003912C9 /* Managers */,
 				F5DF923A2B8D026F00137855 /* Models */,
+				F50D11702C7CD66300156420 /* WelcomeScreen */,
 				F50D116F2C7CD61100156420 /* MainScreen */,
 				F512E7CB2BB95DD500C9FBAA /* Helpers */,
 				F5FE5A9D2BBB06AF002EEF59 /* Utility */,
@@ -288,8 +305,11 @@
 				F512E7D02BB98C5000C9FBAA /* SwiftDataManager.swift in Sources */,
 				F5FE5A9F2BBB0724002EEF59 /* NumericDateFormatter.swift in Sources */,
 				F5E92F9A2BBC7F0400803BFB /* AddTaskImage.swift in Sources */,
+				F54C9B312C7E267300A0D5C5 /* SignInViewModel.swift in Sources */,
 				F5B10FC32C3EDE1800BEB7BC /* SearchBar.swift in Sources */,
+				F5867C7E2C7E17B100F87677 /* UnderlinedTextField.swift in Sources */,
 				F5C02B162BFB6A2900C85C20 /* TaskDetailsCell.swift in Sources */,
+				F50D11722C7CD69200156420 /* SignInView.swift in Sources */,
 				F528BE2F2C404E9900765759 /* NoSearchResultsView.swift in Sources */,
 				F542A7532C36F55F00A38A32 /* CalendarView.swift in Sources */,
 				F512E7CE2BB95EBE00C9FBAA /* CheckMarkImage.swift in Sources */,

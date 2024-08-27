@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct MainView: View {
     enum Tab {
@@ -64,5 +65,9 @@ struct MainView: View {
 }
 
 #Preview {
-    MainView(selectedTab: .calendar)
+    let config = ModelConfiguration(isStoredInMemoryOnly: true)
+    let container = try! ModelContainer(for: ToDoTask.self, configurations: config)
+    
+    return MainView(selectedTab: .calendar)
+        .modelContainer(container)
 }

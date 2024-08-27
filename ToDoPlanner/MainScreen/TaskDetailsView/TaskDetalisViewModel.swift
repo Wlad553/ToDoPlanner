@@ -40,7 +40,7 @@ final class TaskDetalisViewModel {
         draftToDoTask = ToDoTask(title: editedToDoTask.title,
                                  desctiption: editedToDoTask.desctiption,
                                  category: editedToDoTask.category,
-                                 dueDate: editedToDoTask.dueDate,
+                                 dueDate: isEditingExistingToDoTask ? editedToDoTask.dueDate : Date(),
                                  priority: editedToDoTask.priority,
                                  isCompleted: editedToDoTask.isCompleted)
     }

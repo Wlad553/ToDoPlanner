@@ -76,6 +76,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F50D116F2C7CD61100156420 /* MainScreen */ = {
+			isa = PBXGroup;
+			children = (
+				F5E92F9B2BBF1E8200803BFB /* MainView.swift */,
+				F5A6FD462C2F15B1009E6DBC /* CalendarTasksView */,
+				F5A254B22B8B8D470076F694 /* TaskView */,
+				F5E92F9E2BBF211A00803BFB /* TaskDetailsView */,
+			);
+			path = MainScreen;
+			sourceTree = "<group>";
+		};
 		F512E7CB2BB95DD500C9FBAA /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -129,12 +140,9 @@
 			isa = PBXGroup;
 			children = (
 				F5A254A12B8B88790076F694 /* ToDoPlannerApp.swift */,
-				F5E92F9B2BBF1E8200803BFB /* MainView.swift */,
 				F59E6FF62C43D38B003912C9 /* Managers */,
 				F5DF923A2B8D026F00137855 /* Models */,
-				F5A6FD462C2F15B1009E6DBC /* CalendarTasksScreen */,
-				F5A254B22B8B8D470076F694 /* TaskScreen */,
-				F5E92F9E2BBF211A00803BFB /* TaskDetailsScreen */,
+				F50D116F2C7CD61100156420 /* MainScreen */,
 				F512E7CB2BB95DD500C9FBAA /* Helpers */,
 				F5FE5A9D2BBB06AF002EEF59 /* Utility */,
 				F5A254A52B8B887A0076F694 /* Assets.xcassets */,
@@ -151,23 +159,23 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		F5A254B22B8B8D470076F694 /* TaskScreen */ = {
+		F5A254B22B8B8D470076F694 /* TaskView */ = {
 			isa = PBXGroup;
 			children = (
 				F5A254A32B8B88790076F694 /* TasksView.swift */,
 				F5286CC92C2DC44D00541793 /* TasksViewModel.swift */,
 				F5D54EF32BAB379000D49CF1 /* TaskCell.swift */,
 			);
-			path = TaskScreen;
+			path = TaskView;
 			sourceTree = "<group>";
 		};
-		F5A6FD462C2F15B1009E6DBC /* CalendarTasksScreen */ = {
+		F5A6FD462C2F15B1009E6DBC /* CalendarTasksView */ = {
 			isa = PBXGroup;
 			children = (
 				F5A6FD472C2F15D1009E6DBC /* CalendarTasksView.swift */,
 				F5467DF62C3ABBA700537E08 /* CalendarTasksViewModel.swift */,
 			);
-			path = CalendarTasksScreen;
+			path = CalendarTasksView;
 			sourceTree = "<group>";
 		};
 		F5DF923A2B8D026F00137855 /* Models */ = {
@@ -178,14 +186,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		F5E92F9E2BBF211A00803BFB /* TaskDetailsScreen */ = {
+		F5E92F9E2BBF211A00803BFB /* TaskDetailsView */ = {
 			isa = PBXGroup;
 			children = (
 				F5E92FA02BBF217300803BFB /* TaskDetailsView.swift */,
 				F55B645D2C2C6CF900C6336E /* TaskDetalisViewModel.swift */,
 				F5C02B152BFB6A2900C85C20 /* TaskDetailsCell.swift */,
 			);
-			path = TaskDetailsScreen;
+			path = TaskDetailsView;
 			sourceTree = "<group>";
 		};
 		F5FE5A992BBAAE25002EEF59 /* Extensions */ = {

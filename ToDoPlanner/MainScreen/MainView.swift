@@ -15,6 +15,7 @@ struct MainView: View {
         }
         
     @State var selectedTab = Tab.tasks
+    @State var isTaskDetailsViewPresented = false
     
     private var hasBottomSafeAreaInset: Bool {
         let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
@@ -44,16 +45,21 @@ struct MainView: View {
                 .padding(.bottom, hasBottomSafeAreaInset ? -8 : 0)
                 .ignoresSafeArea()
                 
-                NavigationLink {
-                    TaskDetailsView()
-                } label: {
+                Button(action: {
+                    isTaskDetailsViewPresented.toggle()
+                }, label: {
                     AddTaskImage()
                         .scaledToFit()
                         .frame(width: 60)
                         .offset(y: hasBottomSafeAreaInset ? -8 : -16)
-                }
+                })
             } // -- ZStack bottom
             .ignoresSafeArea(.keyboard, edges: .all)
+            .sheet(isPresented: $isTaskDetailsViewPresented, content: {
+                NavigationView {
+                    TaskDetailsView()
+                }
+            })
         } // -- NavigationStack
         .onAppear {
             let tabBarAppearance = UITabBarAppearance()

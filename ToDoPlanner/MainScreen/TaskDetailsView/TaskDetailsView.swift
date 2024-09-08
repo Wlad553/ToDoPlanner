@@ -27,7 +27,7 @@ struct TaskDetailsView: View {
     @FocusState private var focusField: FocusField?
     
     @Environment(\.dismiss) private var dismiss
-
+    
     var body: some View {
         VStack {
             Group {
@@ -48,14 +48,14 @@ struct TaskDetailsView: View {
                     .focused($focusField, equals: .descriptionTextEditor)
                 }
                 .font(.system(.subheadline))
-                .frame(minHeight: 64, maxHeight: .infinity)
+                .frame(maxHeight: .infinity)
             } // -- Group
             .onTapGesture {
                 timeOpacity = 1
                 dueDateOpacity = 1
             }
             
-            LazyVStack {
+            VStack {
                 TaskDetailsCell(text: "Category") {
                     Image(systemName: "list.bullet")
                 } rightView: {
@@ -133,8 +133,8 @@ struct TaskDetailsView: View {
                         RoundedContextView(text: viewModel.draftToDoTask.priority.name)
                     }
                 }
-            } // -- LazyVStack
-            .padding(.bottom, keyboardHeight + 80  > textEditorHeight ? -64 : 8)
+            } // -- VStack
+            .padding(.bottom, keyboardHeight + 64  > textEditorHeight ? -64 : 8)
         } // -- VStack
         .contentShape(Rectangle())
         .onTapGesture {
@@ -167,6 +167,17 @@ struct TaskDetailsView: View {
         .padding(.horizontal, 8)
         .background(.charcoal)
         .toolbar {
+            if !viewModel.isEditingExistingToDoTask {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button(action: {
+                        dismiss()
+                    }, label: {
+                        Image(systemName: "arrow.backward")
+                            .foregroundStyle(.white)
+                    })
+                }
+            }
+            
             ToolbarItem(placement: .topBarTrailing) {
                 HStack {
                     if viewModel.isEditingExistingToDoTask {

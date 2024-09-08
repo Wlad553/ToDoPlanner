@@ -33,6 +33,7 @@ struct TaskDetailsCell<LeftView: View, RightView: View>: View {
         }
         .padding(.horizontal, 19)
         .padding(.vertical, 9)
+        .frame(height: 56)
     }
 }
 

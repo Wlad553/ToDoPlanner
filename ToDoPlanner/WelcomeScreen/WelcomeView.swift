@@ -59,7 +59,7 @@ struct WelcomeView: View {
             .padding(.horizontal, 8)
         } // -- ZStack
         .sheet(item: $authAction, content: { authAction in
-            LoginView(authAction: authAction)
+            LoginView(viewModel: LoginViewModel(authAction: authAction))
         })
     } // -- body
 }

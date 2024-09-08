@@ -166,6 +166,8 @@ struct TaskDetailsView: View {
         }
         .padding(.horizontal, 8)
         .background(.charcoal)
+        .toolbarTitleDisplayMode(.inline)
+        .navigationTitle(viewModel.isEditingExistingToDoTask ? String() : "New Task")
         .toolbar {
             if !viewModel.isEditingExistingToDoTask {
                 ToolbarItem(placement: .topBarLeading) {

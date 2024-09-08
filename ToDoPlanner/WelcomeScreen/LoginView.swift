@@ -7,30 +7,14 @@
 
 import SwiftUI
 
-enum AuthAction: String, Identifiable {
-    case signIn = "Sign In"
-    case signUp = "Sign Up"
-    
-    var id: String {
-        return rawValue
-    }
-    
-    var string: String {
-        rawValue
-    }
-    
-    func opposite() -> AuthAction {
-        if self == .signIn {
-            return .signUp
-        } else {
-            return .signIn
-        }
-    }
-}
-
 struct LoginView: View {
-    @State private var viewModel = LoginViewModel()
-    @State var authAction: AuthAction
+    @State var viewModel: LoginViewModel
+    
+    private let upperButtonsStackFrameHeight: CGFloat = 208
+    @State private var upperButtonsStackOpacity: CGFloat = 1
+    @State private var bottomLogInControlsPadding: CGFloat = 0
+    
+    @FocusState private var isTextFieldFocused: Bool
     
     @Environment(\.dismiss) private var dismiss
     
@@ -39,6 +23,9 @@ struct LoginView: View {
             ZStack(alignment: .top) {
                 Color.charcoal
                     .ignoresSafeArea()
+                    .onTapGesture {
+                        isTextFieldFocused = false
+                    }
                 
                 VStack(alignment: .center) {
                     VStack {
@@ -59,31 +46,54 @@ struct LoginView: View {
                         }, label: {
                             RoundedButtonLabel(labelText: "Apple", backgroundStyle: .lavenderBliss)
                         })
-                    }
-                    .padding(.vertical)
-                    
-                    Divider()
-                        .padding(.bottom)
-                    
-                    VStack(spacing: 16) {
-                        UnderlinedTextField(placeholder: "Email", text: $viewModel.email)
-                        UnderlinedTextField(placeholder: "Password",text: $viewModel.password)
-                    }
-                    
-                    Button(action: {
                         
-                    }, label: {
-                        RoundedButtonLabel(labelText: authAction.string, backgroundStyle: .lavenderBliss)
-                    })
-                    .padding(.vertical, 16)
-                    
-                    Button(authAction.opposite().string) {
-                        authAction = authAction.opposite()
+                        Divider()
+                            .padding(.top, 24)
+                    } // -- ZStack -> VStack -> VStack
+                    .frame(height: upperButtonsStackFrameHeight)
+                    .opacity(upperButtonsStackOpacity)
+                    .onChange(of: isTextFieldFocused) { _, newValue in
+                        if newValue {
+                            withAnimation(.linear(duration: 0.4)) {
+                                upperButtonsStackOpacity = 0
+                            }
+                        } else {
+                            withAnimation(.linear(duration: 0.2)) {
+                                upperButtonsStackOpacity = 1
+                            }
+                        }
                     }
-                    .foregroundStyle(.lavenderBliss)
-                }
+                    
+                    VStack {
+                        VStack(spacing: 16) {
+                            UnderlinedTextField(placeholder: "Email", text: $viewModel.email)
+                            UnderlinedTextField(placeholder: "Password",text: $viewModel.password)
+                        } // -- ZStack -> VStack -> VStack -> VStack
+                        
+                        Button(action: {
+                            
+                        }, label: {
+                            RoundedButtonLabel(labelText: viewModel.authAction.string, backgroundStyle: .lavenderBliss)
+                        })
+                        .padding(.vertical, 16)
+                        
+                        Button(viewModel.authAction.opposite().string) {
+                            viewModel.authAction = viewModel.authAction.opposite()
+                        }
+                        .foregroundStyle(.lavenderBliss)
+                    } // -- ZStack -> VStack -> VStack
+                    .background(Color.charcoal)
+                    .focused($isTextFieldFocused)
+                    .padding(.top, bottomLogInControlsPadding)
+                    .onChange(of: isTextFieldFocused) { _, newValue in
+                        withAnimation(.easeIn(duration: 0.2)) {
+                            bottomLogInControlsPadding = newValue ? -upperButtonsStackFrameHeight : 0
+                        }
+                    }
+                } // -- ZStack -> VStack
                 .padding(.horizontal, 16)
-            }
+            } // -- ZStack
+            .navigationTitle(viewModel.authAction.string)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button(action: {
@@ -94,10 +104,10 @@ struct LoginView: View {
                     })
                 }
             }
-        }
+        } // -- NavigationStack
     }
 }
 
 #Preview {
-    LoginView(authAction: .signIn)
+    LoginView(viewModel: LoginViewModel(authAction: .signIn))
 }

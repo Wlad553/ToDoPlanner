@@ -13,6 +13,7 @@ struct ToDoPlannerApp: App {
     var body: some Scene {
         WindowGroup {
             MainView(selectedTab: .tasks)
+//            WelcomeView()
         }
         .modelContainer(for: ToDoTask.self)
     }

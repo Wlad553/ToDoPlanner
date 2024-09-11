@@ -11,20 +11,57 @@ import SwiftUI
 final class TasksViewModel {
     let swiftDataManager = SwiftDataManager()
     
-    var searchText = String()
-    var selectedCategory: ToDoTask.Category?
+    var selectedDateComponents: Binding<DateComponents>
+    var searchText: Binding<String>
+    var selectedCategory: Binding<ToDoTask.Category?>
+    
+    let isSearchBarPresent: Bool
+    
+    var toDoTasks: [ToDoTask] = []
+    
+    init(isSearchBarPresent: Bool = false,
+         selectedDateComponents: Binding<DateComponents> = .constant(DateComponents()),
+         searchText: Binding<String> = .constant(String()),
+         selectedCategory: Binding<ToDoTask.Category?>) {
+        
+        self.isSearchBarPresent = isSearchBarPresent
+        self.selectedDateComponents = selectedDateComponents
+        self.searchText = searchText
+        self.selectedCategory = selectedCategory
+        
+        refreshToDoTasks()
+    }
     
     // MARK: - Data manipulation funcs
     func toggleIsCompleted(for toDoTask: ToDoTask) {
         toDoTask.isCompleted.toggle()
     }
     
-    // MARK: Array sorting funcs
-    func sorted(toDoTasksList: [ToDoTask], selectedDateComponents: DateComponents) -> [Dictionary<String, [ToDoTask]>.Element] {
-        let dateFormatter = NumericDateFormatter()
-        let filteredToDoTasksList = filtered(toDoTasksList: toDoTasksList, selectedDateComponents: selectedDateComponents)
+    func delete(toDoTask: ToDoTask) {
+        if let lastSection = toDoTasksSorted().last,
+           lastSection.value.contains(toDoTask) {
+            toDoTasks.removeAll(where: { $0 == toDoTask })
+        } else {
+            withAnimation {
+                toDoTasks.removeAll(where: { $0 == toDoTask })
+            }
+        }
         
-        var groupedTasksDictionary = Dictionary(grouping: filteredToDoTasksList, by: { dateFormatter.string(from: $0.dueDate) })
+        swiftDataManager.delete(toDoTask: toDoTask)
+    }
+    
+    func refreshToDoTasks() {
+        if let fetchedToDoTasks = swiftDataManager.toDoTasks {
+            toDoTasks = fetchedToDoTasks
+        }
+    }
+    
+    // MARK: Array sorting funcs
+    func toDoTasksSorted() -> [Dictionary<String, [ToDoTask]>.Element] {
+        let dateFormatter = NumericDateFormatter()
+        let toDoTasksFiltered = toDoTasksFiltered()
+        
+        var groupedTasksDictionary = Dictionary(grouping: toDoTasksFiltered, by: { dateFormatter.string(from: $0.dueDate) })
         groupedTasksDictionary.keys.forEach { key in
             groupedTasksDictionary[key]?.sort(by: { $0.dueDate < $1.dueDate })
         }
@@ -39,6 +76,31 @@ final class TasksViewModel {
         return sortedTasksDictionary
     }
     
+    private func toDoTasksFiltered() -> [ToDoTask] {
+        var toDoTasksFiltered = toDoTasks
+        
+        if !searchText.wrappedValue.isEmpty {
+            toDoTasksFiltered = toDoTasksFiltered.filter { toDoTask in
+                toDoTask.title.contains(searchText.wrappedValue)
+            }
+        }
+        
+        if let selectedCategory = selectedCategory.wrappedValue {
+            toDoTasksFiltered = toDoTasksFiltered.filter { toDoTask in
+                selectedCategory == toDoTask.category
+            }
+        }
+        
+        if selectedDateComponents.wrappedValue != DateComponents() {
+            toDoTasksFiltered = toDoTasksFiltered.filter { toDoTask in
+                let toDoTaskDateComponents = Calendar.current.dateComponents([.year, .month, .day], from: toDoTask.dueDate)
+                return toDoTaskDateComponents == selectedDateComponents.wrappedValue
+            }
+        }
+        return toDoTasksFiltered
+    }
+    
+    // MARK: Utility funcs
     func sectionTitle(stringDate: String) -> String {
         let dateFormatter = NumericDateFormatter()
         let sectionTitle: String
@@ -51,29 +113,5 @@ final class TasksViewModel {
         }
         
         return sectionTitle
-    }
-    
-    private func filtered(toDoTasksList: [ToDoTask], selectedDateComponents: DateComponents) -> [ToDoTask] {
-        var filteredToDoTasksList = toDoTasksList
-        
-        if !searchText.isEmpty {
-            filteredToDoTasksList = filteredToDoTasksList.filter { toDoTask in
-                toDoTask.title.contains(searchText)
-            }
-        }
-        
-        if let selectedCategory = selectedCategory {
-            filteredToDoTasksList = filteredToDoTasksList.filter { toDoTask in
-                selectedCategory == toDoTask.category
-            }
-        }
-        
-        if selectedDateComponents != DateComponents() {
-            filteredToDoTasksList = filteredToDoTasksList.filter { toDoTask in
-                let toDoTaskDateComponents = Calendar.current.dateComponents([.year, .month, .day], from: toDoTask.dueDate)
-                return toDoTaskDateComponents == selectedDateComponents
-            }
-        }
-        return filteredToDoTasksList
     }
 }

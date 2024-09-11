@@ -14,10 +14,7 @@ struct TaskDetailsView: View {
         case descriptionTextEditor
     }
     
-    @Environment(\.modelContext) var context
-    @Query private var storedToDoTasks: [ToDoTask]
-    
-    @State private var viewModel: TaskDetalisViewModel
+    @State var viewModel: TaskDetalisViewModel
     
     @State private var keyboardHeight: CGFloat = 0
     @State private var textEditorHeight: CGFloat = 0
@@ -204,16 +201,11 @@ struct TaskDetailsView: View {
             }
         }
         .onAppear {
-            viewModel.swiftDataManager.context = self.context
             viewModel.revertDraftToDoTask()
         }
     } // -- body
     
-    init(editedToDoTask: ToDoTask) {
-        self.viewModel = TaskDetalisViewModel(editedToDoTask: editedToDoTask)
-    }
-    
-    init() {
-        self.viewModel = TaskDetalisViewModel()
+    init(viewModel: TaskDetalisViewModel) {
+        self.viewModel = viewModel
     }
 }

@@ -9,7 +9,17 @@ import SwiftUI
 import SwiftData
 
 final class SwiftDataManager {
-    var context: ModelContext?
+    static var mainContext: ModelContext?
+    
+    var context: ModelContext? {
+        Self.mainContext
+    }
+    
+    // MARK: Saved Objects
+    var toDoTasks: [ToDoTask]? {
+        let fetchDescriptor = FetchDescriptor<ToDoTask>()
+        return try? context?.fetch(fetchDescriptor)
+    }
     
     // MARK: - Data manipulation funcs
     func applyChangesFor(toDoTask: ToDoTask, draftToDoTask: ToDoTask) {

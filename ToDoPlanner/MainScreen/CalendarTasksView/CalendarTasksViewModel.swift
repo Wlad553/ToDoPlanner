@@ -10,4 +10,5 @@ import SwiftUI
 @Observable
 final class CalendarTasksViewModel {
     var selectedDateComponents = Calendar.current.dateComponents([.year, .month, .day], from: Date())
+    var selectedCategory: ToDoTask.Category?
 }

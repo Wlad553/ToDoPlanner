@@ -9,24 +9,14 @@ import SwiftUI
 import SwiftData
 
 struct TasksView: View {
-    @Environment(\.modelContext) var context
-    @Query private var storedToDoTasks: [ToDoTask]
-    
-    @State private var viewModel = TasksViewModel()
-    @Binding var selectedDateComponents: DateComponents
+    @Bindable var viewModel: TasksViewModel
     
     @FocusState var isSearchBarFocused: Bool
     
-    let isSearchBarPresent: Bool
-    
-    private var isSortedTasksListEmpty: Bool {
-        viewModel.sorted(toDoTasksList: storedToDoTasks, selectedDateComponents: selectedDateComponents).isEmpty
-    }
-    
     var body: some View {
         VStack(spacing: 0) {
-            if isSearchBarPresent {
-                SearchBar(searchText: $viewModel.searchText)
+            if viewModel.isSearchBarPresent {
+                SearchBar(searchText: $viewModel.searchText.wrappedValue)
                     .padding(.horizontal, 10)
                     .frame(height: 56)
                     .focused($isSearchBarFocused)
@@ -43,9 +33,9 @@ struct TasksView: View {
                     } header: {
                         ScrollView(.horizontal) {
                             LazyHStack {
-                                CategoryView(selectedCategory: $viewModel.selectedCategory, category: nil)
+                                CategoryView(selectedCategory: $viewModel.selectedCategory.wrappedValue, category: nil)
                                 ForEach(ToDoTask.Category.allCases, id: \.self) { category in
-                                    CategoryView(selectedCategory: $viewModel.selectedCategory, category: category)
+                                    CategoryView(selectedCategory: $viewModel.selectedCategory.wrappedValue, category: category)
                                 }
                             }
                             .padding(.horizontal, 10)
@@ -56,12 +46,12 @@ struct TasksView: View {
                     .padding(.top, -6)
                     .padding(.bottom, -8)
                     
-                    ForEach(viewModel.sorted(toDoTasksList: storedToDoTasks, selectedDateComponents: selectedDateComponents), id: \.key) { section, toDoTasks in
+                    ForEach(viewModel.toDoTasksSorted(), id: \.key) { section, toDoTasks in
                         Section {
                             ForEach(toDoTasks) { toDoTask in
                                 ZStack {
                                     NavigationLink {
-                                        TaskDetailsView(editedToDoTask: toDoTask)
+                                        TaskDetailsView(viewModel: TaskDetalisViewModel(editedToDoTask: toDoTask))
                                     } label: {
                                         EmptyView()
                                     }
@@ -69,7 +59,7 @@ struct TasksView: View {
                                 } // -- ZStack
                                 .swipeActions {
                                     Button(role: .destructive) {
-                                        viewModel.swiftDataManager.delete(toDoTask: toDoTask)
+                                        viewModel.delete(toDoTask: toDoTask)
                                     } label: {
                                         Label("Delete", systemImage: "trash")
                                             .tint(.red)
@@ -107,7 +97,7 @@ struct TasksView: View {
                 .listRowSpacing(4)
                 .listSectionSpacing(0)
                 .scrollContentBackground(.hidden)
-                .scrollBounceBehavior(isSortedTasksListEmpty ? .basedOnSize : .always,
+                .scrollBounceBehavior(viewModel.toDoTasksSorted().isEmpty ? .basedOnSize : .always,
                                       axes: .vertical)
                 .ignoresSafeArea(.keyboard, edges: .all)
                 .scrollDismissesKeyboard(.immediately)
@@ -118,10 +108,10 @@ struct TasksView: View {
                                   weight: .bold,
                                   design: .rounded))
                     .foregroundStyle(.darkGrayish)
-                    .opacity(isSortedTasksListEmpty && viewModel.searchText.isEmpty ? 1 : 0)
+                    .opacity(viewModel.toDoTasksSorted().isEmpty && viewModel.searchText.wrappedValue.isEmpty ? 1 : 0)
                 
-                NoSearchResultsView(searchText: viewModel.searchText)
-                    .opacity(isSortedTasksListEmpty && !viewModel.searchText.isEmpty ? 1 : 0)
+                NoSearchResultsView(searchText: viewModel.searchText.wrappedValue)
+                    .opacity(viewModel.toDoTasksSorted().isEmpty && !viewModel.searchText.wrappedValue.isEmpty ? 1 : 0)
                 
                 Color.clear
                     .contentShape(Rectangle())
@@ -130,22 +120,17 @@ struct TasksView: View {
                     .gesture(
                         TapGesture().onEnded {
                             isSearchBarFocused = false
-                        }, including: isSortedTasksListEmpty ? .gesture : .subviews
+                        }, including: viewModel.toDoTasksSorted().isEmpty ? .gesture : .subviews
                     )
             } // -- ZStack
         } // -- VStack
         .background(.charcoal)
         .onAppear {
-            viewModel.swiftDataManager.context = self.context
+            viewModel.refreshToDoTasks()
         }
     } // -- body
-    
-    init(isSearchBarPresent: Bool = false, selectedDateComponents: Binding<DateComponents> = .constant(DateComponents())) {
-        self._selectedDateComponents = selectedDateComponents
-        self.isSearchBarPresent = isSearchBarPresent
-    }
 }
 
 #Preview {
-    TasksView(isSearchBarPresent: true)
+    TasksView(viewModel: TasksViewModel(isSearchBarPresent: true, selectedCategory: .constant(nil)))
 }

@@ -14,6 +14,10 @@ struct ToDoPlannerApp: App {
         WindowGroup {
             WelcomeView()
         }
-        .modelContainer(for: ToDoTask.self)
+        .modelContainer(for: ToDoTask.self) { result in
+            if case .success(let success) = result {
+                SwiftDataManager.mainContext = success.mainContext
+            }
+        }
     }
 }

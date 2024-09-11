@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct WelcomeView: View {
-    @State private var authAction: AuthAction?
+    @State var viewModel = WelcomeViewModel()
     
     var body: some View {
         ZStack(alignment: .topLeading) {
@@ -42,14 +42,14 @@ struct WelcomeView: View {
                 
                 VStack(alignment: .center) {
                     Button(action: {
-                        authAction = .signUp
+                        viewModel.authAction = .signUp
                     }, label: {
                         RoundedButtonLabel(labelText: "Sign Up",
                                            backgroundStyle: .lavenderBliss)
                     })
                     
                     Button(action: {
-                        authAction = .signIn
+                        viewModel.authAction = .signIn
                     }, label: {
                         RoundedButtonLabel(labelText: "Sign In",
                                            backgroundStyle: .gray)
@@ -58,7 +58,7 @@ struct WelcomeView: View {
             } // -- VStack
             .padding(.horizontal, 8)
         } // -- ZStack
-        .sheet(item: $authAction, content: { authAction in
+        .sheet(item: $viewModel.authAction, content: { authAction in
             LoginView(viewModel: LoginViewModel(authAction: authAction))
         })
     } // -- body

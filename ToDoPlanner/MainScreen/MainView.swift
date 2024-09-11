@@ -9,13 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct MainView: View {
-    enum Tab {
-            case tasks
-            case calendar
-        }
-        
-    @State var selectedTab = Tab.tasks
-    @State var isTaskDetailsViewPresented = false
+    @State var viewModel: MainViewModel
     
     private var hasBottomSafeAreaInset: Bool {
         let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
@@ -27,26 +21,28 @@ struct MainView: View {
     var body: some View {
         NavigationView {
             ZStack(alignment: .bottom) {
-                TabView(selection: $selectedTab) {
-                    TasksView(isSearchBarPresent: true)
+                TabView(selection: $viewModel.selectedTab) {
+                    TasksView(viewModel: TasksViewModel(isSearchBarPresent: true,
+                                                        searchText: $viewModel.searchText,
+                                                        selectedCategory: $viewModel.selectedCategory))
                         .tabItem {
                             Image(systemName: "list.bullet.clipboard")
                             Text("Tasks")
                         }
-                        .tag(Tab.tasks)
+                        .tag(MainViewModel.Tab.tasks)
                     CalendarTasksView()
                         .tabItem {
                             Image(systemName: "calendar")
                             Text("Calendar")
                         }
-                        .tag(Tab.calendar)
+                        .tag(MainViewModel.Tab.calendar)
                 } // -- TabView
                 .tint(.white)
                 .padding(.bottom, hasBottomSafeAreaInset ? -8 : 0)
                 .ignoresSafeArea()
                 
                 Button(action: {
-                    isTaskDetailsViewPresented.toggle()
+                    viewModel.isTaskDetailsViewPresented.toggle()
                 }, label: {
                     AddTaskImage()
                         .scaledToFit()
@@ -55,9 +51,9 @@ struct MainView: View {
                 })
             } // -- ZStack bottom
             .ignoresSafeArea(.keyboard, edges: .all)
-            .sheet(isPresented: $isTaskDetailsViewPresented, content: {
+            .sheet(isPresented: $viewModel.isTaskDetailsViewPresented, content: {
                 NavigationView {
-                    TaskDetailsView()
+                    TaskDetailsView(viewModel: TaskDetalisViewModel())
                 }
             })
         } // -- NavigationStack
@@ -74,6 +70,6 @@ struct MainView: View {
     let config = ModelConfiguration(isStoredInMemoryOnly: true)
     let container = try! ModelContainer(for: ToDoTask.self, configurations: config)
     
-    return MainView(selectedTab: .calendar)
+    return MainView(viewModel: MainViewModel(selectedTab: .calendar))
         .modelContainer(container)
 }

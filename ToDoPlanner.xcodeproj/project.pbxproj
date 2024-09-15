@@ -36,6 +36,7 @@
 		F5E92F9C2BBF1E8200803BFB /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E92F9B2BBF1E8200803BFB /* MainView.swift */; };
 		F5E92FA12BBF217300803BFB /* TaskDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E92FA02BBF217300803BFB /* TaskDetailsView.swift */; };
 		F5ECCDA52C89E35800A91146 /* RoundedButtonLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ECCDA42C89E35800A91146 /* RoundedButtonLabel.swift */; };
+		F5F1414E2C97474000DC962B /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F1414D2C97474000DC962B /* AccountView.swift */; };
 		F5F690E82C90CAC600B6E5C7 /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F690E72C90CAC600B6E5C7 /* WelcomeViewModel.swift */; };
 		F5F690EA2C90CB4B00B6E5C7 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F690E92C90CB4B00B6E5C7 /* MainViewModel.swift */; };
 		F5FE5A9B2BBAAE41002EEF59 /* Animation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FE5A9A2BBAAE41002EEF59 /* Animation+Extension.swift */; };
@@ -73,6 +74,7 @@
 		F5E92F9B2BBF1E8200803BFB /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		F5E92FA02BBF217300803BFB /* TaskDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailsView.swift; sourceTree = "<group>"; };
 		F5ECCDA42C89E35800A91146 /* RoundedButtonLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButtonLabel.swift; sourceTree = "<group>"; };
+		F5F1414D2C97474000DC962B /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		F5F690E72C90CAC600B6E5C7 /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
 		F5F690E92C90CB4B00B6E5C7 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		F5FE5A9A2BBAAE41002EEF59 /* Animation+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Animation+Extension.swift"; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 				F5A6FD462C2F15B1009E6DBC /* CalendarTasksView */,
 				F5A254B22B8B8D470076F694 /* TaskView */,
 				F5E92F9E2BBF211A00803BFB /* TaskDetailsView */,
+				F5F1414C2C97469E00DC962B /* AccountView */,
 			);
 			path = MainScreen;
 			sourceTree = "<group>";
@@ -225,6 +228,14 @@
 			path = TaskDetailsView;
 			sourceTree = "<group>";
 		};
+		F5F1414C2C97469E00DC962B /* AccountView */ = {
+			isa = PBXGroup;
+			children = (
+				F5F1414D2C97474000DC962B /* AccountView.swift */,
+			);
+			path = AccountView;
+			sourceTree = "<group>";
+		};
 		F5FE5A992BBAAE25002EEF59 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -342,6 +353,7 @@
 				F5E92FA12BBF217300803BFB /* TaskDetailsView.swift in Sources */,
 				F5A254A22B8B88790076F694 /* ToDoPlannerApp.swift in Sources */,
 				F5D54EF42BAB379000D49CF1 /* TaskCell.swift in Sources */,
+				F5F1414E2C97474000DC962B /* AccountView.swift in Sources */,
 				F5FE5A9B2BBAAE41002EEF59 /* Animation+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

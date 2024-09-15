@@ -179,15 +179,15 @@ struct TaskDetailsView: View {
             
             ToolbarItem(placement: .topBarTrailing) {
                 HStack {
-                    if viewModel.isEditingExistingToDoTask {
-                        Button {
-                            viewModel.swiftDataManager.delete(toDoTask: viewModel.editedToDoTask)
-                            dismiss()
-                        } label: {
-                            Image(systemName: "trash")
-                                .tint(.red)
-                        }
+                    Button {
+                        viewModel.swiftDataManager.delete(toDoTask: viewModel.editedToDoTask)
+                        dismiss()
+                    } label: {
+                        Image(systemName: "trash")
+                            .tint(.red)
                     }
+                    .opacity(viewModel.isEditingExistingToDoTask ? 1.0 : 0.0)
+                    
                     Button("Save") {
                         if viewModel.isEditingExistingToDoTask {
                             viewModel.swiftDataManager.applyChangesFor(toDoTask: viewModel.editedToDoTask, draftToDoTask: viewModel.draftToDoTask)

@@ -36,19 +36,31 @@ struct MainView: View {
                             Text("Calendar")
                         }
                         .tag(MainViewModel.Tab.calendar)
+                    AccountView()
+                        .tabItem {
+                            Image(systemName: "person.fill")
+                            Text("Account")
+                        }
+                        .tag(MainViewModel.Tab.account)
                 } // -- TabView
                 .tint(.white)
                 .padding(.bottom, hasBottomSafeAreaInset ? -8 : 0)
                 .ignoresSafeArea()
                 
-                Button(action: {
-                    viewModel.isTaskDetailsViewPresented.toggle()
-                }, label: {
-                    AddTaskImage()
-                        .scaledToFit()
-                        .frame(width: 60)
-                        .offset(y: hasBottomSafeAreaInset ? -8 : -16)
-                })
+                HStack(alignment: .bottom) {
+                    Spacer()
+                    
+                    Button(action: {
+                        viewModel.isTaskDetailsViewPresented.toggle()
+                    }, label: {
+                        AddTaskImage()
+                    })
+                    .scaledToFit()
+                    .frame(width: 60)
+                    .padding(.bottom, hasBottomSafeAreaInset ? 52 : 60)
+                    .padding(.trailing, 8)
+                }
+                .opacity(viewModel.selectedTab == .account ? 0.0 : 1.0)
             } // -- ZStack bottom
             .ignoresSafeArea(.keyboard, edges: .all)
             .sheet(isPresented: $viewModel.isTaskDetailsViewPresented, content: {

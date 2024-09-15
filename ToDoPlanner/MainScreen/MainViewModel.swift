@@ -10,10 +10,11 @@ import SwiftUI
 @Observable
 final class MainViewModel {
     enum Tab {
-            case tasks
-            case calendar
-        }
-        
+        case tasks
+        case calendar
+        case account
+    }
+    
     var selectedTab: Tab
     var isTaskDetailsViewPresented = false
     

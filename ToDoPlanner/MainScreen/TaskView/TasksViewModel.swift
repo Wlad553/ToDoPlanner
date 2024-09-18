@@ -39,13 +39,8 @@ final class TasksViewModel {
     }
     
     func delete(toDoTask: ToDoTask) {
-        if let lastSection = toDoTasksSorted().last,
-           lastSection.value.contains(toDoTask) {
+        withAnimation {
             toDoTasks.removeAll(where: { $0 == toDoTask })
-        } else {
-            withAnimation {
-                toDoTasks.removeAll(where: { $0 == toDoTask })
-            }
         }
         
         swiftDataManager.delete(toDoTask: toDoTask)

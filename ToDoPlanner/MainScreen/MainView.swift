@@ -19,7 +19,7 @@ struct MainView: View {
     }
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack(alignment: .bottom) {
                 TabView(selection: $viewModel.selectedTab) {
                     TasksView(viewModel: TasksViewModel(isSearchBarPresent: true,
@@ -64,7 +64,7 @@ struct MainView: View {
             } // -- ZStack bottom
             .ignoresSafeArea(.keyboard, edges: .all)
             .sheet(isPresented: $viewModel.isTaskDetailsViewPresented, content: {
-                NavigationView {
+                NavigationStack {
                     TaskDetailsView(viewModel: TaskDetalisViewModel())
                 }
             })

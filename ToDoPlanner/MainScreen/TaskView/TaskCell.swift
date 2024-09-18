@@ -35,7 +35,7 @@ struct TaskCell: View {
                     .scaledToFit()
                     .frame(height: 25)
             }
-            .padding([.all], 16)
+            .padding(16)
         }
     }
 }

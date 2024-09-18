@@ -25,7 +25,7 @@ struct UnderlinedTextField: View {
 }
 
 #Preview {
-    @State var text = String()
+    @Previewable @State var text = String()
     
     return UnderlinedTextField(placeholder: "Placeholder", text: $text)
 }

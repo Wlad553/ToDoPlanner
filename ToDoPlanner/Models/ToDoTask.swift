@@ -50,7 +50,7 @@ final class ToDoTask: Identifiable {
         case home, work, education, productivity, entertainment, other
     }
     
-    let id = UUID()
+    var id = UUID()
     
     var title: String
     var desctiption: String

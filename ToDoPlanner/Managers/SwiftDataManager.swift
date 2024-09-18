@@ -8,17 +8,16 @@
 import SwiftUI
 import SwiftData
 
-final class SwiftDataManager {
-    static var mainContext: ModelContext?
-    
-    var context: ModelContext? {
-        Self.mainContext
+@MainActor
+struct SwiftDataManager {
+    var context: ModelContext {
+        ToDoTaskModelContainer.shared.container.mainContext
     }
     
     // MARK: Saved Objects
     var toDoTasks: [ToDoTask]? {
         let fetchDescriptor = FetchDescriptor<ToDoTask>()
-        return try? context?.fetch(fetchDescriptor)
+        return try? context.fetch(fetchDescriptor)
     }
     
     // MARK: - Data manipulation funcs
@@ -32,10 +31,10 @@ final class SwiftDataManager {
     }
     
     func save(toDoTask: ToDoTask) {
-        context?.insert(toDoTask)
+        context.insert(toDoTask)
     }
     
     func delete(toDoTask: ToDoTask) {
-        context?.delete(toDoTask)
+        context.delete(toDoTask)
     }
 }

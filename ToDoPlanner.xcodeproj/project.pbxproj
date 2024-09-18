@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F50933CA2C9AFCEB005BF46F /* ToDoTaskModelContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50933C92C9AFCEB005BF46F /* ToDoTaskModelContainer.swift */; };
 		F50D11722C7CD69200156420 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50D11712C7CD69200156420 /* LoginView.swift */; };
 		F512E7CE2BB95EBE00C9FBAA /* CheckMarkImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F512E7CD2BB95EBE00C9FBAA /* CheckMarkImage.swift */; };
 		F512E7D02BB98C5000C9FBAA /* SwiftDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F512E7CF2BB98C5000C9FBAA /* SwiftDataManager.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F50933C92C9AFCEB005BF46F /* ToDoTaskModelContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTaskModelContainer.swift; sourceTree = "<group>"; };
 		F50D11712C7CD69200156420 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		F512E7CD2BB95EBE00C9FBAA /* CheckMarkImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckMarkImage.swift; sourceTree = "<group>"; };
 		F512E7CF2BB98C5000C9FBAA /* SwiftDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftDataManager.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				F512E7CF2BB98C5000C9FBAA /* SwiftDataManager.swift */,
+				F50933C92C9AFCEB005BF46F /* ToDoTaskModelContainer.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 				F5A6FD482C2F15D1009E6DBC /* CalendarTasksView.swift in Sources */,
 				F554A1DD2C0F744E00AE506A /* RoundedContextView.swift in Sources */,
 				F5467DF72C3ABBA700537E08 /* CalendarTasksViewModel.swift in Sources */,
+				F50933CA2C9AFCEB005BF46F /* ToDoTaskModelContainer.swift in Sources */,
 				F5A254A42B8B88790076F694 /* TasksView.swift in Sources */,
 				F588C18C2C3C4ACA006B5FB8 /* CategoryView.swift in Sources */,
 				F55B645E2C2C6CF900C6336E /* TaskDetalisViewModel.swift in Sources */,

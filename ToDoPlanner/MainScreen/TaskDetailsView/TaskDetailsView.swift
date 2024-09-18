@@ -21,6 +21,9 @@ struct TaskDetailsView: View {
     @State private var dueDateOpacity: CGFloat = 1
     @State private var timeOpacity: CGFloat = 1
     
+    @State private var keyboardWillShowObserver: NSObjectProtocol?
+    @State private var keyboardWillHideObserver: NSObjectProtocol?
+    
     @FocusState private var focusField: FocusField?
     
     @Environment(\.dismiss) private var dismiss
@@ -141,26 +144,6 @@ struct TaskDetailsView: View {
                 timeOpacity = 1
             }
         }
-        .background {
-            GeometryReader { geometry in
-                Color.clear
-                    .onAppear {
-                        NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: .main) { notification in
-                            if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
-                                guard keyboardHeight < keyboardFrame.height else { return }
-                                withAnimation {
-                                    keyboardHeight = keyboardFrame.height + geometry.safeAreaInsets.bottom
-                                }
-                            }
-                        }
-                        NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main) { _ in
-                            withAnimation {
-                                keyboardHeight = 0
-                            }
-                        }
-                    }
-            }
-        }
         .padding(.horizontal, 8)
         .background(.charcoal)
         .toolbarTitleDisplayMode(.inline)
@@ -202,6 +185,33 @@ struct TaskDetailsView: View {
         }
         .onAppear {
             viewModel.revertDraftToDoTask()
+            
+            keyboardWillShowObserver = NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: .main) { notification in
+                if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
+                    guard keyboardHeight < keyboardFrame.height else { return }
+                    withAnimation {
+                        keyboardHeight = keyboardFrame.height
+                    }
+                }
+            }
+            
+            keyboardWillHideObserver = NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main) { _ in
+                withAnimation {
+                    keyboardHeight = 0
+                }
+            }
+        }
+        .onDisappear() {
+            if let showObserver = keyboardWillShowObserver {
+                NotificationCenter.default.removeObserver(showObserver)
+            }
+            
+            if let hideObserver = keyboardWillHideObserver {
+                NotificationCenter.default.removeObserver(hideObserver)
+            }
+            
+            keyboardWillShowObserver = nil
+            keyboardWillHideObserver = nil
         }
     } // -- body
     

@@ -93,7 +93,7 @@ struct TasksView: View {
                     } // -- ForEach Section
                     .padding(.horizontal, -8)
                 } // -- List
-                .listStyle(.grouped)
+                .listStyle(.insetGrouped)
                 .listRowSpacing(4)
                 .listSectionSpacing(0)
                 .scrollContentBackground(.hidden)
@@ -102,6 +102,7 @@ struct TasksView: View {
                 .ignoresSafeArea(.keyboard, edges: .all)
                 .scrollDismissesKeyboard(.immediately)
                 .scrollIndicators(.hidden)
+                .padding(.horizontal, -20)
                 
                 Text("All done!")
                     .font(.system(size: 35,
@@ -115,6 +116,7 @@ struct TasksView: View {
                 
                 Color.clear
                     .contentShape(Rectangle())
+                    .allowsHitTesting(viewModel.toDoTasksSorted().isEmpty)
                     .padding(.top, 60)
                     .ignoresSafeArea()
                     .gesture(

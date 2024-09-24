@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CalendarTasksView: View {
-    @State var viewModel = CalendarTasksViewModel()
+    @State var viewModel = TasksParentViewModel(selectedDateComponents: Calendar.current.dateComponents([.year, .month, .day], from: Date()))
     
     var body: some View {
         VStack {
@@ -25,8 +25,7 @@ struct CalendarTasksView: View {
                 .frame(height: 0.4)
                 .blur(radius: 0)
             
-            TasksView(viewModel: TasksViewModel(selectedDateComponents: $viewModel.selectedDateComponents,
-                                                selectedCategory: $viewModel.selectedCategory))
+            TasksView(viewModel: viewModel)
                 .padding(.top, -68)
         } // -- VStack
         .background(.charcoal)

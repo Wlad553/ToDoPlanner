@@ -1,6 +1,6 @@
 //
-//  DoTask.swift
-//  ToDo
+//  ToDoTask.swift
+//  ToDoPlanner
 //
 //  Created by Vladyslav Petrenko on 26/02/2024.
 //

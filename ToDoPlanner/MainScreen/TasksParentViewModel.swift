@@ -1,5 +1,5 @@
 //
-//  TasksViewModel.swift
+//  TasksParentViewModel.swift
 //  ToDoPlanner
 //
 //  Created by Vladyslav Petrenko on 27/06/2024.
@@ -9,26 +9,27 @@ import SwiftUI
 
 @MainActor
 @Observable
-final class TasksViewModel {
+class TasksParentViewModel {
     let swiftDataManager = SwiftDataManager()
     
-    var selectedDateComponents: Binding<DateComponents>
-    var searchText: Binding<String>
-    var selectedCategory: Binding<ToDoTask.Category?>
+    var selectedDateComponents: DateComponents
+    var searchText = String()
+    var selectedCategory: ToDoTask.Category?
     
     let isSearchBarPresent: Bool
+    var isTaskDetailsViewPresented = false {
+        didSet {
+            refreshToDoTasks()
+        }
+    }
     
     var toDoTasks: [ToDoTask] = []
     
     init(isSearchBarPresent: Bool = false,
-         selectedDateComponents: Binding<DateComponents> = .constant(DateComponents()),
-         searchText: Binding<String> = .constant(String()),
-         selectedCategory: Binding<ToDoTask.Category?>) {
+         selectedDateComponents: DateComponents = DateComponents()) {
         
         self.isSearchBarPresent = isSearchBarPresent
         self.selectedDateComponents = selectedDateComponents
-        self.searchText = searchText
-        self.selectedCategory = selectedCategory
         
         refreshToDoTasks()
     }
@@ -75,22 +76,22 @@ final class TasksViewModel {
     private func toDoTasksFiltered() -> [ToDoTask] {
         var toDoTasksFiltered = toDoTasks
         
-        if !searchText.wrappedValue.isEmpty {
+        if !searchText.isEmpty {
             toDoTasksFiltered = toDoTasksFiltered.filter { toDoTask in
-                toDoTask.title.contains(searchText.wrappedValue)
+                toDoTask.title.contains(searchText)
             }
         }
         
-        if let selectedCategory = selectedCategory.wrappedValue {
+        if let selectedCategory = selectedCategory {
             toDoTasksFiltered = toDoTasksFiltered.filter { toDoTask in
                 selectedCategory == toDoTask.category
             }
         }
         
-        if selectedDateComponents.wrappedValue != DateComponents() {
+        if selectedDateComponents != DateComponents() {
             toDoTasksFiltered = toDoTasksFiltered.filter { toDoTask in
                 let toDoTaskDateComponents = Calendar.current.dateComponents([.year, .month, .day], from: toDoTask.dueDate)
-                return toDoTaskDateComponents == selectedDateComponents.wrappedValue
+                return toDoTaskDateComponents == selectedDateComponents
             }
         }
         return toDoTasksFiltered

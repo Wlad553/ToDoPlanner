@@ -8,7 +8,7 @@
 import SwiftUI
 
 @Observable
-final class MainViewModel {
+final class MainViewModel: TasksParentViewModel {
     enum Tab {
         case tasks
         case calendar
@@ -16,12 +16,9 @@ final class MainViewModel {
     }
     
     var selectedTab: Tab
-    var isTaskDetailsViewPresented = false
-    
-    var searchText = String()
-    var selectedCategory: ToDoTask.Category?
     
     init(selectedTab: Tab) {
         self.selectedTab = selectedTab
+        super.init(isSearchBarPresent: true, selectedDateComponents: DateComponents())
     }
 }

@@ -45,14 +45,16 @@ struct WelcomeView: View {
                         viewModel.authAction = .signUp
                     }, label: {
                         RoundedButtonLabel(labelText: "Sign Up",
-                                           backgroundStyle: .lavenderBliss)
+                                           foregroundColor: .white,
+                                           backgroundColor: .lavenderBliss)
                     })
                     
                     Button(action: {
                         viewModel.authAction = .signIn
                     }, label: {
                         RoundedButtonLabel(labelText: "Sign In",
-                                           backgroundStyle: .gray)
+                                           foregroundColor: .white,
+                                           backgroundColor: .gray)
                     })
                 }
             } // -- VStack

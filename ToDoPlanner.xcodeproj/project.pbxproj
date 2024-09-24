@@ -54,6 +54,7 @@
 		F5286CC92C2DC44D00541793 /* TasksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewModel.swift; sourceTree = "<group>"; };
 		F528BE2E2C404E9900765759 /* NoSearchResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoSearchResultsView.swift; sourceTree = "<group>"; };
 		F52A0BE42C038CB5005C2DBB /* EnvironmentValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentValues.swift; sourceTree = "<group>"; };
+		F5327D4F2CA073F300AF2C70 /* ToDoPlanner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ToDoPlanner.entitlements; sourceTree = "<group>"; };
 		F542A7522C36F55F00A38A32 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		F5467DF62C3ABBA700537E08 /* CalendarTasksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTasksViewModel.swift; sourceTree = "<group>"; };
 		F54C9B302C7E267300A0D5C5 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -177,6 +178,7 @@
 		F5A254A02B8B88790076F694 /* ToDoPlanner */ = {
 			isa = PBXGroup;
 			children = (
+				F5327D4F2CA073F300AF2C70 /* ToDoPlanner.entitlements */,
 				F5A254A12B8B88790076F694 /* ToDoPlannerApp.swift */,
 				F59E6FF62C43D38B003912C9 /* Managers */,
 				F5DF923A2B8D026F00137855 /* Models */,
@@ -496,6 +498,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ToDoPlanner/ToDoPlanner.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ToDoPlanner/Preview Content\"";
@@ -533,6 +536,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ToDoPlanner/ToDoPlanner.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ToDoPlanner/Preview Content\"";

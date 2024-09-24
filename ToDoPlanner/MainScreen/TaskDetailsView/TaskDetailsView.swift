@@ -219,3 +219,7 @@ struct TaskDetailsView: View {
         self.viewModel = viewModel
     }
 }
+
+#Preview {
+    TaskDetailsView(viewModel: TaskDetalisViewModel())
+}

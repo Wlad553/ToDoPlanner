@@ -32,19 +32,29 @@ struct LoginView: View {
                         Button(action: {
                             
                         }, label: {
-                            RoundedButtonLabel(labelText: "Facebook", backgroundStyle: .lavenderBliss)
+                            RoundedButtonLabel(logoImage: Image("facebookLogo"),
+                                               labelText: "Sign in with Facebook",
+                                               foregroundColor: .white,
+                                               backgroundColor: .facebookButton)
                         })
                         
                         Button(action: {
                             
                         }, label: {
-                            RoundedButtonLabel(labelText: "Google", backgroundStyle: .lavenderBliss)
+                            RoundedButtonLabel(logoImage: Image("googleLogo"),
+                                               labelText: "Sign in with Google",
+                                               foregroundColor: .black,
+                                               backgroundColor: .white)
+                            .foregroundStyle(.charcoal)
                         })
                         
                         Button(action: {
                             
                         }, label: {
-                            RoundedButtonLabel(labelText: "Apple", backgroundStyle: .lavenderBliss)
+                            RoundedButtonLabel(logoImage: Image("appleLogo"),
+                                               labelText: "Sign in with Apple",
+                                               foregroundColor: .black,
+                                               backgroundColor: .white)
                         })
                         
                         Divider()
@@ -73,7 +83,9 @@ struct LoginView: View {
                         Button(action: {
                             
                         }, label: {
-                            RoundedButtonLabel(labelText: viewModel.authAction.string, backgroundStyle: .lavenderBliss)
+                            RoundedButtonLabel(labelText: viewModel.authAction.string,
+                                               foregroundColor: .white,
+                                               backgroundColor: .lavenderBliss)
                         })
                         .padding(.vertical, 16)
                         

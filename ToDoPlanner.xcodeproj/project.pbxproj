@@ -33,6 +33,7 @@
 		F5C02B122BFB45D900C85C20 /* PlaceholderTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C02B112BFB45D900C85C20 /* PlaceholderTextEditor.swift */; };
 		F5C02B162BFB6A2900C85C20 /* TaskDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C02B152BFB6A2900C85C20 /* TaskDetailsCell.swift */; };
 		F5D54EF42BAB379000D49CF1 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D54EF32BAB379000D49CF1 /* TaskCell.swift */; };
+		F5D8CFE72CA44D0E00869755 /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D8CFE62CA44D0E00869755 /* AccountViewModel.swift */; };
 		F5DF923C2B8D027B00137855 /* ToDoTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DF923B2B8D027B00137855 /* ToDoTask.swift */; };
 		F5E92F9A2BBC7F0400803BFB /* AddTaskImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E92F992BBC7F0400803BFB /* AddTaskImage.swift */; };
 		F5E92F9C2BBF1E8200803BFB /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E92F9B2BBF1E8200803BFB /* MainView.swift */; };
@@ -72,6 +73,7 @@
 		F5C02B112BFB45D900C85C20 /* PlaceholderTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTextEditor.swift; sourceTree = "<group>"; };
 		F5C02B152BFB6A2900C85C20 /* TaskDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailsCell.swift; sourceTree = "<group>"; };
 		F5D54EF32BAB379000D49CF1 /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
+		F5D8CFE62CA44D0E00869755 /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
 		F5DF923B2B8D027B00137855 /* ToDoTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoTask.swift; sourceTree = "<group>"; };
 		F5E92F992BBC7F0400803BFB /* AddTaskImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskImage.swift; sourceTree = "<group>"; };
 		F5E92F9B2BBF1E8200803BFB /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				F5F1414D2C97474000DC962B /* AccountView.swift */,
+				F5D8CFE62CA44D0E00869755 /* AccountViewModel.swift */,
 			);
 			path = AccountView;
 			sourceTree = "<group>";
@@ -343,6 +346,7 @@
 				F5F690E82C90CAC600B6E5C7 /* WelcomeViewModel.swift in Sources */,
 				F5B10FC32C3EDE1800BEB7BC /* SearchBar.swift in Sources */,
 				F5867C7E2C7E17B100F87677 /* UnderlinedTextField.swift in Sources */,
+				F5D8CFE72CA44D0E00869755 /* AccountViewModel.swift in Sources */,
 				F5C02B162BFB6A2900C85C20 /* TaskDetailsCell.swift in Sources */,
 				F50D11722C7CD69200156420 /* LoginView.swift in Sources */,
 				F528BE2F2C404E9900765759 /* NoSearchResultsView.swift in Sources */,

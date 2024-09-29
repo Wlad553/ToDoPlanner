@@ -10,13 +10,16 @@ import SwiftUI
 struct LoginView: View {
     @State var viewModel: LoginViewModel
     
-    private let upperButtonsStackFrameHeight: CGFloat = 208
     @State private var upperButtonsStackOpacity: CGFloat = 1
     @State private var bottomLogInControlsPadding: CGFloat = 0
     
-    @FocusState private var isTextFieldFocused: Bool
+    private let upperButtonsStackFrameHeight: CGFloat = 148
+    private let bridge = BridgeVCView()
     
+    @Environment(AppState.self) private var appState
     @Environment(\.dismiss) private var dismiss
+    
+    @FocusState private var isTextFieldFocused: Bool
     
     var body: some View {
         NavigationStack {
@@ -30,7 +33,7 @@ struct LoginView: View {
                 VStack(alignment: .center) {
                     VStack {
                         Button(action: {
-                            
+                            viewModel.performFacebookSignIn()
                         }, label: {
                             RoundedButtonLabel(logoImage: Image("facebookLogo"),
                                                labelText: "Sign in with Facebook",
@@ -39,7 +42,7 @@ struct LoginView: View {
                         })
                         
                         Button(action: {
-                            
+                            viewModel.performGoogleSignIn(withPresenting: bridge.viewController)
                         }, label: {
                             RoundedButtonLabel(logoImage: Image("googleLogo"),
                                                labelText: "Sign in with Google",
@@ -48,22 +51,13 @@ struct LoginView: View {
                             .foregroundStyle(.charcoal)
                         })
                         
-                        Button(action: {
-                            
-                        }, label: {
-                            RoundedButtonLabel(logoImage: Image("appleLogo"),
-                                               labelText: "Sign in with Apple",
-                                               foregroundColor: .black,
-                                               backgroundColor: .white)
-                        })
-                        
                         Divider()
-                            .padding(.top, 24)
+                            .padding(.top, 16)
                     } // -- ZStack -> VStack -> VStack
                     .frame(height: upperButtonsStackFrameHeight)
                     .opacity(upperButtonsStackOpacity)
-                    .onChange(of: isTextFieldFocused) { _, newValue in
-                        if newValue {
+                    .onChange(of: isTextFieldFocused) { _, isTextFieldFocused in
+                        if isTextFieldFocused {
                             withAnimation(.linear(duration: 0.4)) {
                                 upperButtonsStackOpacity = 0
                             }
@@ -77,16 +71,34 @@ struct LoginView: View {
                     VStack {
                         VStack(spacing: 16) {
                             UnderlinedTextField(placeholder: "Email", text: $viewModel.email)
-                            UnderlinedTextField(placeholder: "Password",text: $viewModel.password)
+                                .autocorrectionDisabled()
+                                .keyboardType(.emailAddress)
+                                .textInputAutocapitalization(.never)
+                            
+                            UnderlinedSecureField(placeholder: "Password",text: $viewModel.password)
                         } // -- ZStack -> VStack -> VStack -> VStack
                         
                         Button(action: {
                             
+                            if viewModel.authAction == .signIn {
+                                viewModel.performEmailSignIn()
+                            } else if  viewModel.authAction == .signUp {
+                                viewModel.performEmailSignUp()
+                            }
+                            
                         }, label: {
-                            RoundedButtonLabel(labelText: viewModel.authAction.string,
-                                               foregroundColor: .white,
-                                               backgroundColor: .lavenderBliss)
+                            ZStack(alignment: .leading) {
+                                RoundedButtonLabel(labelText: viewModel.authAction.string,
+                                                   foregroundColor: .white,
+                                                   backgroundColor: viewModel.isSignInUpInProgress ? .gray : .lavenderBliss)
+                                
+                                ProgressView()
+                                    .padding(.leading, 8)
+                                    .progressViewStyle(CircularProgressViewStyle())
+                                    .opacity(viewModel.isSignInUpInProgress ? 1 : 0)
+                            }
                         })
+                        .disabled(viewModel.isSignInUpInProgress)
                         .padding(.vertical, 16)
                         
                         Button(viewModel.authAction.opposite().string) {
@@ -117,6 +129,17 @@ struct LoginView: View {
                 }
             }
         } // -- NavigationStack
+        .addBridge(bridge)
+        .onChange(of: viewModel.successfullyLoggedIn) { _, successfullyLoggedIn in
+            if successfullyLoggedIn {
+                appState.welcomeViewIsPresented.toggle()
+            }
+        }
+        .alert(viewModel.errorMessage, isPresented: $viewModel.isSignInUpErrorAlertPresented) {
+            Button("Close") {
+                viewModel.isSignInUpErrorAlertPresented.toggle()
+            }
+        }
     }
 }
 

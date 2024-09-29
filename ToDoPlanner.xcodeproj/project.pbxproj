@@ -17,6 +17,8 @@
 		F5327D462CA0645200AF2C70 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = F5327D452CA0645200AF2C70 /* FacebookCore */; };
 		F5327D482CA0645200AF2C70 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = F5327D472CA0645200AF2C70 /* FacebookLogin */; };
 		F542A7532C36F55F00A38A32 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F542A7522C36F55F00A38A32 /* CalendarView.swift */; };
+		F543DD262CA5BBAD00942F07 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F543DD252CA5BBAD00942F07 /* AppState.swift */; };
+		F543DD2F2CA5D31F00942F07 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = F543DD2E2CA5D31F00942F07 /* GoogleSignIn */; };
 		F54C9B312C7E267300A0D5C5 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54C9B302C7E267300A0D5C5 /* LoginViewModel.swift */; };
 		F554A1DD2C0F744E00AE506A /* RoundedContextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F554A1DC2C0F744E00AE506A /* RoundedContextView.swift */; };
 		F55B645E2C2C6CF900C6336E /* TaskDetalisViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55B645D2C2C6CF900C6336E /* TaskDetalisViewModel.swift */; };
@@ -34,10 +36,19 @@
 		F5C02B162BFB6A2900C85C20 /* TaskDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C02B152BFB6A2900C85C20 /* TaskDetailsCell.swift */; };
 		F5D54EF42BAB379000D49CF1 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D54EF32BAB379000D49CF1 /* TaskCell.swift */; };
 		F5D8CFE72CA44D0E00869755 /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D8CFE62CA44D0E00869755 /* AccountViewModel.swift */; };
+		F5D8CFE92CA45FAC00869755 /* FBUserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D8CFE82CA45FAC00869755 /* FBUserProfile.swift */; };
+		F5D8CFEC2CA4612B00869755 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = F5D8CFEB2CA4612B00869755 /* FirebaseAuth */; };
+		F5D8CFEE2CA4612B00869755 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = F5D8CFED2CA4612B00869755 /* FirebaseDatabase */; };
+		F5D8CFF22CA4678700869755 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F5D8CFF12CA4678700869755 /* GoogleService-Info.plist */; };
+		F5D8CFF42CA4697000869755 /* LoginManager+nonce.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D8CFF32CA4697000869755 /* LoginManager+nonce.swift */; };
+		F5D8CFF62CA46B7D00869755 /* FirebaseDatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D8CFF52CA46B7D00869755 /* FirebaseDatabaseManager.swift */; };
 		F5DF923C2B8D027B00137855 /* ToDoTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DF923B2B8D027B00137855 /* ToDoTask.swift */; };
 		F5E92F9A2BBC7F0400803BFB /* AddTaskImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E92F992BBC7F0400803BFB /* AddTaskImage.swift */; };
 		F5E92F9C2BBF1E8200803BFB /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E92F9B2BBF1E8200803BFB /* MainView.swift */; };
 		F5E92FA12BBF217300803BFB /* TaskDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E92FA02BBF217300803BFB /* TaskDetailsView.swift */; };
+		F5EC644F2CA95A5C009F9085 /* View+addBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EC644E2CA95A5C009F9085 /* View+addBridge.swift */; };
+		F5EC64512CA95A94009F9085 /* BridgeVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EC64502CA95A94009F9085 /* BridgeVCView.swift */; };
+		F5EC64552CA9A927009F9085 /* UnderlinedSecureField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EC64542CA9A927009F9085 /* UnderlinedSecureField.swift */; };
 		F5ECCDA52C89E35800A91146 /* RoundedButtonLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ECCDA42C89E35800A91146 /* RoundedButtonLabel.swift */; };
 		F5F1414E2C97474000DC962B /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F1414D2C97474000DC962B /* AccountView.swift */; };
 		F5F690E82C90CAC600B6E5C7 /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F690E72C90CAC600B6E5C7 /* WelcomeViewModel.swift */; };
@@ -56,6 +67,8 @@
 		F52A0BE42C038CB5005C2DBB /* EnvironmentValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentValues.swift; sourceTree = "<group>"; };
 		F5327D4F2CA073F300AF2C70 /* ToDoPlanner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ToDoPlanner.entitlements; sourceTree = "<group>"; };
 		F542A7522C36F55F00A38A32 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		F543DD252CA5BBAD00942F07 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		F543DD2B2CA5C82F00942F07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F54C9B302C7E267300A0D5C5 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		F554A1DC2C0F744E00AE506A /* RoundedContextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedContextView.swift; sourceTree = "<group>"; };
 		F55B645D2C2C6CF900C6336E /* TaskDetalisViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetalisViewModel.swift; sourceTree = "<group>"; };
@@ -74,10 +87,17 @@
 		F5C02B152BFB6A2900C85C20 /* TaskDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailsCell.swift; sourceTree = "<group>"; };
 		F5D54EF32BAB379000D49CF1 /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		F5D8CFE62CA44D0E00869755 /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
+		F5D8CFE82CA45FAC00869755 /* FBUserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBUserProfile.swift; sourceTree = "<group>"; };
+		F5D8CFF12CA4678700869755 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F5D8CFF32CA4697000869755 /* LoginManager+nonce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginManager+nonce.swift"; sourceTree = "<group>"; };
+		F5D8CFF52CA46B7D00869755 /* FirebaseDatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDatabaseManager.swift; sourceTree = "<group>"; };
 		F5DF923B2B8D027B00137855 /* ToDoTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoTask.swift; sourceTree = "<group>"; };
 		F5E92F992BBC7F0400803BFB /* AddTaskImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskImage.swift; sourceTree = "<group>"; };
 		F5E92F9B2BBF1E8200803BFB /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		F5E92FA02BBF217300803BFB /* TaskDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailsView.swift; sourceTree = "<group>"; };
+		F5EC644E2CA95A5C009F9085 /* View+addBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+addBridge.swift"; sourceTree = "<group>"; };
+		F5EC64502CA95A94009F9085 /* BridgeVCView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BridgeVCView.swift; sourceTree = "<group>"; };
+		F5EC64542CA9A927009F9085 /* UnderlinedSecureField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedSecureField.swift; sourceTree = "<group>"; };
 		F5ECCDA42C89E35800A91146 /* RoundedButtonLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButtonLabel.swift; sourceTree = "<group>"; };
 		F5F1414D2C97474000DC962B /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		F5F690E72C90CAC600B6E5C7 /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
@@ -91,7 +111,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F543DD2F2CA5D31F00942F07 /* GoogleSignIn in Frameworks */,
 				F5327D482CA0645200AF2C70 /* FacebookLogin in Frameworks */,
+				F5D8CFEC2CA4612B00869755 /* FirebaseAuth in Frameworks */,
+				F5D8CFEE2CA4612B00869755 /* FirebaseDatabase in Frameworks */,
 				F5327D462CA0645200AF2C70 /* FacebookCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -113,7 +136,7 @@
 			path = MainScreen;
 			sourceTree = "<group>";
 		};
-		F50D11702C7CD66300156420 /* WelcomeScreen */ = {
+		F50D11702C7CD66300156420 /* LoginScreen */ = {
 			isa = PBXGroup;
 			children = (
 				F50D11712C7CD69200156420 /* LoginView.swift */,
@@ -121,7 +144,7 @@
 				F560C35D2C80C4D600BB5210 /* WelcomeView.swift */,
 				F5F690E72C90CAC600B6E5C7 /* WelcomeViewModel.swift */,
 			);
-			path = WelcomeScreen;
+			path = LoginScreen;
 			sourceTree = "<group>";
 		};
 		F512E7CB2BB95DD500C9FBAA /* Helpers */ = {
@@ -145,7 +168,9 @@
 				F5B10FC22C3EDE1800BEB7BC /* SearchBar.swift */,
 				F528BE2E2C404E9900765759 /* NoSearchResultsView.swift */,
 				F5867C7D2C7E17B100F87677 /* UnderlinedTextField.swift */,
+				F5EC64542CA9A927009F9085 /* UnderlinedSecureField.swift */,
 				F5ECCDA42C89E35800A91146 /* RoundedButtonLabel.swift */,
+				F5EC64502CA95A94009F9085 /* BridgeVCView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -153,6 +178,7 @@
 		F59E6FF62C43D38B003912C9 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				F5D8CFF52CA46B7D00869755 /* FirebaseDatabaseManager.swift */,
 				F512E7CF2BB98C5000C9FBAA /* SwiftDataManager.swift */,
 				F50933C92C9AFCEB005BF46F /* ToDoTaskModelContainer.swift */,
 			);
@@ -179,15 +205,18 @@
 		F5A254A02B8B88790076F694 /* ToDoPlanner */ = {
 			isa = PBXGroup;
 			children = (
+				F543DD2B2CA5C82F00942F07 /* Info.plist */,
 				F5327D4F2CA073F300AF2C70 /* ToDoPlanner.entitlements */,
 				F5A254A12B8B88790076F694 /* ToDoPlannerApp.swift */,
+				F543DD252CA5BBAD00942F07 /* AppState.swift */,
 				F59E6FF62C43D38B003912C9 /* Managers */,
 				F5DF923A2B8D026F00137855 /* Models */,
-				F50D11702C7CD66300156420 /* WelcomeScreen */,
+				F50D11702C7CD66300156420 /* LoginScreen */,
 				F50D116F2C7CD61100156420 /* MainScreen */,
 				F512E7CB2BB95DD500C9FBAA /* Helpers */,
 				F5FE5A9D2BBB06AF002EEF59 /* Utility */,
 				F5A254A52B8B887A0076F694 /* Assets.xcassets */,
+				F5D8CFF12CA4678700869755 /* GoogleService-Info.plist */,
 				F5A254A72B8B887A0076F694 /* Preview Content */,
 			);
 			path = ToDoPlanner;
@@ -222,6 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				F5DF923B2B8D027B00137855 /* ToDoTask.swift */,
+				F5D8CFE82CA45FAC00869755 /* FBUserProfile.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -250,6 +280,8 @@
 			children = (
 				F5FE5A9A2BBAAE41002EEF59 /* Animation+Extension.swift */,
 				F52A0BE42C038CB5005C2DBB /* EnvironmentValues.swift */,
+				F5D8CFF32CA4697000869755 /* LoginManager+nonce.swift */,
+				F5EC644E2CA95A5C009F9085 /* View+addBridge.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -308,6 +340,8 @@
 			mainGroup = F5A254952B8B88790076F694;
 			packageReferences = (
 				F5327D442CA0645200AF2C70 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
+				F5D8CFEA2CA4612B00869755 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				F543DD2D2CA5D31F00942F07 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 			);
 			productRefGroup = F5A2549F2B8B88790076F694 /* Products */;
 			projectDirPath = "";
@@ -324,6 +358,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5A254A92B8B887A0076F694 /* Preview Assets.xcassets in Resources */,
+				F5D8CFF22CA4678700869755 /* GoogleService-Info.plist in Resources */,
 				F5A254B12B8B8BC90076F694 /* .gitignore in Resources */,
 				F5A254A62B8B887A0076F694 /* Assets.xcassets in Resources */,
 			);
@@ -341,6 +376,7 @@
 				F5FE5A9F2BBB0724002EEF59 /* NumericDateFormatter.swift in Sources */,
 				F5E92F9A2BBC7F0400803BFB /* AddTaskImage.swift in Sources */,
 				F560C35E2C80C4D600BB5210 /* WelcomeView.swift in Sources */,
+				F5D8CFE92CA45FAC00869755 /* FBUserProfile.swift in Sources */,
 				F5F690EA2C90CB4B00B6E5C7 /* MainViewModel.swift in Sources */,
 				F54C9B312C7E267300A0D5C5 /* LoginViewModel.swift in Sources */,
 				F5F690E82C90CAC600B6E5C7 /* WelcomeViewModel.swift in Sources */,
@@ -356,13 +392,19 @@
 				F52A0BE52C038CB5005C2DBB /* EnvironmentValues.swift in Sources */,
 				F5A6FD482C2F15D1009E6DBC /* CalendarTasksView.swift in Sources */,
 				F554A1DD2C0F744E00AE506A /* RoundedContextView.swift in Sources */,
+				F5EC64512CA95A94009F9085 /* BridgeVCView.swift in Sources */,
+				F5EC64552CA9A927009F9085 /* UnderlinedSecureField.swift in Sources */,
+				F5D8CFF62CA46B7D00869755 /* FirebaseDatabaseManager.swift in Sources */,
 				F50933CA2C9AFCEB005BF46F /* ToDoTaskModelContainer.swift in Sources */,
+				F5EC644F2CA95A5C009F9085 /* View+addBridge.swift in Sources */,
+				F5D8CFF42CA4697000869755 /* LoginManager+nonce.swift in Sources */,
 				F5A254A42B8B88790076F694 /* TasksView.swift in Sources */,
 				F588C18C2C3C4ACA006B5FB8 /* CategoryView.swift in Sources */,
 				F55B645E2C2C6CF900C6336E /* TaskDetalisViewModel.swift in Sources */,
 				F5286CCA2C2DC44D00541793 /* TasksParentViewModel.swift in Sources */,
 				F5E92F9C2BBF1E8200803BFB /* MainView.swift in Sources */,
 				F5C02B122BFB45D900C85C20 /* PlaceholderTextEditor.swift in Sources */,
+				F543DD262CA5BBAD00942F07 /* AppState.swift in Sources */,
 				F5E92FA12BBF217300803BFB /* TaskDetailsView.swift in Sources */,
 				F5A254A22B8B88790076F694 /* ToDoPlannerApp.swift in Sources */,
 				F5D54EF42BAB379000D49CF1 /* TaskCell.swift in Sources */,
@@ -505,6 +547,7 @@
 				DEVELOPMENT_TEAM = VQ3NGD79KV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ToDoPlanner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "To Do Planner";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -543,6 +586,7 @@
 				DEVELOPMENT_TEAM = VQ3NGD79KV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ToDoPlanner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "To Do Planner";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -597,8 +641,24 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
 			requirement = {
+				kind = exactVersion;
+				version = 17.1.0;
+			};
+		};
+		F543DD2D2CA5D31F00942F07 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 14.1.0;
+				minimumVersion = 8.0.0;
+			};
+		};
+		F5D8CFEA2CA4612B00869755 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.2.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -613,6 +673,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F5327D442CA0645200AF2C70 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
 			productName = FacebookLogin;
+		};
+		F543DD2E2CA5D31F00942F07 /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F543DD2D2CA5D31F00942F07 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		F5D8CFEB2CA4612B00869755 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F5D8CFEA2CA4612B00869755 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		F5D8CFED2CA4612B00869755 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F5D8CFEA2CA4612B00869755 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

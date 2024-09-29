@@ -8,19 +8,43 @@
 import SwiftUI
 import SwiftData
 import FBSDKCoreKit
+import GoogleSignIn
+import FirebaseCore
 
 @main
 struct ToDoPlannerApp: App {
+    @State var appState = AppState()
+    
+    @Environment(\.scenePhase) private var scenePhase
+    
     var body: some Scene {
         WindowGroup {
-            WelcomeView()
+            MainView()
+                .opacity(appState.welcomeViewIsPresented ? 0 : 1)
+                .environment(appState)
+                .onAppear {
+                    if !FirebaseApp.isDefaultAppConfigured() {
+                        ApplicationDelegate.shared.application(UIApplication.shared, didFinishLaunchingWithOptions: nil)
+                        FirebaseApp.configure()
+                    }
+                }
                 .onOpenURL { url in
+                    GIDSignIn.sharedInstance.handle(url)
                     ApplicationDelegate.shared.application(UIApplication.shared,
                                                            open: url,
                                                            sourceApplication: nil,
                                                            annotation: [UIApplication.OpenURLOptionsKey.annotation])
                 }
-        }
+                .fullScreenCover(isPresented: $appState.welcomeViewIsPresented, content: {
+                    WelcomeView()
+                        .environment(appState)
+                })
+        } // -- WindowGroup
         .modelContainer(ToDoTaskModelContainer.shared.container)
+        .onChange(of: scenePhase) { _, newScenePhase in
+            if newScenePhase == .active  {
+                appState.checkAuthenticationStatus()
+            }
+        }
     }
 }

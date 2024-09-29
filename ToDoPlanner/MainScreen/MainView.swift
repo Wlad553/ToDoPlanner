@@ -11,6 +11,8 @@ import SwiftData
 struct MainView: View {
     @State var viewModel = MainViewModel(selectedTab: .tasks)
     
+    @Environment(AppState.self) private var appState
+    
     private var hasBottomSafeAreaInset: Bool {
         let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
         let mainWindow = windowScene?.windows.first
@@ -21,20 +23,23 @@ struct MainView: View {
     var body: some View {
         ZStack(alignment: .bottom) {
             TabView(selection: $viewModel.selectedTab) {
-                TasksView(viewModel: viewModel)
+                NavigationStack {
+                    TasksView(viewModel: viewModel)
+                }
                 .tabItem {
                     Image(systemName: "list.bullet.clipboard")
                     Text("Tasks")
                 }
                 .tag(MainViewModel.Tab.tasks)
                 
-                
-                CalendarTasksView()
-                    .tabItem {
-                        Image(systemName: "calendar")
-                        Text("Calendar")
-                    }
-                    .tag(MainViewModel.Tab.calendar)
+                NavigationStack {
+                    CalendarTasksView()
+                }
+                .tabItem {
+                    Image(systemName: "calendar")
+                    Text("Calendar")
+                }
+                .tag(MainViewModel.Tab.calendar)
                 
                 AccountView()
                     .tabItem {
@@ -54,6 +59,11 @@ struct MainView: View {
             tabBarAppearance.backgroundEffect = UIBlurEffect(style: .systemChromeMaterial)
             UITabBar.appearance().standardAppearance = tabBarAppearance
             UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
+        }
+        .onChange(of: appState.welcomeViewIsPresented) { _, welcomeViewIsPresented in
+            if welcomeViewIsPresented {
+                viewModel.selectedTab = .tasks
+            }
         }
     }
 }

@@ -56,6 +56,9 @@ struct TasksView: View {
                                         EmptyView()
                                     }
                                     TaskCell(toDoTask: toDoTask)
+                                        .onChange(of: toDoTask.isCompleted) { _, _ in
+                                            viewModel.firebaseDatabaseManager.updateTaskInDatabase(toDoTask: toDoTask)
+                                        }
                                 } // -- ZStack
                                 .swipeActions {
                                     Button(role: .destructive) {

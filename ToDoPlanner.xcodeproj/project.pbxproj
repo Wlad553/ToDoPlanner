@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		F50933CA2C9AFCEB005BF46F /* ToDoTaskModelContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50933C92C9AFCEB005BF46F /* ToDoTaskModelContainer.swift */; };
 		F50D11722C7CD69200156420 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50D11712C7CD69200156420 /* LoginView.swift */; };
-		F512E7CE2BB95EBE00C9FBAA /* CheckMarkImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F512E7CD2BB95EBE00C9FBAA /* CheckMarkImage.swift */; };
+		F512E7CE2BB95EBE00C9FBAA /* CheckMarkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F512E7CD2BB95EBE00C9FBAA /* CheckMarkButton.swift */; };
 		F512E7D02BB98C5000C9FBAA /* SwiftDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F512E7CF2BB98C5000C9FBAA /* SwiftDataManager.swift */; };
 		F5286CCA2C2DC44D00541793 /* TasksParentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5286CC92C2DC44D00541793 /* TasksParentViewModel.swift */; };
 		F528BE2F2C404E9900765759 /* NoSearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F528BE2E2C404E9900765759 /* NoSearchResultsView.swift */; };
@@ -60,7 +60,7 @@
 /* Begin PBXFileReference section */
 		F50933C92C9AFCEB005BF46F /* ToDoTaskModelContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTaskModelContainer.swift; sourceTree = "<group>"; };
 		F50D11712C7CD69200156420 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		F512E7CD2BB95EBE00C9FBAA /* CheckMarkImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckMarkImage.swift; sourceTree = "<group>"; };
+		F512E7CD2BB95EBE00C9FBAA /* CheckMarkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckMarkButton.swift; sourceTree = "<group>"; };
 		F512E7CF2BB98C5000C9FBAA /* SwiftDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftDataManager.swift; sourceTree = "<group>"; };
 		F5286CC92C2DC44D00541793 /* TasksParentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksParentViewModel.swift; sourceTree = "<group>"; };
 		F528BE2E2C404E9900765759 /* NoSearchResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoSearchResultsView.swift; sourceTree = "<group>"; };
@@ -159,7 +159,7 @@
 		F512E7CC2BB95E9400C9FBAA /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F512E7CD2BB95EBE00C9FBAA /* CheckMarkImage.swift */,
+				F512E7CD2BB95EBE00C9FBAA /* CheckMarkButton.swift */,
 				F5E92F992BBC7F0400803BFB /* AddTaskImage.swift */,
 				F5C02B112BFB45D900C85C20 /* PlaceholderTextEditor.swift */,
 				F554A1DC2C0F744E00AE506A /* RoundedContextView.swift */,
@@ -178,8 +178,8 @@
 		F59E6FF62C43D38B003912C9 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				F5D8CFF52CA46B7D00869755 /* FirebaseDatabaseManager.swift */,
 				F512E7CF2BB98C5000C9FBAA /* SwiftDataManager.swift */,
+				F5D8CFF52CA46B7D00869755 /* FirebaseDatabaseManager.swift */,
 				F50933C92C9AFCEB005BF46F /* ToDoTaskModelContainer.swift */,
 			);
 			path = Managers;
@@ -388,7 +388,7 @@
 				F528BE2F2C404E9900765759 /* NoSearchResultsView.swift in Sources */,
 				F5ECCDA52C89E35800A91146 /* RoundedButtonLabel.swift in Sources */,
 				F542A7532C36F55F00A38A32 /* CalendarView.swift in Sources */,
-				F512E7CE2BB95EBE00C9FBAA /* CheckMarkImage.swift in Sources */,
+				F512E7CE2BB95EBE00C9FBAA /* CheckMarkButton.swift in Sources */,
 				F52A0BE52C038CB5005C2DBB /* EnvironmentValues.swift in Sources */,
 				F5A6FD482C2F15D1009E6DBC /* CalendarTasksView.swift in Sources */,
 				F554A1DD2C0F744E00AE506A /* RoundedContextView.swift in Sources */,

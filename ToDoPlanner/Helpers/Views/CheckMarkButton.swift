@@ -1,5 +1,5 @@
 //
-//  CheckMarkImage.swift
+//  CheckMarkButton.swift
 //  ToDoPlanner
 //
 //  Created by Vladyslav Petrenko on 31/03/2024.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CheckMarkImage: View {
+struct CheckMarkButton: View {
     @Binding var isCheckMarkFilled: Bool
     
     var body: some View {
@@ -36,13 +36,13 @@ struct CheckMarkImage: View {
 }
 
 #Preview {
-    struct CheckMarkImageContainer: View {
+    struct CheckMarkButtonContainer: View {
         @State private var isCheckMarkFilled = false
         
         var body: some View {
-            CheckMarkImage(isCheckMarkFilled: $isCheckMarkFilled)
+            CheckMarkButton(isCheckMarkFilled: $isCheckMarkFilled)
         }
     }
     
-    return CheckMarkImageContainer()
+    return CheckMarkButtonContainer()
 }

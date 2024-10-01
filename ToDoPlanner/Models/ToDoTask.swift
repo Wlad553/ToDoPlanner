@@ -77,6 +77,19 @@ final class ToDoTask: Identifiable {
         self.priority = .low
         self.isCompleted = false
     }
+    
+    // MARK: Utility funcs
+    func toDictionary() -> [String: Any] {
+        return [
+            "id": id.uuidString,
+            "title": title,
+            "description": desctiption,
+            "category": category.rawValue,
+            "dueDate": dueDate.timeIntervalSince1970,
+            "priority": priority.rawValue,
+            "isCompleted": isCompleted
+        ]
+    }
 }
 
 // MARK: ToDoTask: Hashable

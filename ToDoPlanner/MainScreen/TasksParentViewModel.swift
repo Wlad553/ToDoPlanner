@@ -11,6 +11,7 @@ import SwiftUI
 @Observable
 class TasksParentViewModel {
     let swiftDataManager = SwiftDataManager()
+    let firebaseDatabaseManager = FirebaseDatabaseManager()
     
     var selectedDateComponents: DateComponents
     var searchText = String()
@@ -37,6 +38,7 @@ class TasksParentViewModel {
     // MARK: - Data manipulation funcs
     func toggleIsCompleted(for toDoTask: ToDoTask) {
         toDoTask.isCompleted.toggle()
+        firebaseDatabaseManager.updateTaskInDatabase(toDoTask: toDoTask)
     }
     
     func delete(toDoTask: ToDoTask) {
@@ -44,6 +46,7 @@ class TasksParentViewModel {
             toDoTasks.removeAll(where: { $0 == toDoTask })
         }
         
+        firebaseDatabaseManager.deleteTaskFromDatabase(toDoTask: toDoTask)
         swiftDataManager.delete(toDoTask: toDoTask)
     }
     

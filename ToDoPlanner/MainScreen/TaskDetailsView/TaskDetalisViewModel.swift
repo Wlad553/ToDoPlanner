@@ -11,6 +11,7 @@ import SwiftUI
 @Observable
 final class TaskDetalisViewModel {
     let swiftDataManager = SwiftDataManager()
+    let firebaseDatabaseManager = FirebaseDatabaseManager()
     
     var draftToDoTask: ToDoTask
     var editedToDoTask: ToDoTask
@@ -44,5 +45,20 @@ final class TaskDetalisViewModel {
                                  dueDate: isEditingExistingToDoTask ? editedToDoTask.dueDate : Date(),
                                  priority: editedToDoTask.priority,
                                  isCompleted: editedToDoTask.isCompleted)
+    }
+    
+    func saveToDoTask() {
+        if isEditingExistingToDoTask {
+            firebaseDatabaseManager.updateTaskInDatabase(toDoTask: editedToDoTask, draftToDoTask: draftToDoTask)
+            swiftDataManager.applyChangesFor(toDoTask: editedToDoTask, draftToDoTask: draftToDoTask)
+        } else {
+            firebaseDatabaseManager.saveTaskIntoDatabase(toDoTask: draftToDoTask)
+            swiftDataManager.save(toDoTask: draftToDoTask)
+        }
+    }
+    
+    func deleteEditedToDoTask() {
+        firebaseDatabaseManager.deleteTaskFromDatabase(toDoTask: editedToDoTask)
+        swiftDataManager.delete(toDoTask: editedToDoTask)
     }
 }

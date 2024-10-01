@@ -15,7 +15,7 @@ struct TaskCell: View {
             RoundedRectangle(cornerRadius: 20)
                 .foregroundStyle(.midnightCharcoal)
             HStack(alignment: .top, spacing: 16) {
-                CheckMarkImage(isCheckMarkFilled: $toDoTask.isCompleted)
+                CheckMarkButton(isCheckMarkFilled: $toDoTask.isCompleted)
                     .frame(width: 30, height: 30)
                 
                 VStack(alignment: .leading, spacing: 8) {

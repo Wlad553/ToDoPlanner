@@ -18,4 +18,44 @@ final class FirebaseDatabaseManager {
         
         FirebaseDatabaseManager.databaseReference.child("users").updateChildValues(values)
     }
+    
+    // MARK: - Firebase Data Manipulation
+    func saveTaskIntoDatabase(toDoTask: ToDoTask) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let toDoTaskData = toDoTask.toDictionary()
+        
+        FirebaseDatabaseManager.databaseReference
+            .child("tasks")
+            .child(uid)
+            .child(toDoTask.id.uuidString)
+            .setValue(toDoTaskData)
+    }
+    
+    func deleteTaskFromDatabase(toDoTask: ToDoTask) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        FirebaseDatabaseManager.databaseReference
+            .child("tasks")
+            .child(uid)
+            .child(toDoTask.id.uuidString)
+            .removeValue()
+    }
+    
+    func updateTaskInDatabase(toDoTask: ToDoTask, draftToDoTask: ToDoTask? = nil) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        var toDoTaskData : [String: Any]
+        
+        if let draftToDoTask {
+            toDoTaskData = draftToDoTask.toDictionary()
+            toDoTaskData["id"] = toDoTask.id.uuidString
+        } else {
+            toDoTaskData = toDoTask.toDictionary()
+        }
+        
+        FirebaseDatabaseManager.databaseReference
+            .child("tasks")
+            .child(uid)
+            .child(toDoTask.id.uuidString)
+            .setValue(toDoTaskData)
+    }
 }

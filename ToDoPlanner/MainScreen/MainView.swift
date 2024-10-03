@@ -21,38 +21,35 @@ struct MainView: View {
     }
     
     var body: some View {
-        ZStack(alignment: .bottom) {
-            TabView(selection: $viewModel.selectedTab) {
-                NavigationStack {
+        NavigationStack {
+            ZStack(alignment: .bottom) {
+                TabView(selection: $viewModel.selectedTab) {
                     TasksView(viewModel: viewModel)
-                }
-                .tabItem {
-                    Image(systemName: "list.bullet.clipboard")
-                    Text("Tasks")
-                }
-                .tag(MainViewModel.Tab.tasks)
-                
-                NavigationStack {
+                        .tabItem {
+                            Image(systemName: "list.bullet.clipboard")
+                            Text("Tasks")
+                        }
+                        .tag(MainViewModel.Tab.tasks)
+                    
                     CalendarTasksView()
-                }
-                .tabItem {
-                    Image(systemName: "calendar")
-                    Text("Calendar")
-                }
-                .tag(MainViewModel.Tab.calendar)
-                
-                UserAccountView()
-                    .tabItem {
-                        Image(systemName: "person.fill")
-                        Text("Account")
-                    }
-                    .tag(MainViewModel.Tab.account)
-            } // -- TabView
-            .tint(.white)
-            .padding(.bottom, hasBottomSafeAreaInset ? -8 : 0)
-            .ignoresSafeArea()
-            
-        } // -- ZStack bottom
+                        .tabItem {
+                            Image(systemName: "calendar")
+                            Text("Calendar")
+                        }
+                        .tag(MainViewModel.Tab.calendar)
+                    
+                    UserAccountView()
+                        .tabItem {
+                            Image(systemName: "person.fill")
+                            Text("Account")
+                        }
+                        .tag(MainViewModel.Tab.account)
+                } // -- TabView
+                .padding(.bottom, hasBottomSafeAreaInset ? -8 : 0)
+                .ignoresSafeArea()
+            } // -- ZStack
+        } // -- NavigationStack
+        .tint(.white)
         .ignoresSafeArea(.keyboard, edges: .all)
         .onAppear {
             let tabBarAppearance = UITabBarAppearance()

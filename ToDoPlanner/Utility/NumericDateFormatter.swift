@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class NumericDateFormatter: DateFormatter {
+final class NumericDateFormatter: DateFormatter, @unchecked Sendable {
     override init() {
         super.init()
         self.timeZone = .current

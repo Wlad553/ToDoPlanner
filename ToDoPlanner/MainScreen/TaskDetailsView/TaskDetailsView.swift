@@ -14,20 +14,20 @@ struct TaskDetailsView: View {
         case descriptionTextEditor
     }
     
-    @Environment(\.modelContext) var context
-    @Query private var storedToDoTasks: [ToDoTask]
-    
-    @State private var viewModel: TaskDetalisViewModel
+    @State var viewModel: TaskDetalisViewModel
     
     @State private var keyboardHeight: CGFloat = 0
     @State private var textEditorHeight: CGFloat = 0
     @State private var dueDateOpacity: CGFloat = 1
     @State private var timeOpacity: CGFloat = 1
     
+    @State private var keyboardWillShowObserver: NSObjectProtocol?
+    @State private var keyboardWillHideObserver: NSObjectProtocol?
+    
     @FocusState private var focusField: FocusField?
     
     @Environment(\.dismiss) private var dismiss
-
+    
     var body: some View {
         VStack {
             Group {
@@ -48,14 +48,14 @@ struct TaskDetailsView: View {
                     .focused($focusField, equals: .descriptionTextEditor)
                 }
                 .font(.system(.subheadline))
-                .frame(minHeight: 64, maxHeight: .infinity)
+                .frame(maxHeight: .infinity)
             } // -- Group
             .onTapGesture {
                 timeOpacity = 1
                 dueDateOpacity = 1
             }
             
-            LazyVStack {
+            VStack {
                 TaskDetailsCell(text: "Category") {
                     Image(systemName: "list.bullet")
                 } rightView: {
@@ -133,8 +133,8 @@ struct TaskDetailsView: View {
                         RoundedContextView(text: viewModel.draftToDoTask.priority.name)
                     }
                 }
-            } // -- LazyVStack
-            .padding(.bottom, keyboardHeight + 80  > textEditorHeight ? -64 : 8)
+            } // -- VStack
+            .padding(.bottom, keyboardHeight + 64  > textEditorHeight ? -64 : 8)
         } // -- VStack
         .contentShape(Rectangle())
         .onTapGesture {
@@ -144,46 +144,35 @@ struct TaskDetailsView: View {
                 timeOpacity = 1
             }
         }
-        .background {
-            GeometryReader { geometry in
-                Color.clear
-                    .onAppear {
-                        NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: .main) { notification in
-                            if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
-                                guard keyboardHeight < keyboardFrame.height else { return }
-                                withAnimation {
-                                    keyboardHeight = keyboardFrame.height + geometry.safeAreaInsets.bottom
-                                }
-                            }
-                        }
-                        NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main) { _ in
-                            withAnimation {
-                                keyboardHeight = 0
-                            }
-                        }
-                    }
-            }
-        }
         .padding(.horizontal, 8)
         .background(.charcoal)
+        .toolbarTitleDisplayMode(.inline)
+        .navigationTitle(viewModel.isEditingExistingToDoTask ? String() : "New Task")
         .toolbar {
+            if !viewModel.isEditingExistingToDoTask {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button(action: {
+                        dismiss()
+                    }, label: {
+                        Image(systemName: "arrow.backward")
+                            .foregroundStyle(.white)
+                    })
+                }
+            }
+            
             ToolbarItem(placement: .topBarTrailing) {
                 HStack {
-                    if viewModel.isEditingExistingToDoTask {
-                        Button {
-                            viewModel.swiftDataManager.delete(toDoTask: viewModel.editedToDoTask)
-                            dismiss()
-                        } label: {
-                            Image(systemName: "trash")
-                                .tint(.red)
-                        }
+                    Button {
+                        viewModel.deleteEditedToDoTask()
+                        dismiss()
+                    } label: {
+                        Image(systemName: "trash")
+                            .tint(.red)
                     }
+                    .opacity(viewModel.isEditingExistingToDoTask ? 1.0 : 0.0)
+                    
                     Button("Save") {
-                        if viewModel.isEditingExistingToDoTask {
-                            viewModel.swiftDataManager.applyChangesFor(toDoTask: viewModel.editedToDoTask, draftToDoTask: viewModel.draftToDoTask)
-                        } else {
-                            viewModel.swiftDataManager.save(toDoTask: viewModel.draftToDoTask)
-                        }
+                        viewModel.saveToDoTask()
                         dismiss()
                     }
                     .disabled(viewModel.draftToDoTask.title.isEmpty)
@@ -191,16 +180,42 @@ struct TaskDetailsView: View {
             }
         }
         .onAppear {
-            viewModel.swiftDataManager.context = self.context
             viewModel.revertDraftToDoTask()
+            
+            keyboardWillShowObserver = NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: .main) { notification in
+                if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
+                    guard keyboardHeight < keyboardFrame.height else { return }
+                    withAnimation {
+                        keyboardHeight = keyboardFrame.height
+                    }
+                }
+            }
+            
+            keyboardWillHideObserver = NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main) { _ in
+                withAnimation {
+                    keyboardHeight = 0
+                }
+            }
+        }
+        .onDisappear() {
+            if let showObserver = keyboardWillShowObserver {
+                NotificationCenter.default.removeObserver(showObserver)
+            }
+            
+            if let hideObserver = keyboardWillHideObserver {
+                NotificationCenter.default.removeObserver(hideObserver)
+            }
+            
+            keyboardWillShowObserver = nil
+            keyboardWillHideObserver = nil
         }
     } // -- body
     
-    init(editedToDoTask: ToDoTask) {
-        self.viewModel = TaskDetalisViewModel(editedToDoTask: editedToDoTask)
+    init(viewModel: TaskDetalisViewModel) {
+        self.viewModel = viewModel
     }
-    
-    init() {
-        self.viewModel = TaskDetalisViewModel()
-    }
+}
+
+#Preview {
+    TaskDetailsView(viewModel: TaskDetalisViewModel())
 }

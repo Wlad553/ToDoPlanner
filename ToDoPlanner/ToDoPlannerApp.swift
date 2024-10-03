@@ -23,6 +23,8 @@ struct ToDoPlannerApp: App {
                 .opacity(appState.appHasBeenLaunched && !appState.welcomeViewIsPresented ? 1 : 0)
                 .environment(appState)
                 .onAppear {
+                    appState.requestNotificationsPermission()
+                    
                     if !FirebaseApp.isDefaultAppConfigured() {
                         ApplicationDelegate.shared.application(UIApplication.shared, didFinishLaunchingWithOptions: nil)
                         FirebaseApp.configure()

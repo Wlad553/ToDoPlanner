@@ -13,6 +13,7 @@
 		F512E7D02BB98C5000C9FBAA /* SwiftDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F512E7CF2BB98C5000C9FBAA /* SwiftDataManager.swift */; };
 		F51A4C332CAE985C00F23BC9 /* AuthAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51A4C322CAE985C00F23BC9 /* AuthAction.swift */; };
 		F51A4C372CAEA9C300F23BC9 /* Logger+categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51A4C362CAEA9C300F23BC9 /* Logger+categories.swift */; };
+		F51A4C392CAEBA6400F23BC9 /* UserNotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51A4C382CAEBA6400F23BC9 /* UserNotificationsManager.swift */; };
 		F5286CCA2C2DC44D00541793 /* TasksViewParentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5286CC92C2DC44D00541793 /* TasksViewParentViewModel.swift */; };
 		F528BE2F2C404E9900765759 /* NoSearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F528BE2E2C404E9900765759 /* NoSearchResultsView.swift */; };
 		F52A0BE52C038CB5005C2DBB /* EnvironmentValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52A0BE42C038CB5005C2DBB /* EnvironmentValues.swift */; };
@@ -66,6 +67,7 @@
 		F512E7CF2BB98C5000C9FBAA /* SwiftDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftDataManager.swift; sourceTree = "<group>"; };
 		F51A4C322CAE985C00F23BC9 /* AuthAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAction.swift; sourceTree = "<group>"; };
 		F51A4C362CAEA9C300F23BC9 /* Logger+categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Logger+categories.swift"; sourceTree = "<group>"; };
+		F51A4C382CAEBA6400F23BC9 /* UserNotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationsManager.swift; sourceTree = "<group>"; };
 		F5286CC92C2DC44D00541793 /* TasksViewParentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewParentViewModel.swift; sourceTree = "<group>"; };
 		F528BE2E2C404E9900765759 /* NoSearchResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoSearchResultsView.swift; sourceTree = "<group>"; };
 		F52A0BE42C038CB5005C2DBB /* EnvironmentValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentValues.swift; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				F5D8CFF52CA46B7D00869755 /* FirebaseDatabaseManager.swift */,
+				F51A4C382CAEBA6400F23BC9 /* UserNotificationsManager.swift */,
 				F5D944D72CAC7BD300B31FA0 /* SwiftDataManager */,
 			);
 			path = Managers;
@@ -404,6 +407,7 @@
 				F5DF923C2B8D027B00137855 /* ToDoTask.swift in Sources */,
 				F512E7D02BB98C5000C9FBAA /* SwiftDataManager.swift in Sources */,
 				F5FE5A9F2BBB0724002EEF59 /* NumericDateFormatter.swift in Sources */,
+				F51A4C392CAEBA6400F23BC9 /* UserNotificationsManager.swift in Sources */,
 				F5E92F9A2BBC7F0400803BFB /* AddTaskImage.swift in Sources */,
 				F560C35E2C80C4D600BB5210 /* WelcomeView.swift in Sources */,
 				F5D8CFE92CA45FAC00869755 /* FBUserProfile.swift in Sources */,

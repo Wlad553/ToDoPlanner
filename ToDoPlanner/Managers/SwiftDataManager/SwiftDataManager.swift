@@ -11,6 +11,8 @@ import OSLog
 
 @MainActor
 struct SwiftDataManager {
+    private let userNotificationsManager = UserNotificationsManager()
+    
     var context: ModelContext {
         ToDoTaskModelContainer.shared.container.mainContext
     }
@@ -31,6 +33,9 @@ struct SwiftDataManager {
     
     // MARK: - Data manipulation funcs
     func applyChangesFor(toDoTask: ToDoTask, draftToDoTask: ToDoTask) {
+        userNotificationsManager.cancelNotification(for: toDoTask)
+        userNotificationsManager.scheduleNotification(for: draftToDoTask)
+        
         toDoTask.title = draftToDoTask.title
         toDoTask.desctiption = draftToDoTask.desctiption
         toDoTask.category = draftToDoTask.category
@@ -40,17 +45,22 @@ struct SwiftDataManager {
         toDoTask.lastUpdateTimestamp = draftToDoTask.lastUpdateTimestamp
     }
     
-    func save(toDoTask: ToDoTask) {
+    func save(toDoTask: ToDoTask, scheduleNotification: Bool = true) {
         context.insert(toDoTask)
+        
+        if scheduleNotification {
+            userNotificationsManager.scheduleNotification(for: toDoTask)
+        }
     }
     
     func delete(toDoTask: ToDoTask) {
         context.delete(toDoTask)
+        userNotificationsManager.cancelNotification(for: toDoTask)
     }
     
     func deleteAllToDoTasks() {
         toDoTasks?.forEach({ toDoTask in
-            context.delete(toDoTask)
+            delete(toDoTask: toDoTask)
         })
     }
 }

@@ -7,6 +7,8 @@
 
 import SwiftUI
 import FirebaseAuth
+import UserNotifications
+import OSLog
 
 @Observable
 final class AppState {
@@ -19,5 +21,15 @@ final class AppState {
         }
         
         self.appHasBeenLaunched = true
+    }
+    
+    func requestNotificationsPermission() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
+            if granted {
+                Logger.userNotifications.info("Notification permission granted")
+            } else if let error {
+                Logger.userNotifications.error("Error requesting notification permission: \(error.localizedDescription)")
+            }
+        }
     }
 }

@@ -10,6 +10,7 @@ import FBSDKLoginKit
 import FirebaseAuth
 import FirebaseCore
 import GoogleSignIn
+import OSLog
 
 @Observable
 final class LoginViewModel {
@@ -34,9 +35,6 @@ final class LoginViewModel {
     // MARK: Utility funcs
     private func setErrorMessage(for error: Error) {
         let error = error as NSError
-        
-        print(error.localizedDescription)
-        print(error.code)
         
         errorMessage = switch error.code {
                        case 17004, 17009: "Invalid email or password. Please, try again."
@@ -65,10 +63,12 @@ extension LoginViewModel {
         loginManager.logIn(configuration: configuration) { result in
             switch result {
             case .success:
-                print("Logged In with FB")
+                Logger.auth.info("Logged In with FB")
+                
                 self.signIntoFirebaseWithFacebook(nonce: nonce)
                 
             case .failed(let error):
+                Logger.auth.error("FB Login Error: \(error.localizedDescription)")
                 self.setErrorMessage(for: error)
                 
             case .cancelled:
@@ -83,13 +83,13 @@ extension LoginViewModel {
         
         Auth.auth().signIn(with: credentials) { user, error in
             if let error {
-                print("Firebase FB user authorisation error: \(error.localizedDescription)")
+                Logger.auth.error("Firebase FB user authorisation error: \(error.localizedDescription)")
                 self.setErrorMessage(for: error)
                 
                 return
             }
             
-            print("Firebase FB user log in succeeded: \(String(describing: user))")
+            Logger.auth.info("Firebase FB user log in succeeded: \(String(describing: user))")
             self.fetchFacebookFields()
         }
     }
@@ -97,7 +97,7 @@ extension LoginViewModel {
     private func fetchFacebookFields() {
         GraphRequest(graphPath: "me", parameters: ["fields": "id, email, name"]).start { _, result, error in
             if let error {
-                print(error.localizedDescription)
+                Logger.auth.error("Firebase FB user data fetch error: \(error.localizedDescription)")
                 return
             }
             
@@ -121,7 +121,7 @@ extension LoginViewModel {
         
         GIDSignIn.sharedInstance.signIn(withPresenting: viewController) { [unowned self] result, error in
             if let error {
-                print("Failed to log in with Google: \(error.localizedDescription)")
+                Logger.auth.error("Failed to log in with Google: \(error.localizedDescription)")
                 self.setErrorMessage(for: error)
                 
                 return
@@ -135,13 +135,13 @@ extension LoginViewModel {
                                                            accessToken: user.accessToken.tokenString)
             Auth.auth().signIn(with: credential) { user, error in
                 if let error {
-                    print("Failed to log into Firebase with Google: \(error.localizedDescription)")
+                    Logger.auth.error("Failed to log into Firebase with Google: \(error.localizedDescription)")
                     self.setErrorMessage(for: error)
 
                     return
                 }
                 
-                print("Successfully loged in using Google")
+                Logger.auth.info("Successfully logged into Firebase with Google")
                 self.pushUserToDatabase(name: result?.user.profile?.name, email: result?.user.profile?.email)
             }
         }
@@ -161,7 +161,7 @@ extension LoginViewModel {
                 return
             }
             
-            print("Successfully logged into Firebase with User Email")
+            Logger.auth.info("Successfully logged into Firebase with User Email")
             self.pushUserToDatabase(name: nil, email: self.email)
         }
     }
@@ -177,7 +177,7 @@ extension LoginViewModel {
                 return
             }
             
-            print("Successfully logged in")
+            Logger.auth.info("Successfully logged into Firebase with User Email")
             self.successfullyLoggedIn = true
         }
     }

@@ -9,6 +9,7 @@ import SwiftUI
 import FirebaseAuth
 import GoogleSignIn
 import FBSDKLoginKit
+import OSLog
 
 @MainActor
 @Observable
@@ -32,14 +33,14 @@ extension UserAccountViewModel {
                 switch userInfo.providerID {
                 case "facebook.com":
                     LoginManager().logOut()
-                    print("User did log out of Facebook")
+                    Logger.auth.info("User did log out of Facebook")
                 case "google.com":
                     GIDSignIn.sharedInstance.signOut()
-                    print("User did log out of Google")
+                    Logger.auth.info("User did log out of Google")
                 case "password":
-                    print("User did sign out")
+                    Logger.auth.info("User did log out")
                 default:
-                    print("User is signed in with \(userInfo.providerID)")
+                    Logger.auth.warning("User is not signed in with any predifined provider: \(userInfo.providerID)")
                     return
                 }
             }

@@ -12,6 +12,7 @@
 		F512E7CE2BB95EBE00C9FBAA /* CheckMarkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F512E7CD2BB95EBE00C9FBAA /* CheckMarkButton.swift */; };
 		F512E7D02BB98C5000C9FBAA /* SwiftDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F512E7CF2BB98C5000C9FBAA /* SwiftDataManager.swift */; };
 		F51A4C332CAE985C00F23BC9 /* AuthAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51A4C322CAE985C00F23BC9 /* AuthAction.swift */; };
+		F51A4C372CAEA9C300F23BC9 /* Logger+categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51A4C362CAEA9C300F23BC9 /* Logger+categories.swift */; };
 		F5286CCA2C2DC44D00541793 /* TasksViewParentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5286CC92C2DC44D00541793 /* TasksViewParentViewModel.swift */; };
 		F528BE2F2C404E9900765759 /* NoSearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F528BE2E2C404E9900765759 /* NoSearchResultsView.swift */; };
 		F52A0BE52C038CB5005C2DBB /* EnvironmentValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52A0BE42C038CB5005C2DBB /* EnvironmentValues.swift */; };
@@ -64,6 +65,7 @@
 		F512E7CD2BB95EBE00C9FBAA /* CheckMarkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckMarkButton.swift; sourceTree = "<group>"; };
 		F512E7CF2BB98C5000C9FBAA /* SwiftDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftDataManager.swift; sourceTree = "<group>"; };
 		F51A4C322CAE985C00F23BC9 /* AuthAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAction.swift; sourceTree = "<group>"; };
+		F51A4C362CAEA9C300F23BC9 /* Logger+categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Logger+categories.swift"; sourceTree = "<group>"; };
 		F5286CC92C2DC44D00541793 /* TasksViewParentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewParentViewModel.swift; sourceTree = "<group>"; };
 		F528BE2E2C404E9900765759 /* NoSearchResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoSearchResultsView.swift; sourceTree = "<group>"; };
 		F52A0BE42C038CB5005C2DBB /* EnvironmentValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentValues.swift; sourceTree = "<group>"; };
@@ -304,6 +306,7 @@
 		F5FE5A992BBAAE25002EEF59 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				F51A4C362CAEA9C300F23BC9 /* Logger+categories.swift */,
 				F5FE5A9A2BBAAE41002EEF59 /* Animation+Extension.swift */,
 				F52A0BE42C038CB5005C2DBB /* EnvironmentValues.swift */,
 				F5D8CFF32CA4697000869755 /* LoginManager+nonce.swift */,
@@ -406,6 +409,7 @@
 				F5D8CFE92CA45FAC00869755 /* FBUserProfile.swift in Sources */,
 				F5F690EA2C90CB4B00B6E5C7 /* MainViewModel.swift in Sources */,
 				F54C9B312C7E267300A0D5C5 /* LoginViewModel.swift in Sources */,
+				F51A4C372CAEA9C300F23BC9 /* Logger+categories.swift in Sources */,
 				F5F690E82C90CAC600B6E5C7 /* WelcomeViewModel.swift in Sources */,
 				F5B10FC32C3EDE1800BEB7BC /* SearchBar.swift in Sources */,
 				F5867C7E2C7E17B100F87677 /* UnderlinedTextField.swift in Sources */,

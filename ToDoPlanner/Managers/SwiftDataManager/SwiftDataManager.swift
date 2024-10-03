@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import OSLog
 
 @MainActor
 struct SwiftDataManager {
@@ -17,7 +18,15 @@ struct SwiftDataManager {
     // MARK: Saved Objects
     var toDoTasks: [ToDoTask]? {
         let fetchDescriptor = FetchDescriptor<ToDoTask>()
-        return try? context.fetch(fetchDescriptor)
+        var toDoTasks: [ToDoTask]?
+        
+        do {
+            toDoTasks = try context.fetch(fetchDescriptor)
+        } catch {
+            Logger.swiftData.error("Error fetching toDoTasks: \(error.localizedDescription)")
+        }
+        
+        return toDoTasks
     }
     
     // MARK: - Data manipulation funcs

@@ -7,11 +7,13 @@
 
 import FirebaseDatabase
 import FirebaseAuth
+import OSLog
 
 final class FirebaseDatabaseManager {
     static let databaseReference: DatabaseReference = Database.database(url: "https://to-do-planner-17bdb-default-rtdb.europe-west1.firebasedatabase.app").reference()
     
     // MARK: - Firebase Data Manipulation
+    // MARK: User info
     func pushUserInfoToFirebase(name: String?, email: String?) {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
@@ -20,10 +22,15 @@ final class FirebaseDatabaseManager {
         
         Self.databaseReference
             .child("users")
-            .updateChildValues(values)
+            .updateChildValues(values) { error, _ in
+                if let error {
+                    Logger.firebase.error("Failed to push user info to Firebase: \(error.localizedDescription)")
+                }
+            }
     }
     
-    func pushLastUpdatedTimestampToFirebase(updateTime: TimeInterval = Date().timeIntervalSince1970) {        
+    // MARK: LastUpdatedTimestamp
+    func pushLastUpdatedTimestampToFirebase(updateTime: TimeInterval = Date().timeIntervalSince1970) {
         UserDefaults.standard.set(updateTime, forKey: "toDoTasksLastUpdateTime")
         
         guard let uid = Auth.auth().currentUser?.uid else { return }
@@ -32,9 +39,14 @@ final class FirebaseDatabaseManager {
             .child("tasks")
             .child(uid)
             .child("lastUpdatedTimestamp")
-            .setValue(updateTime)
+            .setValue(updateTime) { error, _ in
+                if let error {
+                    Logger.firebase.error("Failed to push last updated timestamp to Firebase: \(error.localizedDescription)")
+                }
+            }
     }
     
+    // MARK: ToDoTasks
     func pushToDoTaskToFirebase(toDoTask: ToDoTask, updateLastUpdatedTimestamp: Bool = true) {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         let toDoTaskData = toDoTask.toDictionary()
@@ -43,7 +55,11 @@ final class FirebaseDatabaseManager {
             .child("tasks")
             .child(uid)
             .child(toDoTask.id.uuidString)
-            .setValue(toDoTaskData)
+            .setValue(toDoTaskData) { error, _ in
+                if let error {
+                    Logger.firebase.error("Failed to push toDoTask to Firebase: \(error.localizedDescription)")
+                }
+            }
         
         if updateLastUpdatedTimestamp {
             pushLastUpdatedTimestampToFirebase()
@@ -57,7 +73,11 @@ final class FirebaseDatabaseManager {
             .child("tasks")
             .child(uid)
             .child(toDoTask.id.uuidString)
-            .removeValue()
+            .removeValue() { error, _ in
+                if let error {
+                    Logger.firebase.error("Failed to delete toDoTask from Firebase: \(error.localizedDescription)")
+                }
+            }
         
         if updateLastUpdatedTimestamp {
             pushLastUpdatedTimestampToFirebase()
@@ -105,6 +125,9 @@ final class FirebaseDatabaseManager {
             .child(uid)
             .observe(.value) { _ in
                 handler()
+                
+            } withCancel: { error in
+                Logger.firebase.error("Error observing toDoTasks: \(error.localizedDescription)")
             }
     }
     

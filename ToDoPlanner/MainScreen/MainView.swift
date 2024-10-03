@@ -9,12 +9,9 @@ import SwiftUI
 import SwiftData
 
 struct MainView: View {
-    enum Tab {
-            case tasks
-            case calendar
-        }
-        
-    @State var selectedTab = Tab.tasks
+    @State var viewModel = MainViewModel(selectedTab: .tasks)
+    
+    @Environment(AppState.self) private var appState
     
     private var hasBottomSafeAreaInset: Bool {
         let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
@@ -24,42 +21,55 @@ struct MainView: View {
     }
     
     var body: some View {
-        NavigationView {
-            ZStack(alignment: .bottom) {
-                TabView(selection: $selectedTab) {
-                    TasksView(isSearchBarPresent: true)
-                        .tabItem {
-                            Image(systemName: "list.bullet.clipboard")
-                            Text("Tasks")
-                        }
-                        .tag(Tab.tasks)
-                    CalendarTasksView()
-                        .tabItem {
-                            Image(systemName: "calendar")
-                            Text("Calendar")
-                        }
-                        .tag(Tab.calendar)
-                } // -- TabView
-                .tint(.white)
-                .padding(.bottom, hasBottomSafeAreaInset ? -8 : 0)
-                .ignoresSafeArea()
-                
-                NavigationLink {
-                    TaskDetailsView()
-                } label: {
-                    AddTaskImage()
-                        .scaledToFit()
-                        .frame(width: 60)
-                        .offset(y: hasBottomSafeAreaInset ? -8 : -16)
+        ZStack(alignment: .bottom) {
+            TabView(selection: $viewModel.selectedTab) {
+                NavigationStack {
+                    TasksView(viewModel: viewModel)
                 }
-            } // -- ZStack bottom
-            .ignoresSafeArea(.keyboard, edges: .all)
-        } // -- NavigationStack
+                .tabItem {
+                    Image(systemName: "list.bullet.clipboard")
+                    Text("Tasks")
+                }
+                .tag(MainViewModel.Tab.tasks)
+                
+                NavigationStack {
+                    CalendarTasksView()
+                }
+                .tabItem {
+                    Image(systemName: "calendar")
+                    Text("Calendar")
+                }
+                .tag(MainViewModel.Tab.calendar)
+                
+                UserAccountView()
+                    .tabItem {
+                        Image(systemName: "person.fill")
+                        Text("Account")
+                    }
+                    .tag(MainViewModel.Tab.account)
+            } // -- TabView
+            .tint(.white)
+            .padding(.bottom, hasBottomSafeAreaInset ? -8 : 0)
+            .ignoresSafeArea()
+            
+        } // -- ZStack bottom
+        .ignoresSafeArea(.keyboard, edges: .all)
         .onAppear {
             let tabBarAppearance = UITabBarAppearance()
             tabBarAppearance.backgroundEffect = UIBlurEffect(style: .systemChromeMaterial)
             UITabBar.appearance().standardAppearance = tabBarAppearance
             UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
+        }
+        .onChange(of: appState.welcomeViewIsPresented) { oldWelcomeViewIsPresented, welcomeViewIsPresented in
+            if oldWelcomeViewIsPresented && !welcomeViewIsPresented {
+                viewModel.selectedTab = .tasks
+                viewModel.observeFirebaseToDoTasks()
+            }
+        }
+        .onChange(of: appState.appHasBeenLaunched) { _, appHasBeenLaunched in
+            if appHasBeenLaunched {
+                viewModel.observeFirebaseToDoTasks()
+            }
         }
     }
 }
@@ -68,6 +78,6 @@ struct MainView: View {
     let config = ModelConfiguration(isStoredInMemoryOnly: true)
     let container = try! ModelContainer(for: ToDoTask.self, configurations: config)
     
-    return MainView(selectedTab: .calendar)
+    return MainView(viewModel: MainViewModel(selectedTab: .account))
         .modelContainer(container)
 }

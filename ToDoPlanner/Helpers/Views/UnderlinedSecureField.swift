@@ -1,19 +1,19 @@
 //
-//  UnderlinedTextField.swift
+//  UnderlinedSecureField.swift
 //  ToDoPlanner
 //
-//  Created by Vladyslav Petrenko on 27/08/2024.
+//  Created by Vladyslav Petrenko on 29/09/2024.
 //
 
 import SwiftUI
 
-struct UnderlinedTextField: View {
+struct UnderlinedSecureField: View {
     let placeholder: String
     @Binding var text: String
     
     var body: some View {
         VStack(spacing: 8) {
-            TextField(placeholder, text: $text)
+            SecureField(placeholder, text: $text)
             
             Rectangle()
                 .foregroundStyle(.dimGray)
@@ -27,5 +27,5 @@ struct UnderlinedTextField: View {
 #Preview {
     @Previewable @State var text = String()
     
-    return UnderlinedTextField(placeholder: "Placeholder", text: $text)
+    return UnderlinedSecureField(placeholder: "Placeholder", text: $text)
 }

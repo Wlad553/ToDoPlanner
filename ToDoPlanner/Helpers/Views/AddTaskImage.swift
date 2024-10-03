@@ -12,7 +12,6 @@ struct AddTaskImage: View {
         GeometryReader { geometry in
             ZStack(alignment: .center) {
                 Circle()
-                    .trim(from: 0.0, to: 0.55)
                     .fill(.charcoal)
                     .blur(radius: 3)
                     .frame(width: geometry.size.width * 0.95,

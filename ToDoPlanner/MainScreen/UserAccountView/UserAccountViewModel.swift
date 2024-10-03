@@ -1,5 +1,5 @@
 //
-//  AccountViewModel.swift
+//  UserAccountViewModel.swift
 //  ToDoPlanner
 //
 //  Created by Vladyslav Petrenko on 25/09/2024.
@@ -10,15 +10,18 @@ import FirebaseAuth
 import GoogleSignIn
 import FBSDKLoginKit
 
+@MainActor
 @Observable
-final class AccountViewModel {
+final class UserAccountViewModel {
+    let swiftDataManager = SwiftDataManager()
+    let firebaseDatabaseManager = FirebaseDatabaseManager()
     var userEmail = String()
     
     var isSignOutAlertPresented = false
 }
 
 // MARK: - Firebase SDK
-extension AccountViewModel {
+extension UserAccountViewModel {
     func fetchUserData() {
         userEmail = Auth.auth().currentUser?.email ?? ""
     }
@@ -42,6 +45,9 @@ extension AccountViewModel {
             }
         }
         
+        firebaseDatabaseManager.removeObservers()
         try? Auth.auth().signOut()
+        UserDefaults.standard.set(nil, forKey: "toDoTasksLastUpdateTime")
+        swiftDataManager.deleteAllToDoTasks()
     }
 }

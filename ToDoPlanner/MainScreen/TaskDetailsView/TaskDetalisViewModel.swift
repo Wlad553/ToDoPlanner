@@ -48,17 +48,20 @@ final class TaskDetalisViewModel {
     }
     
     func saveToDoTask() {
+        draftToDoTask.updateLastUpdateTimestamp()
+        draftToDoTask.id = editedToDoTask.id
+        
+        firebaseDatabaseManager.pushToDoTaskToFirebase(toDoTask: draftToDoTask)
+         
         if isEditingExistingToDoTask {
-            firebaseDatabaseManager.updateTaskInDatabase(toDoTask: editedToDoTask, draftToDoTask: draftToDoTask)
             swiftDataManager.applyChangesFor(toDoTask: editedToDoTask, draftToDoTask: draftToDoTask)
         } else {
-            firebaseDatabaseManager.saveTaskIntoDatabase(toDoTask: draftToDoTask)
             swiftDataManager.save(toDoTask: draftToDoTask)
         }
     }
     
     func deleteEditedToDoTask() {
-        firebaseDatabaseManager.deleteTaskFromDatabase(toDoTask: editedToDoTask)
+        firebaseDatabaseManager.deleteTaskFromFirebase(toDoTask: editedToDoTask)
         swiftDataManager.delete(toDoTask: editedToDoTask)
     }
 }

@@ -11,30 +11,9 @@ import FirebaseAuth
 import FirebaseCore
 import GoogleSignIn
 
-enum AuthAction: String, Identifiable {
-    case signIn = "Sign In"
-    case signUp = "Sign Up"
-    
-    var id: String {
-        return rawValue
-    }
-    
-    var string: String {
-        rawValue
-    }
-    
-    func opposite() -> AuthAction {
-        if self == .signIn {
-            return .signUp
-        } else {
-            return .signIn
-        }
-    }
-}
-
 @Observable
 final class LoginViewModel {
-    let databaseManager = FirebaseDatabaseManager()
+    let firebaseDatabaseManager = FirebaseDatabaseManager()
     
     var authAction: AuthAction
     
@@ -126,7 +105,7 @@ extension LoginViewModel {
                 guard let jsonData = try? JSONSerialization.data(withJSONObject: userData, options: []) else { return }
                 let fbUserProfile = try? JSONDecoder().decode(FBUserProfile.self, from: jsonData)
                 
-                self.saveUserIntoDatabase(name: fbUserProfile?.name, email: fbUserProfile?.email)
+                self.pushUserToDatabase(name: fbUserProfile?.name, email: fbUserProfile?.email)
             }
         }
     }
@@ -137,11 +116,9 @@ extension LoginViewModel {
     func performGoogleSignIn(withPresenting viewController: UIViewController) {
         guard let clientID = FirebaseApp.app()?.options.clientID else { return }
         
-        // Create Google Sign In configuration object.
         let config = GIDConfiguration(clientID: clientID)
         GIDSignIn.sharedInstance.configuration = config
         
-        // Start the sign in flow!
         GIDSignIn.sharedInstance.signIn(withPresenting: viewController) { [unowned self] result, error in
             if let error {
                 print("Failed to log in with Google: \(error.localizedDescription)")
@@ -164,8 +141,8 @@ extension LoginViewModel {
                     return
                 }
                 
-                self.saveUserIntoDatabase(name: result?.user.profile?.name, email: result?.user.profile?.email)
                 print("Successfully loged in using Google")
+                self.pushUserToDatabase(name: result?.user.profile?.name, email: result?.user.profile?.email)
             }
         }
     }
@@ -185,7 +162,7 @@ extension LoginViewModel {
             }
             
             print("Successfully logged into Firebase with User Email")
-            self.saveUserIntoDatabase(name: nil, email: self.email)
+            self.pushUserToDatabase(name: nil, email: self.email)
         }
     }
     
@@ -208,8 +185,8 @@ extension LoginViewModel {
 
 // MARK: - FirebaseSDK
 extension LoginViewModel {
-    private func saveUserIntoDatabase(name: String?, email: String?) {
-        databaseManager.saveUserIntoDatabase(name: name, email: email)
+    private func pushUserToDatabase(name: String?, email: String?) {
+        firebaseDatabaseManager.pushUserInfoToFirebase(name: name, email: email)
         
         self.successfullyLoggedIn = true
     }

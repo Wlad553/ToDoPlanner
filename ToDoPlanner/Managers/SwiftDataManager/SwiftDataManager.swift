@@ -28,6 +28,7 @@ struct SwiftDataManager {
         toDoTask.dueDate = draftToDoTask.dueDate
         toDoTask.priority = draftToDoTask.priority
         toDoTask.isCompleted = draftToDoTask.isCompleted
+        toDoTask.lastUpdateTimestamp = draftToDoTask.lastUpdateTimestamp
     }
     
     func save(toDoTask: ToDoTask) {
@@ -36,5 +37,11 @@ struct SwiftDataManager {
     
     func delete(toDoTask: ToDoTask) {
         context.delete(toDoTask)
+    }
+    
+    func deleteAllToDoTasks() {
+        toDoTasks?.forEach({ toDoTask in
+            context.delete(toDoTask)
+        })
     }
 }

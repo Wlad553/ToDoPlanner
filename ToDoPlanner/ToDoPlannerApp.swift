@@ -20,7 +20,7 @@ struct ToDoPlannerApp: App {
     var body: some Scene {
         WindowGroup {
             MainView()
-                .opacity(appState.welcomeViewIsPresented ? 0 : 1)
+                .opacity(appState.appHasBeenLaunched && !appState.welcomeViewIsPresented ? 1 : 0)
                 .environment(appState)
                 .onAppear {
                     if !FirebaseApp.isDefaultAppConfigured() {

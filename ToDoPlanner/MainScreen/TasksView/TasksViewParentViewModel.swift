@@ -1,5 +1,5 @@
 //
-//  TasksParentViewModel.swift
+//  TasksViewParentViewModel.swift
 //  ToDoPlanner
 //
 //  Created by Vladyslav Petrenko on 27/06/2024.
@@ -9,7 +9,7 @@ import SwiftUI
 
 @MainActor
 @Observable
-class TasksParentViewModel {
+class TasksViewParentViewModel {
     let swiftDataManager = SwiftDataManager()
     let firebaseDatabaseManager = FirebaseDatabaseManager()
     
@@ -38,7 +38,13 @@ class TasksParentViewModel {
     // MARK: - Data manipulation funcs
     func toggleIsCompleted(for toDoTask: ToDoTask) {
         toDoTask.isCompleted.toggle()
-        firebaseDatabaseManager.updateTaskInDatabase(toDoTask: toDoTask)
+        updateLastUpdateTimestamp(for: toDoTask)
+    }
+    
+    func updateLastUpdateTimestamp(for toDoTask: ToDoTask) {
+        toDoTask.updateLastUpdateTimestamp()
+        
+        firebaseDatabaseManager.pushToDoTaskToFirebase(toDoTask: toDoTask)
     }
     
     func delete(toDoTask: ToDoTask) {
@@ -46,13 +52,20 @@ class TasksParentViewModel {
             toDoTasks.removeAll(where: { $0 == toDoTask })
         }
         
-        firebaseDatabaseManager.deleteTaskFromDatabase(toDoTask: toDoTask)
+        firebaseDatabaseManager.deleteTaskFromFirebase(toDoTask: toDoTask)
         swiftDataManager.delete(toDoTask: toDoTask)
     }
     
-    func refreshToDoTasks() {
+    func refreshToDoTasks(animated: Bool = false) {
         if let fetchedToDoTasks = swiftDataManager.toDoTasks {
-            toDoTasks = fetchedToDoTasks
+            
+            if animated {
+                withAnimation {
+                    toDoTasks = fetchedToDoTasks
+                }
+            } else {
+                toDoTasks = fetchedToDoTasks
+            }
         }
     }
     

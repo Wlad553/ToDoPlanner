@@ -11,7 +11,8 @@
 		F50D11722C7CD69200156420 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50D11712C7CD69200156420 /* LoginView.swift */; };
 		F512E7CE2BB95EBE00C9FBAA /* CheckMarkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F512E7CD2BB95EBE00C9FBAA /* CheckMarkButton.swift */; };
 		F512E7D02BB98C5000C9FBAA /* SwiftDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F512E7CF2BB98C5000C9FBAA /* SwiftDataManager.swift */; };
-		F5286CCA2C2DC44D00541793 /* TasksParentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5286CC92C2DC44D00541793 /* TasksParentViewModel.swift */; };
+		F51A4C332CAE985C00F23BC9 /* AuthAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51A4C322CAE985C00F23BC9 /* AuthAction.swift */; };
+		F5286CCA2C2DC44D00541793 /* TasksViewParentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5286CC92C2DC44D00541793 /* TasksViewParentViewModel.swift */; };
 		F528BE2F2C404E9900765759 /* NoSearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F528BE2E2C404E9900765759 /* NoSearchResultsView.swift */; };
 		F52A0BE52C038CB5005C2DBB /* EnvironmentValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52A0BE42C038CB5005C2DBB /* EnvironmentValues.swift */; };
 		F5327D462CA0645200AF2C70 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = F5327D452CA0645200AF2C70 /* FacebookCore */; };
@@ -35,7 +36,7 @@
 		F5C02B122BFB45D900C85C20 /* PlaceholderTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C02B112BFB45D900C85C20 /* PlaceholderTextEditor.swift */; };
 		F5C02B162BFB6A2900C85C20 /* TaskDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C02B152BFB6A2900C85C20 /* TaskDetailsCell.swift */; };
 		F5D54EF42BAB379000D49CF1 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D54EF32BAB379000D49CF1 /* TaskCell.swift */; };
-		F5D8CFE72CA44D0E00869755 /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D8CFE62CA44D0E00869755 /* AccountViewModel.swift */; };
+		F5D8CFE72CA44D0E00869755 /* UserAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D8CFE62CA44D0E00869755 /* UserAccountViewModel.swift */; };
 		F5D8CFE92CA45FAC00869755 /* FBUserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D8CFE82CA45FAC00869755 /* FBUserProfile.swift */; };
 		F5D8CFEC2CA4612B00869755 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = F5D8CFEB2CA4612B00869755 /* FirebaseAuth */; };
 		F5D8CFEE2CA4612B00869755 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = F5D8CFED2CA4612B00869755 /* FirebaseDatabase */; };
@@ -50,7 +51,7 @@
 		F5EC64512CA95A94009F9085 /* BridgeVCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EC64502CA95A94009F9085 /* BridgeVCView.swift */; };
 		F5EC64552CA9A927009F9085 /* UnderlinedSecureField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EC64542CA9A927009F9085 /* UnderlinedSecureField.swift */; };
 		F5ECCDA52C89E35800A91146 /* RoundedButtonLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ECCDA42C89E35800A91146 /* RoundedButtonLabel.swift */; };
-		F5F1414E2C97474000DC962B /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F1414D2C97474000DC962B /* AccountView.swift */; };
+		F5F1414E2C97474000DC962B /* UserAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F1414D2C97474000DC962B /* UserAccountView.swift */; };
 		F5F690E82C90CAC600B6E5C7 /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F690E72C90CAC600B6E5C7 /* WelcomeViewModel.swift */; };
 		F5F690EA2C90CB4B00B6E5C7 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F690E92C90CB4B00B6E5C7 /* MainViewModel.swift */; };
 		F5FE5A9B2BBAAE41002EEF59 /* Animation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FE5A9A2BBAAE41002EEF59 /* Animation+Extension.swift */; };
@@ -62,7 +63,8 @@
 		F50D11712C7CD69200156420 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		F512E7CD2BB95EBE00C9FBAA /* CheckMarkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckMarkButton.swift; sourceTree = "<group>"; };
 		F512E7CF2BB98C5000C9FBAA /* SwiftDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftDataManager.swift; sourceTree = "<group>"; };
-		F5286CC92C2DC44D00541793 /* TasksParentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksParentViewModel.swift; sourceTree = "<group>"; };
+		F51A4C322CAE985C00F23BC9 /* AuthAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAction.swift; sourceTree = "<group>"; };
+		F5286CC92C2DC44D00541793 /* TasksViewParentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewParentViewModel.swift; sourceTree = "<group>"; };
 		F528BE2E2C404E9900765759 /* NoSearchResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoSearchResultsView.swift; sourceTree = "<group>"; };
 		F52A0BE42C038CB5005C2DBB /* EnvironmentValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentValues.swift; sourceTree = "<group>"; };
 		F5327D4F2CA073F300AF2C70 /* ToDoPlanner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ToDoPlanner.entitlements; sourceTree = "<group>"; };
@@ -86,7 +88,7 @@
 		F5C02B112BFB45D900C85C20 /* PlaceholderTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTextEditor.swift; sourceTree = "<group>"; };
 		F5C02B152BFB6A2900C85C20 /* TaskDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailsCell.swift; sourceTree = "<group>"; };
 		F5D54EF32BAB379000D49CF1 /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
-		F5D8CFE62CA44D0E00869755 /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
+		F5D8CFE62CA44D0E00869755 /* UserAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountViewModel.swift; sourceTree = "<group>"; };
 		F5D8CFE82CA45FAC00869755 /* FBUserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBUserProfile.swift; sourceTree = "<group>"; };
 		F5D8CFF12CA4678700869755 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F5D8CFF32CA4697000869755 /* LoginManager+nonce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginManager+nonce.swift"; sourceTree = "<group>"; };
@@ -99,7 +101,7 @@
 		F5EC64502CA95A94009F9085 /* BridgeVCView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BridgeVCView.swift; sourceTree = "<group>"; };
 		F5EC64542CA9A927009F9085 /* UnderlinedSecureField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedSecureField.swift; sourceTree = "<group>"; };
 		F5ECCDA42C89E35800A91146 /* RoundedButtonLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButtonLabel.swift; sourceTree = "<group>"; };
-		F5F1414D2C97474000DC962B /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
+		F5F1414D2C97474000DC962B /* UserAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountView.swift; sourceTree = "<group>"; };
 		F5F690E72C90CAC600B6E5C7 /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
 		F5F690E92C90CB4B00B6E5C7 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		F5FE5A9A2BBAAE41002EEF59 /* Animation+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Animation+Extension.swift"; sourceTree = "<group>"; };
@@ -127,11 +129,10 @@
 			children = (
 				F5E92F9B2BBF1E8200803BFB /* MainView.swift */,
 				F5F690E92C90CB4B00B6E5C7 /* MainViewModel.swift */,
-				F5286CC92C2DC44D00541793 /* TasksParentViewModel.swift */,
 				F5A6FD462C2F15B1009E6DBC /* CalendarTasksView */,
 				F5A254B22B8B8D470076F694 /* TasksView */,
 				F5E92F9E2BBF211A00803BFB /* TaskDetailsView */,
-				F5F1414C2C97469E00DC962B /* AccountView */,
+				F5F1414C2C97469E00DC962B /* UserAccountView */,
 			);
 			path = MainScreen;
 			sourceTree = "<group>";
@@ -139,10 +140,8 @@
 		F50D11702C7CD66300156420 /* LoginScreen */ = {
 			isa = PBXGroup;
 			children = (
-				F50D11712C7CD69200156420 /* LoginView.swift */,
-				F54C9B302C7E267300A0D5C5 /* LoginViewModel.swift */,
-				F560C35D2C80C4D600BB5210 /* WelcomeView.swift */,
-				F5F690E72C90CAC600B6E5C7 /* WelcomeViewModel.swift */,
+				F51A4C342CAEA2A100F23BC9 /* LoginView */,
+				F51A4C352CAEA2A900F23BC9 /* WelcomeView */,
 			);
 			path = LoginScreen;
 			sourceTree = "<group>";
@@ -175,12 +174,29 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		F51A4C342CAEA2A100F23BC9 /* LoginView */ = {
+			isa = PBXGroup;
+			children = (
+				F50D11712C7CD69200156420 /* LoginView.swift */,
+				F54C9B302C7E267300A0D5C5 /* LoginViewModel.swift */,
+			);
+			path = LoginView;
+			sourceTree = "<group>";
+		};
+		F51A4C352CAEA2A900F23BC9 /* WelcomeView */ = {
+			isa = PBXGroup;
+			children = (
+				F560C35D2C80C4D600BB5210 /* WelcomeView.swift */,
+				F5F690E72C90CAC600B6E5C7 /* WelcomeViewModel.swift */,
+			);
+			path = WelcomeView;
+			sourceTree = "<group>";
+		};
 		F59E6FF62C43D38B003912C9 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				F512E7CF2BB98C5000C9FBAA /* SwiftDataManager.swift */,
 				F5D8CFF52CA46B7D00869755 /* FirebaseDatabaseManager.swift */,
-				F50933C92C9AFCEB005BF46F /* ToDoTaskModelContainer.swift */,
+				F5D944D72CAC7BD300B31FA0 /* SwiftDataManager */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -234,6 +250,7 @@
 			isa = PBXGroup;
 			children = (
 				F5A254A32B8B88790076F694 /* TasksView.swift */,
+				F5286CC92C2DC44D00541793 /* TasksViewParentViewModel.swift */,
 				F5D54EF32BAB379000D49CF1 /* TaskCell.swift */,
 			);
 			path = TasksView;
@@ -245,6 +262,15 @@
 				F5A6FD472C2F15D1009E6DBC /* CalendarTasksView.swift */,
 			);
 			path = CalendarTasksView;
+			sourceTree = "<group>";
+		};
+		F5D944D72CAC7BD300B31FA0 /* SwiftDataManager */ = {
+			isa = PBXGroup;
+			children = (
+				F512E7CF2BB98C5000C9FBAA /* SwiftDataManager.swift */,
+				F50933C92C9AFCEB005BF46F /* ToDoTaskModelContainer.swift */,
+			);
+			path = SwiftDataManager;
 			sourceTree = "<group>";
 		};
 		F5DF923A2B8D026F00137855 /* Models */ = {
@@ -266,13 +292,13 @@
 			path = TaskDetailsView;
 			sourceTree = "<group>";
 		};
-		F5F1414C2C97469E00DC962B /* AccountView */ = {
+		F5F1414C2C97469E00DC962B /* UserAccountView */ = {
 			isa = PBXGroup;
 			children = (
-				F5F1414D2C97474000DC962B /* AccountView.swift */,
-				F5D8CFE62CA44D0E00869755 /* AccountViewModel.swift */,
+				F5F1414D2C97474000DC962B /* UserAccountView.swift */,
+				F5D8CFE62CA44D0E00869755 /* UserAccountViewModel.swift */,
 			);
-			path = AccountView;
+			path = UserAccountView;
 			sourceTree = "<group>";
 		};
 		F5FE5A992BBAAE25002EEF59 /* Extensions */ = {
@@ -290,6 +316,7 @@
 			isa = PBXGroup;
 			children = (
 				F5FE5A9E2BBB0724002EEF59 /* NumericDateFormatter.swift */,
+				F51A4C322CAE985C00F23BC9 /* AuthAction.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -382,7 +409,7 @@
 				F5F690E82C90CAC600B6E5C7 /* WelcomeViewModel.swift in Sources */,
 				F5B10FC32C3EDE1800BEB7BC /* SearchBar.swift in Sources */,
 				F5867C7E2C7E17B100F87677 /* UnderlinedTextField.swift in Sources */,
-				F5D8CFE72CA44D0E00869755 /* AccountViewModel.swift in Sources */,
+				F5D8CFE72CA44D0E00869755 /* UserAccountViewModel.swift in Sources */,
 				F5C02B162BFB6A2900C85C20 /* TaskDetailsCell.swift in Sources */,
 				F50D11722C7CD69200156420 /* LoginView.swift in Sources */,
 				F528BE2F2C404E9900765759 /* NoSearchResultsView.swift in Sources */,
@@ -390,6 +417,7 @@
 				F542A7532C36F55F00A38A32 /* CalendarView.swift in Sources */,
 				F512E7CE2BB95EBE00C9FBAA /* CheckMarkButton.swift in Sources */,
 				F52A0BE52C038CB5005C2DBB /* EnvironmentValues.swift in Sources */,
+				F51A4C332CAE985C00F23BC9 /* AuthAction.swift in Sources */,
 				F5A6FD482C2F15D1009E6DBC /* CalendarTasksView.swift in Sources */,
 				F554A1DD2C0F744E00AE506A /* RoundedContextView.swift in Sources */,
 				F5EC64512CA95A94009F9085 /* BridgeVCView.swift in Sources */,
@@ -401,14 +429,14 @@
 				F5A254A42B8B88790076F694 /* TasksView.swift in Sources */,
 				F588C18C2C3C4ACA006B5FB8 /* CategoryView.swift in Sources */,
 				F55B645E2C2C6CF900C6336E /* TaskDetalisViewModel.swift in Sources */,
-				F5286CCA2C2DC44D00541793 /* TasksParentViewModel.swift in Sources */,
+				F5286CCA2C2DC44D00541793 /* TasksViewParentViewModel.swift in Sources */,
 				F5E92F9C2BBF1E8200803BFB /* MainView.swift in Sources */,
 				F5C02B122BFB45D900C85C20 /* PlaceholderTextEditor.swift in Sources */,
 				F543DD262CA5BBAD00942F07 /* AppState.swift in Sources */,
 				F5E92FA12BBF217300803BFB /* TaskDetailsView.swift in Sources */,
 				F5A254A22B8B88790076F694 /* ToDoPlannerApp.swift in Sources */,
 				F5D54EF42BAB379000D49CF1 /* TaskCell.swift in Sources */,
-				F5F1414E2C97474000DC962B /* AccountView.swift in Sources */,
+				F5F1414E2C97474000DC962B /* UserAccountView.swift in Sources */,
 				F5FE5A9B2BBAAE41002EEF59 /* Animation+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

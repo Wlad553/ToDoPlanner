@@ -1,5 +1,5 @@
 //
-//  AccountView.swift
+//  UserAccountView.swift
 //  ToDoPlanner
 //
 //  Created by Vladyslav Petrenko on 15/09/2024.
@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct AccountView: View {
-    @State var viewModel = AccountViewModel()
+struct UserAccountView: View {
+    @State var viewModel = UserAccountViewModel()
     
     @Environment(AppState.self) private var appState
     
@@ -55,5 +55,5 @@ struct AccountView: View {
 }
 
 #Preview {
-    AccountView()
+    UserAccountView()
 }

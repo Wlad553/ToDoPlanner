@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct TasksView: View {
-    @Bindable var viewModel: TasksParentViewModel
+    @Bindable var viewModel: TasksViewParentViewModel
     
     @FocusState var isSearchBarFocused: Bool
     
@@ -57,7 +57,7 @@ struct TasksView: View {
                                     }
                                     TaskCell(toDoTask: toDoTask)
                                         .onChange(of: toDoTask.isCompleted) { _, _ in
-                                            viewModel.firebaseDatabaseManager.updateTaskInDatabase(toDoTask: toDoTask)
+                                            viewModel.updateLastUpdateTimestamp(for: toDoTask)
                                         }
                                 } // -- ZStack
                                 .swipeActions {

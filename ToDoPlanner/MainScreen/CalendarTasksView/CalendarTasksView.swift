@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CalendarTasksView: View {
-    @State var viewModel = TasksParentViewModel(selectedDateComponents: Calendar.current.dateComponents([.year, .month, .day], from: Date()))
+    @State var viewModel = TasksViewParentViewModel(selectedDateComponents: Calendar.current.dateComponents([.year, .month, .day], from: Date()))
     
     var body: some View {
         VStack {

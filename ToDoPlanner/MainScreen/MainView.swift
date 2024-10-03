@@ -41,7 +41,7 @@ struct MainView: View {
                 }
                 .tag(MainViewModel.Tab.calendar)
                 
-                AccountView()
+                UserAccountView()
                     .tabItem {
                         Image(systemName: "person.fill")
                         Text("Account")
@@ -60,9 +60,15 @@ struct MainView: View {
             UITabBar.appearance().standardAppearance = tabBarAppearance
             UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
         }
-        .onChange(of: appState.welcomeViewIsPresented) { _, welcomeViewIsPresented in
-            if welcomeViewIsPresented {
+        .onChange(of: appState.welcomeViewIsPresented) { oldWelcomeViewIsPresented, welcomeViewIsPresented in
+            if oldWelcomeViewIsPresented && !welcomeViewIsPresented {
                 viewModel.selectedTab = .tasks
+                viewModel.observeFirebaseToDoTasks()
+            }
+        }
+        .onChange(of: appState.appHasBeenLaunched) { _, appHasBeenLaunched in
+            if appHasBeenLaunched {
+                viewModel.observeFirebaseToDoTasks()
             }
         }
     }

@@ -65,4 +65,4 @@ https://github.com/user-attachments/assets/8abefadc-4db2-4c5d-beef-dae58c7dbe65
 # Author
 Developed by Vladyslav Petrenko
 
-t.me/VladP22
+t.me/VladP533

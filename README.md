@@ -1,5 +1,5 @@
 # ToDoPlanner
-ToDoPlanner is a task management app designed to help users efficiently organize, prioritize, and track their tasks, no matter where they are. With seamless synchronization across devices and offline capabilities, it ensures that your tasks are always accessible. Built for iOS 17 and above, ToDoPlanner leverages the latest Apple technologies to deliver a fast, intuitive, and reliable task management experience.
+ToDoPlanner is a task management app designed to help users efficiently organize, prioritize, and track their tasks, no matter where they are. With seamless synchronization across devices and offline capabilities, it ensures that your tasks are always accessible.
 
 <img width="408" alt="image" src="https://github.com/user-attachments/assets/5d527fae-7545-49ef-a7b3-8f257736d69a"> <img width="408" alt="image" src="https://github.com/user-attachments/assets/516a19a4-78de-4051-b09e-c8ab69bfdde9">
 
